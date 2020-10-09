@@ -1,0 +1,92 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+
+/* ========== Footer ======= */
+footer {
+    background-color: #fff;
+    /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12); */
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: normal 16px sans-serif;
+    padding: 45px 50px;
+}
+
+footer .footer-left p {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Footer links */
+
+footer .footer-links {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    margin: 0 0 10px;
+    padding: 0;
+    transition: ease .25s;
+}
+
+
+footer .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+    margin-left: .5rem;
+    transition: ease .25s;
+
+}
+
+footer .footer-right {
+    float: right;
+    margin-top: 6px;
+    max-width: 180px;
+}
+
+footer .footer-right a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #000;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 25px;
+    margin-left: 2px;
+    transition: all .25s;
+}
+
+footer .footer-right a:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+
+footer p.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+
+    footer .footer-left,
+    footer .footer-right {
+        text-align: center;
+    }
+
+    footer .footer-right {
+        float: none;
+        margin: 0 auto 20px;
+    }
+
+    footer .footer-left p.footer-links {
+        line-height: 1.8;
+    }
+}
