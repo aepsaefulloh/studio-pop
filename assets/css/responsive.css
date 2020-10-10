@@ -6,6 +6,9 @@
 
 @media (max-width: 600px) {
     /* ========== Footer ======= */
+    footer {
+        padding: 45px 50px;
+    }
     footer .footer-left,
     footer .footer-right {
         text-align: center;
