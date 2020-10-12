@@ -2,21 +2,35 @@
     .client img {
         margin: .5rem;
     }
+
+    .card-playlist .card-body:after,
+    .card-article .card-body:after {
+        content: " ";
+        position: unset;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-bottom: 0;
+    }
 }
 
 @media (max-width: 600px) {
+
     /* ========== Footer ======= */
     footer {
         padding: 45px 50px;
     }
+
     footer .footer-left,
     footer .footer-right {
         text-align: center;
     }
+
     footer .footer-right {
         float: none;
         margin: 0 auto 20px;
     }
+
     footer .footer-left p.footer-links {
         line-height: 1.8;
     }
