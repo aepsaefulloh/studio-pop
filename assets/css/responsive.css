@@ -12,6 +12,10 @@
         border-left: 0;
         border-bottom: 0;
     }
+
+    .figure-store {
+        padding: .5rem;
+    }
 }
 
 @media (max-width: 600px) {

@@ -157,8 +157,33 @@ li {
     object-fit: cover;
 }
 
-/* ========== Footer ======= */
+/* ========== Store ======= */
+.figure-store:hover {
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
 
+.figure-store {
+    padding: 1rem;
+}
+
+.figure-store .figure-caption {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+}
+
+.figure-store .figure-price {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ========== Store Detail ======= */
+
+
+
+
+
+/* ========== Footer ======= */
 footer {
     background-color: #fff;
     /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12); */
