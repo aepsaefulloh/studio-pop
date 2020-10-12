@@ -27,3 +27,24 @@ $(document).ready(function () {
         }
     })
 });
+
+// Thumbnail Product Detail
+function changeimg(url, e) {
+    document.getElementById("img").src = url;
+    let nodes = document.getElementById("thumb_img");
+    let img_child = nodes.children;
+    for (i = 0; i < img_child.length; i++) {
+        img_child[i].classList.remove('active')
+    }
+    e.classList.add('active');
+
+}
+
+// Span Size Active
+$(document).ready(function () {
+    var sizes = jQuery(".product-size").find("span");
+    sizes.click(function () {
+        sizes.removeClass("active");
+        $(this).addClass("active");
+    });
+})

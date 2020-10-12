@@ -69,21 +69,110 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="img-produk">
-                        <img src="/assets/img/store/1.png" class="img-fluid" alt="">
+                    <div class="product-img">
+                        <img id="img" src="/assets/img/store/1.png" class="img-fluid">
+                    </div>
+                    <div class="thumb-img" id="thumb_img" class="cf">
+                        <img class="active" src="/assets/img/store/1.png"
+                            onclick="changeimg('/assets/img/store/1.png',this);">
+                        <img src="/assets/img/store/2.png" onclick="changeimg('/assets/img/store/2.png',this);">
+                        <img src="/assets/img/store/3.png" onclick="changeimg('/assets/img/store/3.png',this);">
                     </div>
                 </div>
                 <div class="col-md-5 offset-md-2">
-                    <div class="info-produk">
+                    <div class="product-name">
                         <h4>Homebreaks Blue T-Shirt</h4>
-                        <span class="line-grey mb-2"></span>
+                        <span class="line-grey"></span>
                     </div>
-                    <h6>SIZE :</h6>
-                </div>
+                    <h5>SIZE :</h5>
+                    <div class="product-size">
+                        <span class="active">s</span>
+                        <span>m</span>
+                        <span>l</span>
+                        <span>xl</span>
+                    </div>
+                    <h5>PRICE :</h5>
+                    <div class="product-price">
+                        <h5 class="title">Rp. 250.000,00</h5>
+                    </div>
+                    <button class="btn btn-black btn-block mb-3">ADD TO CART</button>
+                    <span class="line-grey"></span>
+                    <div class="info-product">
+                        <h6 class="text-muted mt-3">INFO PRODUCT</h6>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id risus felis
+                            nunc velit. Maecenas
+                            pharetra, non nam euismod vitae faucibus pharetra vestibulum.
+                            <br>
+                            S / 49 / 71<br>
+                            L / 51 / 74<br>
+                            M / 55 / 75<br>
+                            XL / 60 / 77
 
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    <section class="section-secondary mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="line-grey"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-primary mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title">For You</h4>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="card card-playlist mb-3 border-0">
+                        <div class="row no-gutters">
+                            <div class="col-md-3 align-self-center">
+                                <img src="/assets/img/playlist/img1.jpg" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-9 align-self-center">
+                                <div class="card-body">
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Malesuada accumsan.</p>
+                                    <p class="card-text">
+                                        <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                Oct 6, 2014</li></small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-playlist mb-3 border-0">
+                        <div class="row no-gutters">
+                            <div class="col-md-3 align-self-center">
+                                <img src="/assets/img/playlist/img1.jpg" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-9 align-self-center">
+                                <div class="card-body">
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Malesuada accumsan.</p>
+                                    <p class="card-text">
+                                        <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                Oct 6, 2014</li></small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer>
