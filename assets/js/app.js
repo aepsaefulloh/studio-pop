@@ -1,15 +1,12 @@
-// ============= Video Thumb ============= \\
-$(document).ready(function () {
+$(document).ready(function() {
+    // ========= Video Carousel ========= \\
     $('.owl-carousel.owl-thumb-video').owlCarousel({
         items: 1,
         loop: true,
         video: true,
         lazyLoad: false
     });
-});
-
-// Image-slide
-$(document).ready(function () {
+    // ========= Image Carousel ========= \\
     $('.owl-carousel.thumb-img').owlCarousel({
         loop: true,
         margin: 10,
@@ -25,7 +22,17 @@ $(document).ready(function () {
                 items: 1
             }
         }
-    })
+    });
+    // ========= Checkbox ========= \\
+    $('input[type="checkbox"]').on('change', function() {
+        $('input[type="checkbox"]').not(this).prop('checked', false);
+    });
+    // ========= Product Size Choice ========= \\
+    var sizes = jQuery(".product-size").find("span");
+    sizes.click(function() {
+        sizes.removeClass("active");
+        $(this).addClass("active");
+    });
 });
 
 // Thumbnail Product Detail
@@ -40,11 +47,4 @@ function changeimg(url, e) {
 
 }
 
-// Span Size Active
-$(document).ready(function () {
-    var sizes = jQuery(".product-size").find("span");
-    sizes.click(function () {
-        sizes.removeClass("active");
-        $(this).addClass("active");
-    });
-})
+//Add To Cart
