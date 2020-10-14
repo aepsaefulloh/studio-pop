@@ -16,6 +16,10 @@
     .figure-store {
         padding: .5rem;
     }
+
+    .section-first {
+        margin-top: 1rem;
+    }
 }
 
 @media (max-width: 600px) {

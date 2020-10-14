@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // ========= Video Carousel ========= \\
     $('.owl-carousel.owl-thumb-video').owlCarousel({
         items: 1,
@@ -24,15 +24,16 @@ $(document).ready(function() {
         }
     });
     // ========= Checkbox ========= \\
-    $('input[type="checkbox"]').on('change', function() {
+    $('input[type="checkbox"]').on('change', function () {
         $('input[type="checkbox"]').not(this).prop('checked', false);
     });
     // ========= Product Size Choice ========= \\
     var sizes = jQuery(".product-size").find("span");
-    sizes.click(function() {
+    sizes.click(function () {
         sizes.removeClass("active");
         $(this).addClass("active");
     });
+
 });
 
 // Thumbnail Product Detail
@@ -44,7 +45,9 @@ function changeimg(url, e) {
         img_child[i].classList.remove('active')
     }
     e.classList.add('active');
-
 }
 
-//Add To Cart
+
+// Header \\
+
+
