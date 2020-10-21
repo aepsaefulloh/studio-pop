@@ -39,7 +39,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-sm-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-white p-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">About</li>
                         </ol>
                     </nav>
@@ -56,9 +56,9 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                         Eget ullamcorper porttitor id sagittis, tellus pharetra nisl odio neque. Lectus lobortis
                         nascetur amet non aliquam. In sit blandit vivamus vitae condimentum a. Ut nunc, fermentum
                         mi ipsum urna enim, id ultrices.</p>
-                    <div class="embed-responsive embed-responsive-16by9 about-video d-flex justify-content-center mt-5">
+                    <div class="embed-responsive embed-responsive-21by9 about-video d-flex justify-content-center mt-5">
                         <iframe class="embed-responsive-item"
-                            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+                            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
                     </div>
 
                     <div class="client mt-5">

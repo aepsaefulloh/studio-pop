@@ -28,7 +28,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
 <body>
     <!-- header -->
     <?php
-        require_once 'include/header.php';
+        require_once 'include/header-store.php';
     ?>
     <!-- End Header -->
 
@@ -39,7 +39,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-sm-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-white p-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Store</li>
                         </ol>
                     </nav>
@@ -60,65 +60,38 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <section class="section-primary mt-3">
         <div class="container">
             <div class="row">
+                <?php 
+                    for ($i=1; $i < 7; $i++) { 
+                ?>
                 <div class="col-md-4 col-6">
                     <figure class="figure figure-store text-center">
                         <a href="<?php echo ROOT_URL?>/store-detail.php">
-                            <img src="<?php echo ROOT_URL?>/assets/img/store/1.png" class="figure-img img-fluid rounded"
-                                alt="...">
+                            <img src="<?php echo ROOT_URL?>/assets/img/store/<?php echo $i ?>.png"
+                                class="figure-img img-fluid rounded" alt="...">
                             <figcaption class="figure-caption">Homebreaks</figcaption>
                             <figcaption class="figure-price">Rp. 250.000</figcaption>
                         </a>
                     </figure>
                 </div>
-                <div class="col-md-4 col-6">
-                    <figure class="figure figure-store text-center">
-                        <a href="<?php echo ROOT_URL?>/store-detail.php">
-                            <img src="<?php echo ROOT_URL?>/assets/img/store/2.png" class="figure-img img-fluid rounded"
-                                alt="...">
-                            <figcaption class="figure-caption">The Crocs</figcaption>
-                            <figcaption class="figure-price">Rp. 250.000</figcaption>
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-6">
-                    <figure class="figure figure-store text-center">
-                        <a href="<?php echo ROOT_URL?>/store-detail.php">
-                            <img src="<?php echo ROOT_URL?>/assets/img/store/3.png" class="figure-img img-fluid rounded"
-                                alt="...">
-                            <figcaption class="figure-caption">Pear</figcaption>
-                            <figcaption class="figure-price">Rp. 250.000</figcaption>
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-6">
-                    <figure class="figure figure-store text-center">
-                        <a href="<?php echo ROOT_URL?>/store-detail.php">
-                            <img src="<?php echo ROOT_URL?>/assets/img/store/4.png" class="figure-img img-fluid rounded"
-                                alt="...">
-                            <figcaption class="figure-caption">Homebreaks - Black</figcaption>
-                            <figcaption class="figure-price">Rp. 250.000</figcaption>
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-6">
-                    <figure class="figure figure-store text-center">
-                        <a href="<?php echo ROOT_URL?>/store-detail.php">
-                            <img src="<?php echo ROOT_URL?>/assets/img/store/5.png" class="figure-img img-fluid rounded"
-                                alt="...">
-                            <figcaption class="figure-caption">Coffe</figcaption>
-                            <figcaption class="figure-price">Rp. 250.000</figcaption>
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-md-4 col-6">
-                    <figure class="figure figure-store text-center">
-                        <a href="<?php echo ROOT_URL?>/store-detail.php">
-                            <img src="<?php echo ROOT_URL?>/assets/img/store/6.png" class="figure-img img-fluid rounded"
-                                alt="...">
-                            <figcaption class="figure-caption">Beach Club</figcaption>
-                            <figcaption class="figure-price">Rp. 250.000</figcaption>
-                        </a>
-                    </figure>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-store justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

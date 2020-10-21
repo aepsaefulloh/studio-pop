@@ -23,6 +23,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo ROOT_URL?>/assets/css/style.css?<?php echo rand()?>">
     <link rel="stylesheet" href="<?php echo ROOT_URL?>/assets/css/responsive.css?<?php echo rand()?>">
+    
 </head>
 
 <body>
@@ -39,7 +40,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-sm-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-white p-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Playlist</li>
                         </ol>
                     </nav>
@@ -60,7 +61,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <section class="section-primary mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="card card-playlist mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-3 align-self-center">
@@ -69,11 +70,14 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Malesuada accumsan.</p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                    <p class="card-text title">Jatuh Cinta Bersama Playlist Tahun 2000, dari Naff,
+                                        Sheila on
+                                        7, Sampai Nineball</p>
+                                    <p class="card-text"><small class="text-muted">
+                                            Berikut playlist tahun 2000 yang bisa kamu nyanyiin buat doi. Jadi, mari
+                                            kita
+                                            jatuh cinta ramai-ramai dengan playlist tahun 2000...
+                                        </small>
                                     </p>
                                 </div>
                             </div>
@@ -87,11 +91,14 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Malesuada accumsan.</p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                    <p class="card-text title">Jatuh Cinta Bersama Playlist Tahun 2000, dari Naff,
+                                        Sheila on
+                                        7, Sampai Nineball</p>
+                                    <p class="card-text"><small class="text-muted">
+                                            Berikut playlist tahun 2000 yang bisa kamu nyanyiin buat doi. Jadi, mari
+                                            kita
+                                            jatuh cinta ramai-ramai dengan playlist tahun 2000...
+                                        </small>
                                     </p>
                                 </div>
                             </div>
@@ -105,11 +112,14 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Malesuada accumsan.</p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                    <p class="card-text title">Jatuh Cinta Bersama Playlist Tahun 2000, dari Naff,
+                                        Sheila on
+                                        7, Sampai Nineball</p>
+                                    <p class="card-text"><small class="text-muted">
+                                            Berikut playlist tahun 2000 yang bisa kamu nyanyiin buat doi. Jadi, mari
+                                            kita
+                                            jatuh cinta ramai-ramai dengan playlist tahun 2000...
+                                        </small>
                                     </p>
                                 </div>
                             </div>
@@ -123,20 +133,26 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Malesuada accumsan.</p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                    <p class="card-text title">Jatuh Cinta Bersama Playlist Tahun 2000, dari Naff,
+                                        Sheila on
+                                        7, Sampai Nineball</p>
+                                    <p class="card-text"><small class="text-muted">
+                                            Berikut playlist tahun 2000 yang bisa kamu nyanyiin buat doi. Jadi, mari
+                                            kita
+                                            jatuh cinta ramai-ramai dengan playlist tahun 2000...
+                                        </small>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="600" height="500"
-                        frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <div class="col-md-4 offset-md-1">
+                    <div class="sportify-embed">
+                        <iframe src="https://open.spotify.com/embed/playlist/5a2OuIJ1kEttA8X3PaewlI"
+                            style="border: 0; width: 100%; height: 500px;" allowfullscreen
+                            allow="encrypted-media"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,6 +181,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <!-- Custom JS -->
     <script src="<?php echo ROOT_URL?>/assets/js/app.js?<?php echo rand()?>"></script>
     <script src="<?php echo ROOT_URL?>/assets/js/main.js?<?php echo rand()?>"></script>
+
 </body>
 
 </html>

@@ -40,7 +40,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-sm-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-white p-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
                             <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/store.php">Store</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Homebreaks</li>
                         </ol>
@@ -124,8 +124,8 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-6 col-6">
-                    <div class="card card-playlist mb-3 border-0">
+                <div class="col-md-6">
+                <div class="card card-playlist mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-3 align-self-center">
                                 <img src="<?php echo ROOT_URL?>/assets/img/playlist/img1.jpg" class="card-img"
@@ -133,19 +133,22 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Malesuada accumsan.</p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                    <p class="card-text title">Jatuh Cinta Bersama Playlist Tahun 2000, dari Naff,
+                                        Sheila on
+                                        7, Sampai Nineball</p>
+                                    <p class="card-text"><small class="text-muted">
+                                            Berikut playlist tahun 2000 yang bisa kamu nyanyiin buat doi. Jadi, mari
+                                            kita
+                                            jatuh cinta ramai-ramai dengan playlist tahun 2000...
+                                        </small>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-6">
-                    <div class="card card-playlist mb-3 border-0">
+                <div class="col-md-6">
+                <div class="card card-playlist mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-3 align-self-center">
                                 <img src="<?php echo ROOT_URL?>/assets/img/playlist/img1.jpg" class="card-img"
@@ -153,11 +156,14 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Malesuada accumsan.</p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                    <p class="card-text title">Jatuh Cinta Bersama Playlist Tahun 2000, dari Naff,
+                                        Sheila on
+                                        7, Sampai Nineball</p>
+                                    <p class="card-text"><small class="text-muted">
+                                            Berikut playlist tahun 2000 yang bisa kamu nyanyiin buat doi. Jadi, mari
+                                            kita
+                                            jatuh cinta ramai-ramai dengan playlist tahun 2000...
+                                        </small>
                                     </p>
                                 </div>
                             </div>

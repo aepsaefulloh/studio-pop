@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     // ========= Video Carousel ========= \\
     $('.owl-carousel.owl-thumb-video').owlCarousel({
         items: 1,
@@ -9,27 +9,21 @@ $(document).ready(function () {
     // ========= Image Carousel ========= \\
     $('.owl-carousel.thumb-img').owlCarousel({
         loop: true,
-        margin: 10,
-        nav: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
+        margin: 0,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        items: 1,
+        center: true,
+        autoHeight: true,
+        dots: true
     });
     // ========= Checkbox ========= \\
-    $('input[type="checkbox"]').on('change', function () {
+    $('input[type="checkbox"]').on('change', function() {
         $('input[type="checkbox"]').not(this).prop('checked', false);
     });
     // ========= Product Size Choice ========= \\
     var sizes = jQuery(".product-size").find("span");
-    sizes.click(function () {
+    sizes.click(function() {
         sizes.removeClass("active");
         $(this).addClass("active");
     });
@@ -49,5 +43,3 @@ function changeimg(url, e) {
 
 
 // Header \\
-
-

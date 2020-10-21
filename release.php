@@ -39,7 +39,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-sm-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-white p-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Release</li>
                         </ol>
                     </nav>
@@ -60,20 +60,28 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     </section>
 
 
-    <section class="section-primary">
+    <section class="section-primary mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel owl-theme owl-thumb-video mt-4">
+                <div class="col-md-2">
+                    <div class="ads-img">
+                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads1.jpg?<?php echo rand()?>"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="owl-carousel owl-theme owl-thumb-video">
                         <div class="card item-video border-0">
                             <div class="card-body p-0" data-merge="1">
                                 <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
                             </div>
-                            <div class="card-footer bg-white border-0 pl-0 pt-4">
-                                <h4 class="title">Eva Celia</h4>
-                                <p>Condimentum commodo cras.</p>
-                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="ads-img">
+                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads1.jpg?<?php echo rand()?>"
+                            class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -81,7 +89,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     </section>
 
 
-    <section class="section-primary">
+    <section class="section-primary mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

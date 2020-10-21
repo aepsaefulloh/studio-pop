@@ -54,6 +54,38 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                                 </div>
                             </div>
                         </div>
+                        <div class="item">
+                            <div class="card border-0">
+                                <div class="card-header bg-white border-0 p-0">
+                                    <h4 class="title">Eva Celia</h4>
+                                    <p>We Create Music We Creat You</p>
+                                </div>
+                                <div class="card-body p-0">
+                                    <img src="<?php echo ROOT_URL?>/assets/img/sampel/slide-img/eva.jpg"
+                                        class="img-fluid" alt="">
+                                </div>
+                                <div class="card-footer bg-white border-0 pl-0 pt-4">
+                                    <h4 class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+                                    <a href="javascript:void(0)" class="btn btn-black mt-3">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="card border-0">
+                                <div class="card-header bg-white border-0 p-0">
+                                    <h4 class="title">Eva Celia</h4>
+                                    <p>We Create Music We Creat You</p>
+                                </div>
+                                <div class="card-body p-0">
+                                    <img src="<?php echo ROOT_URL?>/assets/img/sampel/slide-img/eva.jpg"
+                                        class="img-fluid" alt="">
+                                </div>
+                                <div class="card-footer bg-white border-0 pl-0 pt-4">
+                                    <h4 class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+                                    <a href="javascript:void(0)" class="btn btn-black mt-3">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

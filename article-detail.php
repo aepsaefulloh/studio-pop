@@ -38,7 +38,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
             <div class="col-sm-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-white p-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/article.php">Article & Journal</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Lorem ipsum dolor sit amet</li>

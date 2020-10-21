@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-html,
-body {
-    font-family: 'Roboto', sans-serif !important;
-    scroll-behavior: smooth;
+html {
+    font-family: 'Helvetica', 'Arial', sans-serif;
 }
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif !important;
+}
+
 
 /* ========== Section ========== */
 
 .section-first {
     margin-top: 6rem;
 }
+
 
 /* ========== Typography ========== */
 
@@ -96,7 +99,7 @@ li {
 /* ========== Playlist ========== */
 
 .card-playlist {
-    background: rgba(218, 218, 218, 0.62);
+    background: #fff;
 }
 
 .card-playlist,
@@ -110,15 +113,11 @@ li {
     height: 10rem;
 }
 
-.card-playlist .card-body:after {
-    content: " ";
-    position: absolute;
-    left: -15px;
-    top: 15px;
-    border-top: 15px solid transparent;
-    border-right: 15px solid rgba(218, 218, 218, 0.62);
-    border-left: none;
-    border-bottom: 15px solid transparent;
+
+/* ========== sportify ========== */
+
+.sportify-embed iframe .bl {
+    background: bisque !important;
 }
 
 
@@ -141,7 +140,7 @@ li {
 
 .card-article.left img {
     object-fit: cover;
-    height: 36vh;
+    height: 46.5vh;
     width: 100%;
 }
 
@@ -189,6 +188,15 @@ li {
 .figure-store .figure-price {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
+}
+
+.pagination-store .page-link {
+    color: #000;
+    border-radius: 0 !important;
+}
+
+.pagination-store .page-link:hover {
+    color: #000;
 }
 
 
@@ -345,6 +353,7 @@ footer p.footer-links a:hover {
     padding-bottom: 56.25%;
     /* 16:9 */
     padding-top: 25px;
+    height: 80vh;
 }
 
 .owl-video-frame {
@@ -385,8 +394,12 @@ footer p.footer-links a:hover {
     background-color: #000;
 }
 
+
 /* Testing */
+
+
 /*------- header top style start -------*/
+
 .header-top {
     padding: 12px 0;
 }
@@ -442,8 +455,13 @@ only screen and (max-width: 767.98px) {
     margin-left: 0;
 }
 
+
 /*------- header top style end -------*/
+
+
 /*------ main menu start ------*/
+
+
 /* .brand-logo {
     max-width: 110px;
 } */
@@ -485,7 +503,6 @@ only screen and (max-width: 767.98px) {
     padding: 10px 14px;
     font-weight: 400;
     display: block;
-}
 }
 
 .main-menu ul li a i {
@@ -577,8 +594,12 @@ only screen and (max-width: 767.98px) {
     transform: translate(0);
 }
 
+
 /*------ main menu end ------*/
+
+
 /*----- language style strat -----*/
+
 .language {
     position: relative;
     color: #fff;
@@ -646,8 +667,12 @@ only screen and (max-width: 767.98px) {
     display: none;
 }
 
+
 /*----- language style end -----*/
+
+
 /*------ sticky menu style start ------*/
+
 .sticky.is-sticky {
     top: 0;
     left: 0;
@@ -669,7 +694,9 @@ only screen and (max-width: 767.98px) {
     max-width: 100px;
 }
 
+
 /*------ sticky menu style end ------*/
+
 .header-transparent {
     top: 0;
     left: 0;
@@ -679,7 +706,9 @@ only screen and (max-width: 767.98px) {
     background-color: transparent;
 }
 
+
 /*----- mobile menu start -----*/
+
 .mobile-header {
     padding: 15px 0;
 }
@@ -852,8 +881,12 @@ only screen and (max-width: 767.98px) {
     transform: rotate(0);
 }
 
+
 /*----- mobile menu end -----*/
+
+
 /*------ offcanvas widget area start ------*/
+
 .offcanvas-widget-area {
     margin-top: auto;
     padding: 0;
@@ -892,7 +925,9 @@ only screen and (max-width: 767.98px) {
     color: #151515;
 }
 
+
 /*------ offcanvas widget area end ------*/
+
 .off-canvas-wrapper {
     position: fixed;
     top: 0;
@@ -1025,7 +1060,9 @@ only screen and (max-width: 767.98px) {
     color: #0172d0;
 }
 
+
 /*------- mobile top bar settings start -------*/
+
 .mobile-settings {
     padding-top: 15px;
     margin-top: 15px;
