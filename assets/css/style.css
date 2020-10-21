@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 html {
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
@@ -76,6 +77,43 @@ li {
     /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
+
+.owl-carousel.thumb-img .owl-nav {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+}
+
+.owl-carousel.thumb-img .owl-nav i {
+    font-size: 2.5rem;
+    color: #cecece;
+}
+
+.owl-carousel.thumb-img .owl-prev,
+.owl-carousel.thumb-img .owl-next {
+    position: absolute;
+    height: 100px;
+    color: inherit;
+    background: none;
+    border: none;
+    z-index: 1;
+}
+
+.owl-carousel.thumb-img .owl-prev:hover,
+.owl-carousel.thumb-img .owl-next:hover {
+    background: transparent;
+    border: 0;
+}
+
+.owl-carousel.thumb-img .owl-prev {
+    left: 0;
+}
+
+.owl-carousel.thumb-img .owl-next {
+    right: 0;
+}
+
 
 
 /* ========== Client ========== */
@@ -353,7 +391,7 @@ footer p.footer-links a:hover {
     padding-bottom: 56.25%;
     /* 16:9 */
     padding-top: 25px;
-    height: 80vh;
+    /* height: 80vh; */
 }
 
 .owl-video-frame {
@@ -372,26 +410,40 @@ footer p.footer-links a:hover {
     height: 100%;
 }
 
-.owl-dots {
-    text-align: center;
-    margin-top: 20px;
+.owl-carousel.owl-thumb-video .owl-nav {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
 }
 
-.owl-dot {
-    display: inline-block;
+.owl-carousel.owl-thumb-video .owl-nav i {
+    font-size: 2.5rem;
+    color: #cecece;
 }
 
-.owl-dot span {
-    width: 11px;
-    height: 11px;
-    background-color: #ccc;
-    border-radius: 50%;
-    display: block;
-    margin: 5px 3px;
+.owl-carousel.owl-thumb-video .owl-prev,
+.owl-carousel.owl-thumb-video .owl-next {
+    position: absolute;
+    height: 100px;
+    color: inherit;
+    background: none;
+    border: none;
+    z-index: 1;
 }
 
-.owl-dot.active span {
-    background-color: #000;
+.owl-carousel.owl-thumb-video .owl-prev:hover,
+.owl-carousel.owl-thumb-video .owl-next:hover {
+    background: transparent;
+    border: 0;
+}
+
+.owl-carousel.owl-thumb-video .owl-prev {
+    left: 0;
+}
+
+.owl-carousel.owl-thumb-video .owl-next {
+    right: 0;
 }
 
 

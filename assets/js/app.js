@@ -1,10 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // ========= Video Carousel ========= \\
     $('.owl-carousel.owl-thumb-video').owlCarousel({
         items: 1,
         loop: true,
         video: true,
-        lazyLoad: false
+        lazyLoad: false,
+        dots: false,
+        nav: true,
+        navText: [
+            '<i class="ion-ios-arrow-back" aria-hidden="true"></i>',
+            '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'
+        ]
     });
     // ========= Image Carousel ========= \\
     $('.owl-carousel.thumb-img').owlCarousel({
@@ -15,15 +21,20 @@ $(document).ready(function() {
         items: 1,
         center: true,
         autoHeight: true,
-        dots: true
+        dots: false,
+        nav: true,
+        navText: [
+            '<i class="ion-ios-arrow-back" aria-hidden="true"></i>',
+            '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'
+        ]
     });
     // ========= Checkbox ========= \\
-    $('input[type="checkbox"]').on('change', function() {
+    $('input[type="checkbox"]').on('change', function () {
         $('input[type="checkbox"]').not(this).prop('checked', false);
     });
     // ========= Product Size Choice ========= \\
     var sizes = jQuery(".product-size").find("span");
-    sizes.click(function() {
+    sizes.click(function () {
         sizes.removeClass("active");
         $(this).addClass("active");
     });

@@ -76,6 +76,16 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                                 <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
                             </div>
                         </div>
+                        <div class="card item-video border-0">
+                            <div class="card-body p-0" data-merge="3">
+                                <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
+                            </div>
+                        </div>
+                        <div class="card item-video border-0">
+                            <div class="card-body p-0" data-merge="2">
+                                <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2">
