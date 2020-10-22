@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-html {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-}
-
+html,
 body {
     font-family: 'Helvetica', 'Arial', sans-serif !important;
 }
@@ -38,6 +34,11 @@ body {
     -webkit-transition: all .3s;
     transition: all .3s;
     background: rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 li {
@@ -113,7 +114,6 @@ li {
 .owl-carousel.thumb-img .owl-next {
     right: 0;
 }
-
 
 
 /* ========== Client ========== */
@@ -767,7 +767,6 @@ only screen and (max-width: 767.98px) {
 
 .mobile-logo {
     max-width: 80px;
-    margin-left: -1rem;
 }
 
 .mobile-main-header {
@@ -836,7 +835,7 @@ only screen and (max-width: 767.98px) {
 .mobile-navigation {
     overflow: hidden;
     max-height: 360px;
-    padding: 0;
+    padding: 20px;
 }
 
 .mobile-navigation nav {
@@ -859,7 +858,7 @@ only screen and (max-width: 767.98px) {
 
 .mobile-menu li>a {
     font-size: 16px;
-    color: #fff;
+    color: #000;
     text-transform: capitalize;
     line-height: 18px;
     position: relative;
@@ -941,11 +940,11 @@ only screen and (max-width: 767.98px) {
 
 .offcanvas-widget-area {
     margin-top: auto;
-    padding: 0;
+    padding: 20px;
 }
 
 .off-canvas-contact-widget li {
-    color: #fff;
+    color: #000;
     font-size: 15px;
     margin-bottom: 5px;
 }
@@ -955,7 +954,7 @@ only screen and (max-width: 767.98px) {
 }
 
 .off-canvas-contact-widget li a {
-    color: #fff;
+    color: #000;
 }
 
 .off-canvas-contact-widget li a:hover {
@@ -963,11 +962,11 @@ only screen and (max-width: 767.98px) {
 }
 
 .off-canvas-social-widget {
-    margin-top: 20px;
+    margin-top: auto;
 }
 
 .off-canvas-social-widget a {
-    color: #fff;
+    color: #000;
     font-size: 18px;
     display: inline-block;
     margin-right: 15px;
@@ -1017,7 +1016,7 @@ only screen and (max-width: 767.98px) {
 }
 
 .off-canvas-wrapper .off-canvas-inner-content {
-    background-color: #0172d0;
+    background-color: #fff;
     width: 300px;
     height: 100%;
     position: relative;
