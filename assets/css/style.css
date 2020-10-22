@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 html,
 body {
     font-family: 'Helvetica', 'Arial', sans-serif !important;
@@ -391,7 +392,6 @@ footer p.footer-links a:hover {
     padding-bottom: 56.25%;
     /* 16:9 */
     padding-top: 25px;
-    /* height: 80vh; */
 }
 
 .owl-video-frame {
@@ -409,8 +409,8 @@ footer p.footer-links a:hover {
     height: 100%;
 }
 
-.owl-carousel.owl-carousel.owl-thumb-video .owl-video-wrapper {
-    height: 83vh;
+.owl-carousel.owl-carousel.owl-thumb-video .body-video {
+    height: 65vh;
 }
 
 .owl-carousel.owl-thumb-video .owl-nav {
@@ -448,6 +448,7 @@ footer p.footer-links a:hover {
 .owl-carousel.owl-thumb-video .owl-next {
     right: 0;
 }
+
 
 
 /* Testing */

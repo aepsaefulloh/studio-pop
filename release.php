@@ -85,26 +85,14 @@ $detect = new Mobile_Detect;
                 </div>
                 <div class="col-md-8">
                     <div class="owl-carousel owl-theme owl-thumb-video">
-                        <div class="card item-video border-0">
-                            <div class="card-body p-0" data-merge="1">
-                                <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
-                            </div>
-                        </div>
-                        <div class="card item-video border-0">
-                            <div class="card-body p-0" data-merge="3">
-                                <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
-                            </div>
-                        </div>
-                        <div class="card item-video border-0">
-                            <div class="card-body p-0" data-merge="2">
-                                <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
-                            </div>
+                        <div class="body-video p-0" data-merge="1">
+                            <a class="owl-video" href="https://www.youtube.com/watch?v=F11PkcUVAgA"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="ads-img">
-                    <?php
+                        <?php
                     	    if(!$isPhone){
                         ?>
                         <img src="<?php echo ROOT_URL?>/assets/img/release/ads_desktop2.gif?<?php echo rand()?>"

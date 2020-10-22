@@ -49,7 +49,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                     <div class="shipment-method">
                         <h4>Shipment Method</h4>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" name="[shipment][]" value="REGULAR">
                             <label class="form-check-label label-payment">
                                 Regular Shipment
                             </label>
@@ -58,28 +58,28 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                     <div class="shipment-method mt-5">
                         <h4>Shipment Payment</h4>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" name="[payment][]" value="BCA">
                             <label class="form-check-label label-bank">
                                 <img src="<?php echo ROOT_URL?>/assets/img/icon/bca.png?<?php echo rand()?>"
                                     class="img-fluid img-bank" alt=""> Transfer BCA
                             </label>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" name="[payment][]" value="BNI">
                             <label class="form-check-label label-bank">
                                 <img src="<?php echo ROOT_URL?>/assets/img/icon/bni.png?<?php echo rand()?>"
                                     class="img-fluid img-bank" alt=""> Transfer BNI
                             </label>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" name="[payment][]" value="BRI">
                             <label class="form-check-label label-bank">
                                 <img src="<?php echo ROOT_URL?>/assets/img/icon/bri.png?<?php echo rand()?>"
                                     class="img-fluid img-bank" alt=""> Transfer BRI
                             </label>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" name="[payment][]" value="MANDIRI">
                             <label class="form-check-label label-bank">
                                 <img src="<?php echo ROOT_URL?>/assets/img/icon/mandiri.png?<?php echo rand()?>"
                                     class="img-fluid img-bank" alt=""> Transfer
@@ -87,7 +87,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                             </label>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" name="[payment][]" value="PERMATA">
                             <label class="form-check-label label-bank">
                                 <img src="<?php echo ROOT_URL?>/assets/img/icon/permata.png?<?php echo rand()?>"
                                     class="img-fluid img-bank" alt=""> Transfer

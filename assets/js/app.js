@@ -28,10 +28,6 @@ $(document).ready(function () {
             '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'
         ]
     });
-    // ========= Checkbox ========= \\
-    $('input[type="checkbox"]').on('change', function () {
-        $('input[type="checkbox"]').not(this).prop('checked', false);
-    });
     // ========= Product Size Choice ========= \\
     var sizes = jQuery(".product-size").find("span");
     sizes.click(function () {
@@ -39,7 +35,33 @@ $(document).ready(function () {
         $(this).addClass("active");
     });
 
+    // ========= Checkbox Payment Method ========= \\
+    $("input:checkbox").on('click', function () {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+    // ========= Checkbox Shipment Method ========= \\
+    $("input:checkbox").on('click', function () {
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
 });
+
+
+
 
 // Thumbnail Product Detail
 function changeimg(url, e) {
