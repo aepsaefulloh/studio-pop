@@ -34,6 +34,9 @@
     .owl-carousel.owl-thumb-video .owl-nav i {
         font-size: 2rem;
     }
+    .owl-carousel.owl-carousel.owl-thumb-video .owl-video-wrapper {
+        height: 100%;
+    }
 }
 
 @media only screen and (min-width: 768px) {

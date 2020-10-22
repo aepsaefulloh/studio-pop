@@ -399,7 +399,6 @@ footer p.footer-links a:hover {
     padding-bottom: 56.25%;
     /* 16:9 */
     padding-top: 25px;
-    height: 0;
 }
 
 .owl-video-frame iframe {
@@ -408,6 +407,10 @@ footer p.footer-links a:hover {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.owl-carousel.owl-carousel.owl-thumb-video .owl-video-wrapper {
+    height: 83vh;
 }
 
 .owl-carousel.owl-thumb-video .owl-nav {
@@ -852,7 +855,7 @@ only screen and (max-width: 767.98px) {
 
 @media only screen and (max-width: 479.98px) {
     .mobile-menu {
-        margin-top: 15px;
+        margin-top: 0;
     }
 }
 
