@@ -2,15 +2,12 @@
     .client img {
         margin: .5rem;
     }
-
     .card-article .card-body {
         padding: 1.25rem 1.25rem 0 1.25rem;
     }
-
     .card-article .card-footer {
         padding: 0 1.25rem;
     }
-
     .card-playlist .card-body:after,
     .card-article .card-body:after {
         content: " ";
@@ -20,20 +17,19 @@
         border-left: 0;
         border-bottom: 0;
     }
-
     .figure-store {
         padding: .5rem;
     }
-
     .section-first {
         margin-top: 1rem;
     }
-
+    .owl-carousel.owl-thumb-video .card {
+        margin: .5rem 0;
+    }
     .owl-carousel.thumb-img .owl-nav,
     .owl-carousel.owl-thumb-video .owl-nav {
         top: 25%;
     }
-
     .owl-carousel.thumb-img .owl-nav i,
     .owl-carousel.owl-thumb-video .owl-nav i {
         font-size: 2rem;
@@ -41,7 +37,6 @@
 }
 
 @media only screen and (min-width: 768px) {
-
     .owl-carousel.thumb-img .owl-nav,
     .owl-carousel.owl-thumb-video .owl-nav {
         top: 35%;
@@ -49,22 +44,18 @@
 }
 
 @media only screen and (max-width: 600px) {
-
     /* ========== Footer ======= */
     footer {
         padding: 45px 50px;
     }
-
     footer .footer-left,
     footer .footer-right {
         text-align: center;
     }
-
     footer .footer-right {
         float: none;
         margin: 0 auto 20px;
     }
-
     footer .footer-left p.footer-links {
         line-height: 1.8;
     }

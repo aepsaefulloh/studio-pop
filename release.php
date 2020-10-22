@@ -2,6 +2,9 @@
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
+require_once ROOT_PATH.'/lib/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+
 ?>
 
 <!DOCTYPE html>
@@ -65,8 +68,19 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
             <div class="row">
                 <div class="col-md-2">
                     <div class="ads-img">
-                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads1.jpg?<?php echo rand()?>"
+                        <?php
+                    	    if(!$isPhone){
+                        ?>
+                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_desktop2.gif?<?php echo rand()?>"
                             class="img-fluid" alt="">
+                        <?php 
+                            }else{
+                        ?>
+                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_mobile.jpg?<?php echo rand()?>"
+                            class="img-fluid" alt="">
+                        <?php 
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -90,8 +104,19 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 </div>
                 <div class="col-md-2">
                     <div class="ads-img">
-                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads1.jpg?<?php echo rand()?>"
+                    <?php
+                    	    if(!$isPhone){
+                        ?>
+                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_desktop2.gif?<?php echo rand()?>"
                             class="img-fluid" alt="">
+                        <?php 
+                            }else{
+                        ?>
+                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_mobile.jpg?<?php echo rand()?>"
+                            class="img-fluid" alt="">
+                        <?php 
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
