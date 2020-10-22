@@ -62,140 +62,144 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
             <div class="row">
                 <div class="col-md-6">
                     <div class="card card-article left mb-3 border-0">
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
-                                <a href="<?php echo ROOT_URL?>/article-detail.php">
-                                    <img src="<?php echo ROOT_URL?>/assets/img/playlist/img1.jpg?<?php echo rand()?>"
+                        <a href="<?php echo ROOT_URL?>/article-detail.php">
+                            <div class="row no-gutters">
+                                <div class="col-md-6">
+                                    <img src="<?php echo ROOT_URL?>/assets/img/playlist/img5.jpg?<?php echo rand()?>"
                                         class="card-img" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id.
-                                    </p>
                                 </div>
-                                <div class="card-footer">
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
-                                    </p>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Id.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-text">
+                                            <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                    Oct 6, 2014</li></small>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card card-article right mb-3 border-0">
-                        <div class="row no-gutters">
-                            <div class="col-md-3">
-                                <a href="<?php echo ROOT_URL?>/article-detail.php">
+                        <a href="<?php echo ROOT_URL?>/article-detail.php">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
                                     <img src="<?php echo ROOT_URL?>/assets/img/playlist/img2.jpg?<?php echo rand()?>"
                                         class="card-img" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id.
-                                    </p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
-                                    </p>
                                 </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Id.
+                                        </p>
+                                        <p class="card-text">
+                                            <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                    Oct 6, 2014</li></small>
+                                        </p>
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="card card-article right mb-3 border-0">
-                        <div class="row no-gutters">
-                            <div class="col-md-3">
-                                <a href="<?php echo ROOT_URL?>/article-detail.php">
+                        <a href="<?php echo ROOT_URL?>/article-detail.php">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
                                     <img src="<?php echo ROOT_URL?>/assets/img/playlist/img3.jpg?<?php echo rand()?>"
                                         class="card-img" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id.
-                                    </p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
-                                    </p>
                                 </div>
-
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Id.
+                                        </p>
+                                        <p class="card-text">
+                                            <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                    Oct 6, 2014</li></small>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="row mt-md-3">
                 <div class="col-md-6">
                     <div class="card card-article left mb-3 border-0">
-                        <div class="row no-gutters">
-                            <div class="col-md-6">
-                                <a href="<?php echo ROOT_URL?>/article-detail.php">
-                                    <img src="<?php echo ROOT_URL?>/assets/img/playlist/img5.jpg?<?php echo rand()?>"
+                        <a href="<?php echo ROOT_URL?>/article-detail.php">
+                            <div class="row no-gutters">
+                                <div class="col-md-6">
+                                    <img src="<?php echo ROOT_URL?>/assets/img/playlist/img1.jpg?<?php echo rand()?>"
                                         class="card-img" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id.
-                                    </p>
                                 </div>
-                                <div class="card-footer">
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
-                                    </p>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Id.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-text">
+                                            <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                    Oct 6, 2014</li></small>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card card-article right mb-3 border-0">
-                        <div class="row no-gutters">
-                            <div class="col-md-3">
-                                <a href="<?php echo ROOT_URL?>/article-detail.php">
+                        <a href="<?php echo ROOT_URL?>/article-detail.php">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
                                     <img src="<?php echo ROOT_URL?>/assets/img/playlist/img2.jpg?<?php echo rand()?>"
                                         class="card-img" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id.
-                                    </p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
-                                    </p>
                                 </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Id.
+                                        </p>
+                                        <p class="card-text">
+                                            <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                    Oct 6, 2014</li></small>
+                                        </p>
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="card card-article right mb-3 border-0">
-                        <div class="row no-gutters">
-                            <div class="col-md-3">
-                                <a href="article-detail.html">
+                        <a href="<?php echo ROOT_URL?>/article-detail.php">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
                                     <img src="<?php echo ROOT_URL?>/assets/img/playlist/img3.jpg?<?php echo rand()?>"
                                         class="card-img" alt="...">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card-body">
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id.
-                                    </p>
-                                    <p class="card-text">
-                                        <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
-                                    </p>
                                 </div>
-
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Id.
+                                        </p>
+                                        <p class="card-text">
+                                            <li class="ion-ios-clock-outline"><small class="text-muted">
+                                                    Oct 6, 2014</li></small>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
