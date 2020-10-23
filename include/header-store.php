@@ -24,8 +24,14 @@
                                     <li><a href="<?php echo ROOT_URL?>/article.php">Article & Journal</a></li>
                                     <li><a href="<?php echo ROOT_URL?>/playlist.php">Playlist</a></li>
                                     <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
-                                    <li><a href="javascript:void(0)"><img src="<?php echo ROOT_URL?>/assets/img/icon/cart.png?<?php echo rand()?>" alt=""></a></li>
+                                    <li><button type="button" data-toggle="modal" data-target="#exampleModalCenter"><img
+                                                src="<?php echo ROOT_URL?>/assets/img/icon/cart.png?<?php echo rand()?>"
+                                                alt="">&nbsp;Cart&nbsp;<span
+                                                class="badge badge-dark badge-cart">4</span>
+                                        </button>
+                                    </li>
                                 </ul>
+
                             </nav>
                             <!-- main menu navbar end -->
                         </div>
@@ -125,3 +131,25 @@
     <!-- off-canvas menu end -->
     <!-- offcanvas mobile menu end -->
 </header>
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

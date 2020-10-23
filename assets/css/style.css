@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
 html,
 body {
     font-family: 'Helvetica', 'Arial', sans-serif !important;
@@ -219,6 +218,24 @@ li {
 
 /* ========== Nav Store ========== */
 
+.badge-cart {
+    background-color: #000;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.main-menu ul li img {
+    width: 1.2rem;
+    margin-top: -5px;
+}
+
 
 /* ========== Store ======= */
 
@@ -333,7 +350,6 @@ footer {
     text-align: left;
     font: normal 16px sans-serif;
     padding: 100px 50px 45px;
-
 }
 
 footer .footer-left p {
@@ -457,7 +473,6 @@ footer p.footer-links a:hover {
 .owl-carousel.owl-thumb-video .owl-next {
     right: 0;
 }
-
 
 
 /* Testing */

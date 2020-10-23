@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     // ========= Video Carousel ========= \\
     $('.owl-carousel.owl-thumb-video').owlCarousel({
         items: 1,
@@ -30,13 +30,13 @@ $(document).ready(function () {
     });
     // ========= Product Size Choice ========= \\
     var sizes = jQuery(".product-size").find("span");
-    sizes.click(function () {
+    sizes.click(function() {
         sizes.removeClass("active");
         $(this).addClass("active");
     });
 
     // ========= Checkbox Payment Method ========= \\
-    $("input:checkbox").on('click', function () {
+    $("input:checkbox").on('click', function() {
         // in the handler, 'this' refers to the box clicked on
         var $box = $(this);
         if ($box.is(":checked")) {
@@ -48,7 +48,7 @@ $(document).ready(function () {
         }
     });
     // ========= Checkbox Shipment Method ========= \\
-    $("input:checkbox").on('click', function () {
+    $("input:checkbox").on('click', function() {
         var $box = $(this);
         if ($box.is(":checked")) {
             var group = "input:checkbox[name='" + $box.attr("name") + "']";
@@ -58,6 +58,7 @@ $(document).ready(function () {
             $box.prop("checked", false);
         }
     });
+
 });
 
 

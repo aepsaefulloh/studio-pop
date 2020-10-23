@@ -29,7 +29,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
 <body>
     <!-- header -->
     <?php
-        require_once 'include/header.php';
+        require_once 'include/header-store.php';
     ?>
     <!-- End Header -->
 
@@ -125,7 +125,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
             </div>
             <div class="row mt-3">
                 <div class="col-md-6">
-                <div class="card card-playlist mb-3 border-0">
+                    <div class="card card-playlist mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-3 align-self-center">
                                 <img src="<?php echo ROOT_URL?>/assets/img/playlist/img1.jpg" class="card-img"
@@ -148,7 +148,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                     </div>
                 </div>
                 <div class="col-md-6">
-                <div class="card card-playlist mb-3 border-0">
+                    <div class="card card-playlist mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-3 align-self-center">
                                 <img src="<?php echo ROOT_URL?>/assets/img/playlist/img1.jpg" class="card-img"
@@ -175,6 +175,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     </section>
 
 
+
     <!-- Footer -->
     <?php
         require_once 'include/footer.php';
@@ -199,6 +200,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <!-- Custom JS -->
     <script src="<?php echo ROOT_URL?>/assets/js/app.js?<?php echo rand()?>"></script>
     <script src="<?php echo ROOT_URL?>/assets/js/main.js?<?php echo rand()?>"></script>
+
 </body>
 
 </html>
