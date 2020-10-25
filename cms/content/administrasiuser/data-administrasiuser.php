@@ -157,7 +157,8 @@ $list=getRecord('tbl_user',$params);
                                         class="text-dark-75 font-weight-bolder d-block font-size-lg"><?php echo $list['LASTLOGIN']?></span>
                                 </td>
                                 <td class="pr-0">
-                                    <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                    <a href="<?php echo CMS_URL.'/index.php?page=form-'.$pageseo.'&act=edit&id='.$list['ID']?>"
+                                        class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -219,7 +220,8 @@ $list=getRecord('tbl_user',$params);
                                         class="text-dark-75 font-weight-bolder d-block font-size-lg"><?php echo $list['GROUP_NAME']?></span>
                                 </td>
                                 <td class="pr-0">
-                                    <a href="#" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                    <a href="<?php echo CMS_URL.'/index.php?page=form-'.$pageseo.'-group&act=edit&id='.$list['ID']?>"
+                                        class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                         <span class="svg-icon svg-icon-md svg-icon-primary">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
                                             <svg xmlns="http://www.w3.org/2000/svg"

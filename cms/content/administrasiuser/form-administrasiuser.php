@@ -31,23 +31,23 @@ if($params['ID']>0){
                 <div class="card-body">
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" placeholder="" name="EMAIL" id="firstname2"
-                            value="<?php echo $objDetail['EMAIL']?>">
+                        <input type="text" class="form-control form-control-solid" placeholder="" name="EMAIL"
+                            id="firstname2" value="<?php echo $objDetail['EMAIL']?>">
                     </div>
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control" placeholder="" name="USERNAME" id="lastname2"
-                            value="<?php echo $objDetail['USERNAME']?>">
+                        <input type="text" class="form-control form-control-solid" placeholder="" name="USERNAME"
+                            id="lastname2" value="<?php echo $objDetail['USERNAME']?>">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder="" name="PASSWD" id="lastname2"
-                            value="<?php echo $passwd?>">
+                        <input type="password" class="form-control form-control-solid" placeholder="" name="PASSWD"
+                            id="lastname2" value="<?php echo $passwd?>">
                     </div>
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <input type="text" class="form-control" placeholder="" name="FULLNAME" id="email2"
-                            value="<?php echo $objDetail['FULLNAME']?>">
+                        <input type="text" class="form-control form-control-solid" placeholder="" name="FULLNAME"
+                            id="email2" value="<?php echo $objDetail['FULLNAME']?>">
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
@@ -58,7 +58,7 @@ if($params['ID']>0){
 
                     <div class="form-group">
                         <label>Role</label>
-                        <select class="form-control" name="ID_GROUP">
+                        <select class="form-control form-control-solid" name="ID_GROUP">
                             <option value=''>-</option>
                             <?php 
 								$var['LIMIT']='50';
@@ -92,5 +92,6 @@ if($params['ID']>0){
                 </div>
             </form>
         </div>
+
     </div>
 </div>
