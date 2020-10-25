@@ -50,6 +50,11 @@ if($params['ID']>0){
                             id="email2" value="<?php echo $objDetail['FULLNAME']?>">
                     </div>
                     <div class="form-group">
+                        <label>Pekerjaan</label>
+                        <input type="text" class="form-control form-control-solid" placeholder="" name="JOB" id="email2"
+                            value="<?php echo $objDetail['JOB']?>">
+                    </div>
+                    <div class="form-group">
                         <label>Deskripsi</label>
                         <textarea class="textarea" placeholder="" name="DESCRIPTION" id="location2"
                             style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;">

@@ -203,7 +203,7 @@ $list=getRecord('tbl_content',$params);
                         </tbody>
                     </table>
                 </div>
-                <div class="card-footer float-right">
+                <div class="card-footer">
                     <ul class="pagination pagination-sm m-0">
                         <a href='<?php echo CMS_URL.'/index.php?page=data-'.$pageseo.'&hal='.($hal-1)?>'>
                             <button class="btn btn-outline-primary"><i class="iconfa-backward"></i> prev</button></a>

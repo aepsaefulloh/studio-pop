@@ -37,7 +37,7 @@ $REC_PERPAGE=20;
 $params['LIMIT']=($hal-1)*$REC_PERPAGE.','.$REC_PERPAGE;
 $params['sSearchContent']=$sSearchContent;
 $params['LEVEL']='0';
-$params['ORDER']='POS,ORDNUM ASC';
+// $params['ORDER']='POS,ORDNUM ASC';
 $params['NIPOS']='("XMS")';
 $list=getRecord('tbl_menu',$params);
 //echo $list['SQL'];
@@ -88,7 +88,6 @@ $list=getRecord('tbl_menu',$params);
                         <tbody>
                             <?php
 						foreach($list['RESULT'] as $list){
-							$url=getNewsUrl($list);							
 						?>
                             <tr>
                                 <td>

@@ -30,32 +30,6 @@ if($tbl=='tbl_product'){
 				$url=getNewsUrl($list);
                 $posts[] = array('ID'=> $list['ID'],'TITLE'=> $list['TITLE'],'SUMMARY'=> $list['SUMMARY'],'CONTENT'=> $list['CONTENT'],'IMAGE'=> $list['IMAGE'],'KEYWORD'=> $list['KEYWORD'],'CATEGORY'=> $list['CATEGORY'],'CONTENT'=> $list['CONTENT'],'HIT'=> $list['HIT'],'STATUS'=> $list['STATUS'],'URL'=> $url);
 		}
-}else if($tbl=='tbl_doctor'){
-        $params['LIMIT']='1000';
-        $params['STATUS']='1';
-        $list=getRecord($tbl,$params);
-        $result['SQL']=$list['SQL'];
-        foreach($list['RESULT'] as $list){
-				$url=getDoctorUrl($list);
-				$posts[] = array('ID'=> $list['ID'],
-				'NAME'=> $list['NAME'],
-				'IMAGE'=> $list['IMAGE'],
-				'CATEGORY'=> $list['CATEGORY'],
-				'DESCRIPTION'=> $list['DESCRIPTION'],
-				'EMAIL'=> $list['EMAIL'],
-				'TELP'=> $list['TELP'],
-				'EXPERIENCE'=> $list['EXPERIENCE'],
-				'EDUCATION'=> $list['EDUCATION'],
-				'SEN'=> $list['SEN'],
-				'SEL'=> $list['SEL'],
-				'RAB'=> $list['RAB'],
-				'KAM'=> $list['KAM'],
-				'JUM'=> $list['JUM'],
-				'SAB'=> $list['SAB'],
-				'MIN'=> $list['MIN'],
-				'STATUS'=> $list['STATUS'],
-				'URL'=> $url);
-        }
 
 }else if($tbl=='tbl_kabupaten'){
         $params['LIMIT']='10000';
@@ -148,17 +122,7 @@ if($tbl=='tbl_product'){
 	
 	foreach($list['RESULT'] as $list){
 		$posts[] = array('ID'=> $list['ID'],'CATEGORY'=> $list['CATEGORY'], 'LABEL'=> $list['LABEL'], 'CKEY'=> $list['CKEY'], 'CVALUE'=> $list['CVALUE']);
-	}	
-}else if($tbl=='statistik'){
-	$params['LIMIT']='0,100';
-	$params['STATUS']='1';	
-	$params['ORDER']='ID ASC';
-	$list=getStatistik();
-	$result['SQL']=$list['SQL'];
-	
-	foreach($list['RESULT'] as $list){
-		$posts[] = array('ID'=> $list['ID'],'CATEGORY'=> $list['CATEGORY'], 'LABEL'=> $list['LABEL'], 'CKEY'=> $list['CKEY'], 'CVALUE'=> $list['CVALUE']);
-	}	
+	}		
 }else if($tbl=='tbl_contentx'){
 	$params['STATUS']='1';	
 	$params['ORDER']='PUBLISH_TIMESTAMP DESC';

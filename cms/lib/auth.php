@@ -22,7 +22,7 @@ if (!isset($_SESSION['USERNAME'])) {
 if (!isset($_SESSION['EMAIL'])) {
 		$_SESSION['EMAIL'] = "";					
 	}
-
+	
 if (!isset($_SESSION['ROLE'])) {
 		$_SESSION['ROLE'] = "";					
 	}	
@@ -52,6 +52,7 @@ if ($act=="login"){
 	$_SESSION['ID_USER'] = "";
 	$_SESSION['USERNAME'] = "";
 	$_SESSION['EMAIL'] = "";
+	$_SESSION['JOB'] = "";
 	$_SESSION['FULLNAME']="";
 	$_SESSION['ID_GROUP'] = "";
 	$_SESSION['PASSWD'] = "";
@@ -71,6 +72,7 @@ if(!empty($objInfo['RESULT'])){
 	$_SESSION['USERNAME'] = $objInfo['RESULT'][0]['USERNAME'];
 	$_SESSION['FULLNAME'] = $objInfo['RESULT'][0]['FULLNAME'];
 	$_SESSION['EMAIL'] = $objInfo['RESULT'][0]['EMAIL'];	
+	$_SESSION['JOB'] = $objInfo['RESULT'][0]['JOB'];	
 	$_SESSION['ID_GROUP'] = $objInfo['RESULT'][0]['ID_GROUP'];	
 	$_SESSION['PASSWD'] = $objInfo['RESULT'][0]['PASSWD'];	
 	$_SESSION['ISLOGIN'] = true;	

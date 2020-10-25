@@ -3,7 +3,7 @@
       <!--begin::Brand-->
       <div class="brand flex-column-auto" id="kt_brand">
           <!--begin::Logo-->
-          <a href="index.html" class="brand-logo">
+          <a href="javascript:void(0)" class="brand-logo">
               <img alt="Logo" src="<?php echo CMS_URL?>/assets/media/logos/logo-light.png" />
           </a>
           <!--end::Logo-->
