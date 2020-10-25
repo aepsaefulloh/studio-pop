@@ -8,7 +8,7 @@
                         <!-- logo area start -->
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" width="100" alt="brand logo">
                             </a>
                         </div>
@@ -52,7 +52,7 @@
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" alt="Brand Logo">
                             </a>
                         </div>
@@ -83,7 +83,7 @@
             <div class="off-canvas-inner">
                 <div class="mobile-logo p-3">
                     <a href="<?php echo ROOT_URL?>">
-                        <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>" width="50"
+                        <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>" width="50"
                             alt="Brand Logo">
                     </a>
                 </div>
@@ -134,22 +134,23 @@
 
 
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

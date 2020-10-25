@@ -6,7 +6,7 @@
                     <div class="col-lg-3">
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" width="100" alt="brand logo">
                             </a>
                         </div>
@@ -35,7 +35,7 @@
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" alt="Brand Logo">
                             </a>
                         </div>
@@ -61,7 +61,7 @@
             <div class="off-canvas-inner">
                 <div class="mobile-logo pt-3 pb-3 pr-3 pl-1">
                     <a href="<?php echo ROOT_URL?>">
-                        <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>" width="80"
+                        <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>" width="80"
                             alt="Brand Logo">
                     </a>
                 </div>
