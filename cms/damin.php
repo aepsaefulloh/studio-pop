@@ -21,7 +21,7 @@ if($_SESSION['ISLOGIN']){
 <head>
     <meta charset="utf-8" />
     <title>Login</title>
-    <meta name="description" content="Login page example" />
+    <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -56,9 +56,9 @@ if($_SESSION['ISLOGIN']){
                 style="background-image: url('<?php echo CMS_URL?>/assets/media/bg/bg-3.jpg');">
                 <div class="login-form text-center p-7 position-relative overflow-hidden">
                     <!--begin::Login Header-->
-                    <div class="d-flex flex-center mb-15">
+                    <div class="d-flex flex-center mb-5">
                         <a href="#">
-                            <img src="<?php echo CMS_URL?>/assets/media/logos/logo-letter-13.png" class="max-h-75px"
+                            <img src="<?php echo CMS_URL?>/assets/img/logo.png?<?php echo rand()?>" class="max-h-100px"
                                 alt="" />
                         </a>
                     </div>
