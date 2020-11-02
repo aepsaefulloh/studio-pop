@@ -2,6 +2,8 @@
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
+$page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
+
 ?>
 
 
@@ -12,6 +14,37 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Pop</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo ROOT_URL?>/assets/img/icon/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?php echo ROOT_URL?>/assets/img/icon/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo ROOT_URL?>/assets/plugins/bootstrap/bootstrap.min.css?<?php echo rand()?>">
     <!-- Owl Carousel -->
@@ -38,55 +71,34 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
             <div class="row">
                 <div class="col-sm-12">
                     <div class="owl-carousel owl-theme thumb-img">
+                        <?php
+                            $var['LIMIT'] = 6;
+                            $var['CATEGORY']=1;
+                            $var['STATUS']=1;
+                            $list = getRecord('tbl_content', $var);
+                            foreach($list['RESULT'] as $list){
+								//$url = getNewsUrl($list);
+								$url=ROOT_URL.'/journal-detail.php?id='.$list['ID'];
+                        ?>
                         <div class="item">
                             <div class="card border-0">
                                 <div class="card-header bg-white border-0 p-0">
-                                    <h4 class="title">Eva Celia</h4>
-                                    <p>We Create Music We Creat You</p>
+                                    <h4 class="title"><?php echo $list['ARTIST']?></h4>
+                                    <p><?php echo $list['SUMMARY']?></p>
                                 </div>
                                 <div class="card-body p-0">
-                                    <img src="<?php echo ROOT_URL?>/assets/img/sampel/slide-img/eva.jpg"
+                                    <img src="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?var='.rand()?>"
                                         class="img-fluid" alt="">
                                 </div>
                                 <div class="card-footer bg-white border-0 pl-0 pt-4">
-                                    <h4 class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-                                    <a href="javascript:void(0)" class="btn btn-black mt-3">Learn More</a>
+                                    <h4 class="title"><?php echo $list['TITLE']?></h4>
+                                    <a href="<?php echo $url ?>" class="btn btn-black mt-3">Learn More</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="card border-0">
-                                <div class="card-header bg-white border-0 p-0">
-                                    <h4 class="title">Eva Celia</h4>
-                                    <p>We Create Music We Creat You</p>
-                                </div>
-                                <div class="card-body p-0">
-                                    <img src="<?php echo ROOT_URL?>/assets/img/sampel/slide-img/eva.jpg"
-                                        class="img-fluid" alt="">
-                                </div>
-                                <div class="card-footer bg-white border-0 pl-0 pt-4">
-                                    <h4 class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-                                    <a href="javascript:void(0)" class="btn btn-black mt-3">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="card border-0">
-                                <div class="card-header bg-white border-0 p-0">
-                                    <h4 class="title">Eva Celia</h4>
-                                    <p>We Create Music We Creat You</p>
-                                </div>
-                                <div class="card-body p-0">
-                                    <img src="<?php echo ROOT_URL?>/assets/img/sampel/slide-img/eva.jpg"
-                                        class="img-fluid" alt="">
-                                </div>
-                                <div class="card-footer bg-white border-0 pl-0 pt-4">
-                                    <h4 class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-                                    <a href="javascript:void(0)" class="btn btn-black mt-3">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

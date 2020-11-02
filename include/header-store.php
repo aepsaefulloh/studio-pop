@@ -1,3 +1,63 @@
+<?php
+require_once ROOT_PATH.'/include/gtag.php';
+$param['act']=isset($_REQUEST['act'])?$_REQUEST['act']:'';
+$param['code']=isset($_REQUEST['code'])?$_REQUEST['code']:'';
+$param['size']=isset($_REQUEST['size'])?$_REQUEST['size']:'';
+$param['qty']=isset($_REQUEST['qty'])?$_REQUEST['qty']:'';
+
+
+if($param['act']!=''){
+	cartProcess($param);
+}
+
+
+
+function cartProcess($objItem){
+
+switch($objItem['act']) {
+	case "add":
+		if(!empty($objItem["qty"])) {
+			$vp['CODE']=$objItem['code'];
+			$productByCode = getRecord('tbl_product',$vp);
+			$productByCode=$productByCode['RESULT'];
+			$itemArray = array($productByCode[0]["CODE"]=>array('PRODUCT'=>$productByCode[0]["PRODUCT"], 'CODE'=>$productByCode[0]["CODE"], 'QTY'=>$objItem["qty"], 'SIZE'=>$objItem["size"], 'PRICE'=>$productByCode[0]["PRICE"], 'IMAGE'=>$productByCode[0]["IMAGE"]));
+			
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["CODE"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["CODE"] == $k) {
+								if(empty($_SESSION["cart_item"][$k]["qty"])) {
+									$_SESSION["cart_item"][$k]["qty"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["qty"] += $objItem["qty"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}
+	break;
+	case "remove":
+		if(!empty($_SESSION["cart_item"])) {
+			foreach($_SESSION["cart_item"] as $k => $v) {
+					if($objItem["code"] == $k)
+						unset($_SESSION["cart_item"][$k]);				
+					if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);
+			}
+		}
+	break;
+	case "empty":
+		unset($_SESSION["cart_item"]);
+	break;	
+}
+
+}
+
+?>
 <header class="header-area">
     <div class="main-header d-none d-lg-block">
         <!-- main menu start -->
@@ -8,7 +68,7 @@
                         <!-- logo area start -->
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" width="100" alt="brand logo">
                             </a>
                         </div>
@@ -20,15 +80,15 @@
                             <nav class="main-menu">
                                 <ul>
                                     <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/release.php">Release</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/article.php">Article & Journal</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/playlist.php">Playlist</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
                                     <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
-                                    <li><button type="button" data-toggle="modal" data-target="#exampleModalCenter"><img
+                                    <li><a href="#" class="cart-button"><img
                                                 src="<?php echo ROOT_URL?>/assets/img/icon/cart.png?<?php echo rand()?>"
-                                                alt="">&nbsp;Cart&nbsp;<span
-                                                class="badge badge-dark badge-cart">4</span>
-                                        </button>
+                                                alt=""><span><?php count($_SESSION["cart_item"])?></span>
+                                        </a>
+
                                     </li>
                                 </ul>
 
@@ -52,7 +112,7 @@
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" alt="Brand Logo">
                             </a>
                         </div>
@@ -83,7 +143,7 @@
             <div class="off-canvas-inner">
                 <div class="mobile-logo p-3">
                     <a href="<?php echo ROOT_URL?>">
-                        <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>" width="50"
+                        <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>" width="50"
                             alt="Brand Logo">
                     </a>
                 </div>
@@ -94,9 +154,9 @@
                     <nav>
                         <ul class="mobile-menu">
                             <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/release.php">Release</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/article.php">Article & Journal</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/playlist.php">Playlist</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
                             <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
                         </ul>
                     </nav>
@@ -132,24 +192,6 @@
     <!-- offcanvas mobile menu end -->
 </header>
 
-
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<?php
+        require_once 'include/bag.php';
+    ?>

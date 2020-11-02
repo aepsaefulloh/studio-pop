@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
@@ -12,6 +13,37 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Pop</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="<?php echo ROOT_URL?>/assets/img/icon/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo ROOT_URL?>/assets/img/icon/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<?php echo ROOT_URL?>/assets/img/icon/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo ROOT_URL?>/assets/plugins/bootstrap/bootstrap.min.css?<?php echo rand()?>">
     <!-- Owl Carousel -->
@@ -48,31 +80,80 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-md-12">
                     <div class="jumbotron jumbotron-after-shop">
                         <div class="container">
-                            <h4>Thank You</h4>
-                            <p><small class="text-muted">We have accepted orders</small></p>
+                            <h4>Thank You for shopping with STUDIO POP</h4>
+                            <p><small class="text-muted">Hi, <?php echo $_REQUEST['FULLNAME']?></small></p>
+                            <p><small class="text-muted">Thank you for your order! Your items will be delivered after
+                                    the payment has been made. Please make your payment within 24 hours to avoid order
+                                    cancellation and send the payment receipt to shopping@studiopop.id</small></p>
                             <div class="box-text">
-                                <p>No Order: 3375XQ</p>
-                                <p>Name : Momotaro</p>
-                                <p>Total : Rp. 259.000,00</p>
+                                <p>Date: <?php tanggal(date('Y-m-d H:i:s'),'tipe1')?></p>
+                                <p>Name : <?php echo $_REQUEST['FULLNAME']?></p>
+                                <p>Shipping :</p>
+                                <ul>
+								<?php
+								$total=0;
+								if(!empty($_SESSION["cart_item"])){
+								foreach ($_SESSION["cart_item"] as $item){ 
+									$sub=$item['QTY']*$item['PRICE'];
+									$total+=$sub;
+								?>
+                                    <li>
+                                        <p><?php echo $item['PRODUCT'].'('.$item['SIZE'].')  x '.$item['QTY']?> </p>
+                                    </li>
+								<?php }} ?>
+                                </ul>
+
+                                <p>Total : Rp. <?php echo number_format($total)?></p>
                             </div>
-                            <p class="text-muted">Please make a payment transfer of IDR 259,000 to the account below</p>
+                            <p><small class="text-muted">Please settle the payment by transferring it to the following bank
+                                account with your order number as the reference.</small> </p>
                             <div class="box-text">
-                                <p>Bank : BCA</p>
-                                <p>No Rekening : 721-232-2225</p>
-                                <p>A.N : Momotaro</p>
+                                <p>BCA / 721-232-2225 </p>
                             </div>
-                            <p class="text-muted">Please transfer EXACTLY according to the value requested, do not be
-                                rounded to make it easier to cross-check payment data. If you have made a payment,
-                                please confirm payment at: Payment confirmation form</p>
                         </div>
                     </div>
-                    <a href="<?php echo ROOT_URL?>/confirmation.php" class="btn btn-black btn-md">PAYMENT
-                        CONFIRMATION</a>
                 </div>
             </div>
         </div>
     </section>
-
+	<?php 
+	$v['ACT']='ADD';
+	$v['FULLNAME']=$_REQUEST['FULLNAME'];
+	$v['ADDRESS']=$_REQUEST['ADDRESS'];
+	$v['PHONE']=$_REQUEST['PHONE'];
+	$v['EMAIL']=$_REQUEST['EMAIL'];
+	$v['KODEPOS']=$_REQUEST['KODEPOS'];
+	$v['PROV']=$_REQUEST['PROV'];
+	$v['KAB']=$_REQUEST['KAB'];
+	$v['PAYMENT']='BCA';
+	$v['TOTAL']=$total;
+	$v['STATUS']=0;
+	$v['TRDATE']=date('Y-m-d H:i:s');
+	$rs=saveRecord('tbl_transaction',$v);
+	//echo $rs['SQL'];
+	
+	//getInsertedID
+	$vi['TRDATE']=$v['TRDATE'];
+	$list=getRecord('tbl_transaction',$vi);
+	$id=$list['RESULT'][0]['ID'];
+	
+	
+	//save detail
+	foreach ($_SESSION["cart_item"] as $item){ 
+		$vitem['ACT']='ADD';
+		$vitem['TRID']=$id;
+		$vitem['CODE']=$item['CODE'];
+		$vitem['QTY']=$item['QTY'];
+		$vitem['SIZE']=$item['SIZE'];
+		$vitem['PRICE']=$item['PRICE'];
+		$vitem['TOTAL']=$item['PRICE']*$item['QTY'];
+		$rs2=saveRecord('tbl_transaction_dtl',$vitem);
+		//echo $rs2['SQL'];
+		
+	}
+	
+	
+	?>
 
 
     <!-- Footer -->

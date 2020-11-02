@@ -1,79 +1,6 @@
 <?php
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
-function getRecord($TABLE,$COND){
-	$obj=null;    
-	
-	$obj['SQL']="SELECT * from {$TABLE} where 1=1";
-
-	foreach($COND as $k=>$v){
-		if (($k!='LIMIT') && ($k!='ORDER') && ($k!='KEYWORD') && ($k!='ACT') && ($k!='LIKE_USER')&& ($k!='CUSTOM')){
-			if($v!=''){
-				$obj['SQL'].=" AND {$k}='".cleanParam($v)."'";
-			}
-		}
-	}
-	
-	if(isset($COND['KEYWORD'])&& $COND['KEYWORD']!=''){
-		$obj['SQL'].=" AND (DESCRIPTION like '%".$COND['KEYWORD']."%' or KEYWORD like '%".$COND['KEYWORD']."%') ";
-	}	
-	
-	if(isset($COND['LIKE_USER'])&& $COND['LIKE_USER']!=''){
-		$obj['SQL'].=" AND (USERNAME like '%".$COND['LIKE_USER']."%') ";
-	}	
-	
-    
-    if(isset($COND['CUSTOM'])&& $COND['CUSTOM']!=''){
-		$obj['SQL'].=" AND ".$COND['CUSTOM'];
-	}
-	
-	
-	if($TABLE=='tbl_story'){
-		$obj['SQL'].=" AND STATUS < 2";
-	}
-    
-	if(isset($COND['ORDER'])&& $COND['ORDER']!=''){
-		$obj['SQL'].=" ORDER by ".$COND['ORDER'];	
-	}	
-	
-	if(isset($COND['LIMIT'])&& $COND['LIMIT']!=''){
-		$obj['SQL'].=" LIMIT ".$COND['LIMIT'];
-	}else{
-		$obj['SQL'].=" LIMIT 1";
-	}
-	
-	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-
-function countRecord($TABLE,$COND){
-	$obj=null;    
-	
-	$obj['SQL']="SELECT count(1) as TOTAL from {$TABLE} where 1=1";
-
-	foreach($COND as $k=>$v){
-		if (($k!='LIMIT') && ($k!='ORDER') && ($k!='KEYWORD') && ($k!='ACT')&& ($k!='CUSTOM')){
-			if($v!=''){
-				$obj['SQL'].=" AND {$k}='".$v."'";
-			}
-		}
-	}
-    
-    if(isset($COND['CUSTOM'])&& $COND['CUSTOM']!=''){
-		$obj['SQL'].=" AND ".$COND['CUSTOM'];
-	}
-	
-	if(isset($COND['KEYWORD'])&& $COND['KEYWORD']!=''){
-		$obj['SQL'].=" AND (DESCRIPTION like '%".$COND['KEYWORD']."%' or KEYWORD like '%".$COND['KEYWORD']."%') ";
-	}	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
 
 function saveRecord($TABLE,$objItem){
 	$obj=null;
@@ -86,7 +13,7 @@ function saveRecord($TABLE,$objItem){
 	$i=0;
 	foreach($objItem as $k=>$v){
 		$exp=explode("-",$k);		
-		if (($k!='ACT')&&($exp[0]!='PK')&&($k!='CUSTOM')){
+		if (($k!='ACT')&&($exp[0]!='PK')){
 			$i++;
 			
 			//EDIT VAR			
@@ -118,204 +45,49 @@ function saveRecord($TABLE,$objItem){
         $obj['SQL']="insert into {$TABLE} (".$col.") values (".$val.")";		
 	}else if(strtoupper($objItem['ACT'])=="EDIT"){
 		$obj['SQL']="UPDATE {$TABLE} set ".$colup;
-		if($objItem['CUSTOM']!=''){
-			$obj['SQL'].=' where '.$objItem['CUSTOM'];
-		}else{
-			$obj['SQL'].=$where;	
-		}
-		
-		if($TABLE=='tbl_participant'){
-			//$obj['SQL'].=' and STATUS=0';
-		}
+		$obj['SQL'].=$where;
 	}
 			
     $obj['RESULT']=DAOExecuteSQL($obj['SQL']);
 	return $obj;    
 }
 
-
-function statistik(){
-    $obj=null;
-    
-	$obj['SQL']="SELECT CATEGORY,count(1) as TOTAL from tbl_content where STATUS=1";
-
-	//$obj['SQL'].=" AND CATEGORY IN ('gerbangnasional','gerbangdaerah','materipenyuluhan','diseminasiteknologi','materilokalita') ";	
-    
-	$obj['SQL'].=" GROUP BY CATEGORY";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-function personName($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_writer where 1=1";
-
-    if(isset($objItem['EMAIL'])&& $objItem['EMAIL']!='')
-        $obj['SQL'].=" AND EMAIL='".$objItem['EMAIL']."'";	
+function getRecord($TABLE,$COND){
+	$obj=null;    
 	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";		
-	
-	$obj['SQL'].=" order by FULLNAME";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
+	$obj['SQL']="SELECT * from {$TABLE} where 1=1";
 
-function getJadwal($objItem=null){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_schedule where status=1 AND EDATE >= curdate()";
+	foreach($COND as $k=>$v){
+		if (($k!='LIMIT') && ($k!='ORDER') && ($k!='KEYWORD') && ($k!='ACT') && ($k!='INID')&& ($k!='CUSTOM1')&& ($k!='CUSTOM2')&& ($k!='CUSTOM3')){
+			if($v!=''){
+				$obj['SQL'].=" AND {$k}='".cleanParam($v)."'";
+			}
+		}
+	}
 	
-	if(isset($objItem['ENAME'])&& $objItem['ENAME']!='')
-        $obj['SQL'].=" AND ENAME='".$objItem['ENAME']."'";
+	if(isset($COND['KEYWORD'])&& $COND['KEYWORD']!=''){
+		$obj['SQL'].=" AND (DESCRIPTION like '%".$COND['KEYWORD']."%' or KEYWORD like '%".$COND['KEYWORD']."%') ";
+	}	
 	
-	$obj['SQL'].=" order by EDATE ASC";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-
-function getMenu($objItem=null){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_menu where status=1";
+	if(isset($COND['CUSTOM1'])&& $COND['CUSTOM1']!=''){
+		$obj['SQL'].=" AND ".$COND['CUSTOM1'];	
+	}
 	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";
+	if(isset($COND['CUSTOM2'])&& $COND['CUSTOM2']!=''){
+		$obj['SQL'].=" AND ".$COND['CUSTOM2'];	
+	}
 	
-	if(isset($objItem['TIPE'])&& $objItem['TIPE']!='')
-        $obj['SQL'].=" AND TIPE='".$objItem['TIPE']."'";
+	if(isset($COND['CUSTOM3'])&& $COND['CUSTOM3']!=''){
+		$obj['SQL'].=" AND ".$COND['CUSTOM3'];	
+	}
 	
-	if(isset($objItem['POS'])&& $objItem['POS']!='')
-        $obj['SQL'].=" AND POS='".$objItem['POS']."'";
 	
-	$obj['SQL'].=" order by ORDNUM";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-
-function getSubMenu($objItem=null){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_submenu where status=1";
+	if(isset($COND['ORDER'])&& $COND['ORDER']!=''){
+		$obj['SQL'].=" ORDER by ".$COND['ORDER'];	
+	}	
 	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";
-	
-	if(isset($objItem['MENU_ID'])&& $objItem['MENU_ID']!='')
-        $obj['SQL'].=" AND MENU_ID='".$objItem['MENU_ID']."'";
-	
-	$obj['SQL'].=" order by ORDNUM";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-function getStatic($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_static where 1=1";
-
-    if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";	
-	
-	if(isset($objItem['TITLE'])&& $objItem['TITLE']!='')
-        $obj['SQL'].=" AND TITLE='".$objItem['TITLE']."'";		
-	
-	if(isset($objItem['SEO'])&& $objItem['SEO']!='')
-        $obj['SQL'].=" AND SEO='".$objItem['SEO']."'";		
-	
-	$obj['SQL'].=" order by TITLE";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-
-function getConfig($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_config where 1=1";
-
-    if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";		
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-function getBanner($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from jnw_banner where status=1 AND time_start<=CURDATE() AND time_end>=CURDATE()";
-
-    if(isset($objItem['id'])&& $objItem['id']!='')
-        $obj['SQL'].=" AND id='".$objItem['id']."'";	
-	
-	if(isset($objItem['location_id'])&& $objItem['location_id']!='')
-        $obj['SQL'].=" AND location_id='".$objItem['location_id']."'";		
-	
-	$obj['SQL'].=" order by title ASC";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-
-function getFocus($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * FROM tbl_focus where STATUS=1";
-	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-     	$obj['SQL'].=" AND ID='".$objItem['ID']."'";
-	
-	if(isset($objItem['TITLE'])&& $objItem['TITLE']!='')
-     	$obj['SQL'].=" AND TITLE like '%".$objItem['TITLE']."%'";		
-		
-	$obj['SQL'].=" ORDER BY ID DESC";
-	$obj['SQL'].=" LIMIT ".$objItem['FIRST'].",".$objItem['END']."";
-	
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;    	
-}
-
-function getBanners($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_banners where status=1 AND START_DATE<=CURDATE() AND END_DATE>=CURDATE() and SITE='".SITE."'";
-
-    if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";	
-	
-	if(isset($objItem['POS'])&& $objItem['POS']!='')
-        $obj['SQL'].=" AND POS='".$objItem['POS']."'";		
-	
-	$obj['SQL'].=" order by ORDERNUM ASC";	
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;	
-}
-
-
-function getBreaking($objItem=null){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * from tbl_sekilasinfo where STATUS=1 AND PUBLISH_TIMESTAMP <= Now()";
-
-    if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";	
-	
-	$obj['SQL'].=" order by PUBLISH_TIMESTAMP DESC";
-
-	if(isset($objItem['END'])&& $objItem['END']>0){
-		$obj['SQL'].=" LIMIT ".$objItem['FIRST'].",".$objItem['END']."";
+	if(isset($COND['LIMIT'])&& $COND['LIMIT']!=''){
+		$obj['SQL'].=" LIMIT ".$COND['LIMIT'];
 	}else{
 		$obj['SQL'].=" LIMIT 1";
 	}
@@ -325,206 +97,25 @@ function getBreaking($objItem=null){
 }
 
 
-function getFocusNews($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * FROM tbl_focus_article where 1=1";
+function countRecord($TABLE,$COND){
+	$obj=null;    
 	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-     	$obj['SQL'].=" AND ID='".$objItem['ID']."'";
-	
-	if(isset($objItem['FOCUS_ID'])&& $objItem['FOCUS_ID']!='')
-     	$obj['SQL'].=" AND FOCUS_ID='".$objItem['FOCUS_ID']."'";		
-		
-	$obj['SQL'].=" ORDER BY ID DESC";
-	
-	
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;    	
-}
+	$obj['SQL']="SELECT count(1) as TOTAL from {$TABLE} where 1=1";
 
-function getTaicing($objItem){
-	$finTc=null;
-	
-	$uplength=len($objItem['TAICING']);
-	if (trim($uplength)>1){
-		$finTc=$objItem['TAICING'];
-	}else{
-		$brContent=explode('<p>',$objItem['CONTENT']);
-		$finTc=$brContent[0];
+	foreach($COND as $k=>$v){
+		if (($k!='LIMIT') && ($k!='ORDER') && ($k!='KEYWORD') && ($k!='ACT') && ($k!='INID')&& ($k!='CUSTOM1')&& ($k!='CUSTOM2')&& ($k!='CUSTOM3')){
+			if($v!=''){
+				$obj['SQL'].=" AND {$k}='".cleanParam($v)."'";
+			}
+		}
 	}
 	
-	return $finTc;	
-}	
-
-function getRandomNews(){
-	$obj=null;
-    	
-	$obj['SQL']="SELECT * FROM tbl_article WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now() AND PUBLISH_TIMESTAMP > (CURDATE() - interval 15 DAY) ORDER BY RAND() LIMIT 1";	
-		   
+	if(isset($COND['KEYWORD'])&& $COND['KEYWORD']!=''){
+		$obj['SQL'].=" AND (DESCRIPTION like '%".$COND['KEYWORD']."%' or KEYWORD like '%".$COND['KEYWORD']."%') ";
+	}	
+		
     $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;
-}
-
-
-
-
-function getParser($objItem=null){    
-	$obj=null;
-    	
-	$obj['SQL']="SELECT * FROM tbl_article";
-	$obj['SQL'].=" WHERE PUPDATE=0 ";	
-	
-	if(isset($objItem['LIMIT'])&& $objItem['LIMIT']!=''){
-			$obj['SQL'].=" LIMIT ".$objItem['LIMIT'];
-		}else{
-			$obj['SQL'].=" LIMIT 1";
-		}
-   
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;
-}
-
-function saveParser($objItem){
-	$obj=null;
-    $obj['SQL']="";
-	$obj['SQL']="UPDATE tbl_article set 
-				CATEGORY='".$objItem['CATEGORY']."', 
-				KEYWORD='".$objItem['KEYWORD']."', 
-				REPORTER='".$objItem['REPORTER']."',
-				IMAGE='".$objItem['IMAGE']."',
-				PUPDATE=1
-				WHERE ID='".$objItem['GUID']."'";
-				
-    $obj['RESULT']=DAOExecuteSQL($obj['SQL']);
-	return $obj;    
-}
-
-function getNewsPopular($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * FROM tbl_article ";
-	$obj['SQL'].=" WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now() AND CATEGORY<>13";
-		
-	if(isset($objItem['NID'])&& $objItem['NID']!='')
-     	$obj['SQL'].=" AND ID<>'".$objItem['NID']."'";	
-	
-	if(isset($objItem['CATEGORY'])&& $objItem['CATEGORY']!='')
-     	$obj['SQL'].=" AND CATEGORY='".$objItem['CATEGORY']."'";			
-		
-	$obj['SQL'].=" AND PUBLISH_TIMESTAMP > (CURDATE() - interval 7 DAY)";	
-		
-		
-	$obj['SQL'].=" ORDER BY HIT DESC ";
-	
-	if(isset($objItem['LIMIT'])&& $objItem['LIMIT']!=''){
-			$obj['SQL'].=" LIMIT ".$objItem['LIMIT'];
-		}else{
-			$obj['SQL'].=" LIMIT 1";
-		}
-   
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;    
-}
-
-function getNews($objItem){
-    
-	$obj=null;
-    	
-	$obj['SQL']="SELECT * , TIMEDIFF(NOW(),PUBLISH_TIMESTAMP) AS selisih FROM tbl_article";
-	$obj['SQL'].=" WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now() ";
-	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-     	$obj['SQL'].=" AND ID='".$objItem['ID']."'";
-	
-	if(isset($objItem['NID'])&& $objItem['NID']!='')
-     	$obj['SQL'].=" AND ID<>'".$objItem['NID']."'";	
-		
-	if(isset($objItem['NNID'])&& $objItem['NNID']!='')
-     	$obj['SQL'].=" AND ID  NOT IN ".$objItem['NNID'];	
-	
-	if(isset($objItem['CATEGORY'])&& $objItem['CATEGORY']!='')
-     	$obj['SQL'].=" AND CATEGORY='".$objItem['CATEGORY']."'";	
-		
-	if(isset($objItem['NCATEGORY'])&& $objItem['NCATEGORY']!='')
-     	$obj['SQL'].=" AND CATEGORY  NOT IN ".$objItem['NCATEGORY'];				
-		
-	if(isset($objItem['SUBCATEGORY'])&& $objItem['SUBCATEGORY']!='')
-     	$obj['SQL'].=" AND SUBCATEGORY='".$objItem['SUBCATEGORY']."'";	
-	
-	if(isset($objItem['EDITORPICK'])&& $objItem['EDITORPICK']!='')
-     	$obj['SQL'].=" AND EDITORPICK='".$objItem['EDITORPICK']."'";
-	
-	if(isset($objItem['SEO'])&& $objItem['SEO']!='')
-     	$obj['SQL'].=" AND SEO='".$objItem['SEO']."'";
-	
-	if(isset($objItem['STATUS_UC'])&& $objItem['STATUS_UC']!='')
-     	$obj['SQL'].=" AND STATUS_UC='".$objItem['STATUS_UC']."'";	
-		
-	if(isset($objItem['TIPE'])&& $objItem['TIPE']!='')
-     	$obj['SQL'].=" AND TIPE='".$objItem['TIPE']."'";	
-		
-	if(isset($objItem['KEYWORD'])&& $objItem['KEYWORD']!='')
-     	$obj['SQL'].=" AND KEYWORD like '%".$objItem['KEYWORD']."%'";
-	
-	if(isset($objItem['UPPERDECK'])&& $objItem['UPPERDECK']!='')
-     	$obj['SQL'].=" AND UPPERDECK like '%".$objItem['UPPERDECK']."%'";
-	
-	if(isset($objItem['PUBLISH_DATE'])&& $objItem['PUBLISH_DATE']!='')
-     	$obj['SQL'].=" AND date(PUBLISH_TIMESTAMP)='".$objItem['PUBLISH_DATE']."'";		
-				
-	$obj['SQL'].=" ORDER BY PUBLISH_TIMESTAMP DESC ";
-	
-	if(isset($objItem['LIMIT'])&& $objItem['LIMIT']!=''){
-			$obj['SQL'].=" LIMIT ".$objItem['LIMIT'];
-		}else{
-			$obj['SQL'].=" LIMIT 1";
-		}
-   
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;
-
-}
-
-
-
-function getCountNews($objItem){
-    
-	$obj=null;
-    	
-	$obj['SQL']="SELECT count(1) as TOTAL FROM tbl_article";
-	$obj['SQL'].=" WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now()";
-	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-     	$obj['SQL'].=" AND ID='".$objItem['ID']."'";
-	
-	if(isset($objItem['NID'])&& $objItem['NID']!='')
-     	$obj['SQL'].=" AND ID<>'".$objItem['NID']."'";	
-		
-	if(isset($objItem['NNID'])&& $objItem['NNID']!='')
-     	$obj['SQL'].=" AND ID  NOT IN ".$objItem['NNID'];	
-	
-	if(isset($objItem['CATEGORY'])&& $objItem['CATEGORY']!='')
-     	$obj['SQL'].=" AND CATEGORY='".$objItem['CATEGORY']."'";	
-		
-	if(isset($objItem['NCATEGORY'])&& $objItem['NCATEGORY']!='')
-     	$obj['SQL'].=" AND CATEGORY  NOT IN ".$objItem['NCATEGORY'];				
-	
-	if(isset($objItem['SUBCATEGORY'])&& $objItem['SUBCATEGORY']!='')
-     	$obj['SQL'].=" AND SUBCATEGORY='".$objItem['SUBCATEGORY']."'";
-	
-	if(isset($objItem['TIPE'])&& $objItem['TIPE']!='')
-     	$obj['SQL'].=" AND TIPE='".$objItem['TIPE']."'";	
-		
-	if(isset($objItem['KEYWORD'])&& $objItem['KEYWORD']!='')
-     	$obj['SQL'].=" AND KEYWORD like '%".$objItem['KEYWORD']."%'";		
-	
-	if(isset($objItem['PUBLISH_DATE'])&& $objItem['PUBLISH_DATE']!='')
-     	$obj['SQL'].=" AND date(PUBLISH_TIMESTAMP)='".$objItem['PUBLISH_DATE']."'";		
-					   
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;
-
+	return $obj;	
 }
 
 function getNewsRelated($objItem){
@@ -535,7 +126,7 @@ function getNewsRelated($objItem){
 	$obj=null;
     
 	$obj['SQL']="SELECT * FROM tbl_article ";
-	$obj['SQL'].=" WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now() AND CATEGORY<>13";
+	$obj['SQL'].=" WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now()";
 		
 	
 	if(isset($objItem['NID'])&& $objItem['NID']!='')
@@ -546,13 +137,17 @@ function getNewsRelated($objItem){
 	
 	
 	if($ksize==1){
-     	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%'";
+     	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%')";
 	}else if($ksize==2){
      	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%' or KEYWORD like '%".trim($KEYWORD[1])."%')";
 	}else if($ksize==3){
      	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%'  or KEYWORD like '%".trim($KEYWORD[1])."%'  or KEYWORD like '%".trim($KEYWORD[2])."%')";
 	}else if($ksize==4){
      	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%'  or KEYWORD like '%".trim($KEYWORD[1])."%'  or KEYWORD like '%".trim($KEYWORD[2])."%' or KEYWORD like '%".trim($KEYWORD[3])."%')";
+	}else if($ksize==5){
+     	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%'  or KEYWORD like '%".trim($KEYWORD[1])."%'  or KEYWORD like '%".trim($KEYWORD[2])."%' or KEYWORD like '%".trim($KEYWORD[3])."%' or KEYWORD like '%".trim($KEYWORD[4])."%')";
+	}else if($ksize==6){
+     	$obj['SQL'].=" AND (KEYWORD like '%".trim($KEYWORD[0])."%'  or KEYWORD like '%".trim($KEYWORD[1])."%'  or KEYWORD like '%".trim($KEYWORD[2])."%' or KEYWORD like '%".trim($KEYWORD[3])."%' or KEYWORD like '%".trim($KEYWORD[4])."%' or KEYWORD like '%".trim($KEYWORD[5])."%')";
 	}
 		
 	//$obj['SQL'].=" AND PUBLISH_TIMESTAMP > (curdate()-interval 1 MONTH)";					
@@ -564,50 +159,7 @@ function getNewsRelated($objItem){
 	return $obj;    
 }
 
-function getCounter($objItem){
-	$obj=null;
-    	
-	$obj['SQL']="select * from tbl_counter where 1=1";
-    
-    if(isset($objItem['SYS_DATE'])&& $objItem['SYS_DATE']!='')
-     	$obj['SQL'].=" AND SYS_DATE='".$objItem['SYS_DATE']."'";				
-    
-    if(isset($objItem['CATEGORY'])&& $objItem['CATEGORY']!='')
-     	$obj['SQL'].=" AND CATEGORY='".$objItem['CATEGORY']."'";				
-		
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;    	
-}
-
-function sumCounter($objItem){
-    $obj=null;
-    $obj['SQL']='select sum(HIT) as TOTAL from tbl_counter where 1=1';
-
-    if(isset($objItem['SYS_DATE'])&& $objItem['SYS_DATE']!='')
-        $obj['SQL'].=" AND SYS_DATE='".$objItem['SYS_DATE']."'";
-
-    if(isset($objItem['LDATE'])&& $objItem['LDATE']!='')
-        $obj['SQL'].=" AND SYS_DATE<='".$objItem['LDATE']."'";
-
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-    return $obj;	
-}
-
-
-
-function setCounter($objItem){
-	$obj=null;
-    if($objItem['HIT']>1){
-        $obj['SQL']="UPDATE tbl_counter set HIT='".$objItem['HIT']."' WHERE SYS_DATE='".$objItem['SYS_DATE']."' and CATEGORY='".$objItem['CATEGORY']."'";
-    }else{
-        $obj['SQL']="insert into tbl_counter values ('".$objItem['SYS_DATE']."','".$objItem['CATEGORY']."',".$objItem['HIT'].")";
-    }
-		
-    $obj['RESULT']=DAOExecuteSQL($obj['SQL']);
-	return $obj;    	
-}
-
-function upcount($objItem){
+function upcountArt($objItem){
 	$obj=null;
     	
 	$obj['SQL']="UPDATE tbl_content set HIT='".$objItem['HIT']."' WHERE ID='".$objItem['ID']."'";
@@ -615,190 +167,73 @@ function upcount($objItem){
     $obj['RESULT']=DAOExecuteSQL($obj['SQL']);
 	return $obj;    	
 }
+function upcountPro($objItem){
+	$obj=null;
+    	
+	$obj['SQL']="UPDATE tbl_product set HIT='".$objItem['HIT']."' WHERE ID='".$objItem['ID']."'";
+		
+    $obj['RESULT']=DAOExecuteSQL($obj['SQL']);
+	return $obj;    	
+}
 
-
-function getNewsOther($objItem){
-	$objResult=null;
+function getNewsPopular($objItem){
+	$obj=null;
     
-	$strSQL="SELECT * FROM jnwnews ";
-	$strSQL.=" WHERE publish_status=1 and MediaAbbreviation='JNW' and capekdehpublished_at <= Now()";
+	$obj['SQL']="SELECT * FROM tbl_article ";
+	$obj['SQL'].=" WHERE STATUS=1 and PUBLISH_TIMESTAMP <= Now()";
 		
-	if(isset($objItem['nid'])&& $objItem['nid']!='')
-     	$strSQL.=" AND id<>'".$objItem['nid']."'";	
+	if(isset($objItem['NID'])&& $objItem['NID']!='')
+     	$obj['SQL'].=" AND ID<>'".$objItem['NID']."'";	
 	
-	if(isset($objItem['NewsCategory1_id'])&& $objItem['NewsCategory1_id']!='')
-     	$strSQL.=" AND NewsCategory1_id='".$objItem['NewsCategory1_id']."'";	
+	if(isset($objItem['CATEGORY'])&& $objItem['CATEGORY']!='')
+     	$obj['SQL'].=" AND CATEGORY='".$objItem['CATEGORY']."'";			
 		
-	if(isset($objItem['NewsCategory2_id'])&& $objItem['NewsCategory2_id']!='')
-     	$strSQL.=" AND NewsCategory2_id='".$objItem['NewsCategory2_id']."'";	
-
-	if(isset($objItem['NewsCategory3_id'])&& $objItem['NewsCategory3_id']!='')
-     	$strSQL.=" AND NewsCategory3_id='".$objItem['NewsCategory3_id']."'";		
-		
-	if(isset($objItem['quality'])&& $objItem['quality']!='')
-     	$strSQL.=" AND quality='".$objItem['quality']."'";			
-		
-	$strSQL.=" AND capekdehpublished_at > (CURDATE()-interval 1 month)";	
+	$obj['SQL'].=" AND PUBLISH_TIMESTAMP > (CURDATE() - interval 3 DAY)";	
 		
 		
-	$strSQL.=" ORDER BY RAND() ";
-	$strSQL.=" LIMIT ".$objItem['FIRST'].",".$objItem['END']."";
+	$obj['SQL'].=" ORDER BY HIT DESC ";
+	$obj['SQL'].=" LIMIT ".$objItem['FIRST'].",".$objItem['END']."";
    
-    $objResult=DAOQuerySQL($strSQL);
-	return $objResult;
-    //return $strSQL;
-	
+    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
+	return $obj;    
 }
 
-function getPopularTag($objItem=null) {
-	$obj = null;
-	$obj['SQL'] = "SELECT * from tbl_article where STATUS=1 ORDER BY HIT DESC limit 10"; 
-	$obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;
-}
 
-function getNewsURLMotorina($objItem){
-	// ARTIKEL/ID/TITLE/
+function getCarURL($objItem){
+	// ID/PRODUCT/
 	
 	$search = array("`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
     $replace = array("","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
 					 
-	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['TITLE'])));		
-	$result='http://www.motorinanews.id/artikel/'.$objItem['ID'].'/'.$seo.'/';
+	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['PRODUCT'])));		
+	$result=ROOT_URL.'/detail/'.$objItem['ID'].'/'.$seo.'/';
 	return $result;
 }
-
  
 function getNewsURL($objItem){
 	// ARTIKEL/ID/TITLE/
+	$objItem['TITLE'] = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($objItem['TITLE']))))));
 	
-	$search = array("`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
-    $replace = array("","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
+	$search = array("”","`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
+    $replace = array("","","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
 					 
 	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['TITLE'])));		
-	$result=ROOT_URL.'/artikel/'.$objItem['ID'].'/'.strtolower($seo).'/';
+	$result=ROOT_URL.'/artikel/'.$objItem['ID'].'/'.$seo.'/';
 	return $result;
 }
 
 function getNewsURLMobile($objItem){
 	// ARTIKEL/ID/TITLE/	
 	
-	$search = array("`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
-    $replace = array("","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
+	$objItem['TITLE'] = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($objItem['TITLE']))))));
+	
+	$search = array("”","`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
+    $replace = array("","","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
 					 
 	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['TITLE'])));		
 	$result=MROOT_URL.'/artikel/'.$objItem['ID'].'/'.$seo.'/';
 	return $result;
 }
-
-function getCategory($objItem=null){	
-	$obj=null;
-	$obj['SQL']="SELECT * from tbl_category where STATUS=1";
-	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-     	$obj['SQL'].=" AND ID='".$objItem['ID']."'";	
-	
-	if(isset($objItem['SEO'])&& $objItem['SEO']!='')
-     	$obj['SQL'].=" AND SEO='".$objItem['SEO']."'";
-	
-	$obj['SQL'].=" order by NO ASC";
-	
-	
-	$obj['RESULT']=DAOQuerySQL($obj['SQL']);
-		
-	return $obj;
-}
-
-function getSubCategory($objItem=null){	
-	$obj=null;
-	$obj['SQL']="SELECT * from tbl_subcategory where STATUS=1";
-	
-	if(isset($objItem['ID'])&& $objItem['ID']!='')
-     	$obj['SQL'].=" AND ID='".$objItem['ID']."'";
-
-	if(isset($objItem['CATEGORY_ID'])&& $objItem['CATEGORY_ID']!='')
-     	$obj['SQL'].=" AND CATEGORY_ID='".$objItem['CATEGORY_ID']."'";	
-	
-	if(isset($objItem['SEO'])&& $objItem['SEO']!='')
-     	$obj['SQL'].=" AND SEO='".$objItem['SEO']."'";	
-	
-	$obj['RESULT']=DAOQuerySQL($obj['SQL']);
-		
-	return $obj;
-}
-
-
-function getAdvertorial($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * FROM jnwnews WHERE id IN ".$objItem['id']."";	
-		 
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;
-    //return $strSQL;
-	
-}
-
-
-function getPolling($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * FROM tbl_polling WHERE 1=1";
-    
-    if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";	
-	 
-	if(isset($objItem['STATUS'])&& $objItem['STATUS']!='')
-        $obj['SQL'].=" AND STATUS='".$objItem['STATUS']."'";	
-				
-	$obj['SQL'].=" ORDER BY ID DESC";					
-	   
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;    
-}
-
-function getPollingOption($objItem){
-	$obj=null;
-    
-	$obj['SQL']="SELECT * FROM tbl_polling_option WHERE 1=1";
-    
-    if(isset($objItem['ID'])&& $objItem['ID']!='')
-        $obj['SQL'].=" AND ID='".$objItem['ID']."'";	
-	 
-	if(isset($objItem['POLLING_ID'])&& $objItem['POLLING_ID']!='')
-        $obj['SQL'].=" AND POLLING_ID='".$objItem['POLLING_ID']."'";	
-				
-	$obj['SQL'].=" ORDER BY ID DESC";					
-	   
-    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
-	return $obj;    
-}
-
-//------------------------------TWITTER-------------------------------------------------
-function getSocial($objItem){
-	$objResult=null;
-    
-	$strSQL="SELECT * FROM tbl_social where STATUS='1' AND CATEGORY='".$objItem['SOCIAL_CATEGORY']."'";
-	
-    $objResult=DAOQuerySQL($strSQL);
-	return $objResult;
-    //return $strSQL;
-	
-}
-
-
-//---------------------------------------RSS--------------------------------------------
-function getRss(){
-	$objResult=null;
-    
-	$strSQL="SELECT * FROM `tbl_article`  WHERE concat(tanggal,' ',`hour`) <= Now() and Article_Status=1  order by concat(tanggal,' ',`hour`) desc LIMIT 100";
-	
-    $objResult=DAOQuerySQL($strSQL);
-	return $objResult;
-    //return $strSQL;
-	
-}
-
 
 
 //------------------------------UTIL-------------------------------------------------
@@ -842,42 +277,42 @@ break;
 case 6: $hari="Sabtu";
 break;
 }
-switch ($bulan) {
-case 1: $nmbln="Jan";
+switch ($xbulan) {
+case 1: $bulan="Janu";
 break;
-case 2: $nmbln="Feb";
+case 2: $bulan="Feb";
 break;
-case 3: $nmbln="Mar";
+case 3: $bulan="Mar";
 break;
-case 4: $nmbln="Apr";
+case 4: $bulan="Apr";
 break;
-case 5: $nmbln="Mei";
+case 5: $bulan="Mei";
 break;
-case 6: $nmbln="Jun";
+case 6: $bulan="Jun";
 break;
-case 7: $nmbln="Jul";
+case 7: $bulan="Jul";
 break;
-case 8: $nmbln="Agu";
+case 8: $bulan="Agu";
 break;
-case 9: $nmbln="Sep";
+case 9: $bulan="Sep";
 break;
-case 10: $nmbln="Okt";
+case 10: $bulan="Okt";
 break;
-case 11: $nmbln="Nov";
+case 11: $bulan="Nov";
 break;
-case 12: $nmbln="Des";
+case 12: $bulan="Des";
 break;
 }
 
 	if ($ftanggal=="tipe1"){
-		echo "$tgl $nmbln $tahun";
+		echo "$tgl $bulan $tahun";
 	}else if($ftanggal=="tipe2"){
-		echo "$hari, $tgl $nmbln $tahun";    
+		echo "$hari, $tgl $bulan $tahun";    
 	}else if($ftanggal=="tipe3"){
 		//echo "$hari, $tgl $bulan $tahun | $waktu WIB";
 		echo "$hari, $tgl/$bulan/$tahun  $waktu WIB";
 	}else if($ftanggal=="tipe4"){
-		echo "$tgl $nmbln $tahun";    
+		echo "$hari, $tgl/$bulan/$tahun";
 	}
 }
 
@@ -1006,64 +441,25 @@ function getPhotos($objItem){
     return $image;
 }
 
-
-function getImagexxx($objItem){
+function getImage($imagefile,$folder){
 $image=null;
 
-if($objItem['IMAGE_FOLDER']==NULL){
-        $image=PHOTO_URL."/files/archieve".$objItem['IMAGE'];
-}else{
-$filename = CMS_PATH.'/files/'.$objItem['IMAGE_FOLDER'].'/'.$objItem['IMAGE'];
-
-	if (file_exists($filename)) {		
-		$image['VIEW']=PHOTO_URL."/files/".$objItem['IMAGE_FOLDER'].'/'.$objItem['IMAGE'];
-		$image['THUMB']=PHOTO_URL."/files/".$objItem['IMAGE_FOLDER'].'/'.$objItem['IMAGE'];
+	$expImg=explode('.',$imagefile);
+	
+		$image['VIEW']=ROOT_URL."/images/".$folder."/".$imagefile;
+		$image['THUMB']=ROOT_URL."/images/".$folder."/".$expImg[0].'_thumb.'.$expImg[1];
+		
+	if (strlen($objItem['IMAGE'])>0){
+		
 	}else{
-		$image['VIEW']=PHOTO_URL."/noimage.png";
-		$image['THUMB']=PHOTO_URL."/noimage.png";	
-	}	
-}
-return $image;
-}
-
-
-
-function getImage($objItem){
-$image=null;
-
-if($objItem['IMAGE_FOLDER']==NULL){
-        $oldfile=CMS_PATH."/files/archieve".$objItem['IMAGE'];
-        if (file_exists($oldfile)) {
-                $image=PHOTO_URL."/files/archieve".$objItem['IMAGE'];
-        }else{
-                $image=PHOTO_URL."/files/archieve2".$objItem['IMAGE'];
-        }
-}else{
-
-        $filename = CMS_PATH.'/files/'.$objItem['IMAGE_FOLDER'].'/'.$objItem['IMAGE'];
-        if (file_exists($filename)) {
-                $image=PHOTO_URL."/files/".$objItem['IMAGE_FOLDER'].'/'.$objItem['IMAGE'];
-        } else {
-                $image=PHOTO_URL."/files/default/noimage.png";
-        }
-}
-return $image;
-}
-
-
-function getOldFile($objItem){
-$file=null;
-	$oldfile=CMS_PATH."/files/archieve/".$objItem['FILES'];
-	 $oldfile2=CMS_PATH."/files/archieve2/".$objItem['FILES'];
-        if (file_exists($oldfile)) {
-                $file=PHOTO_URL."/files/archieve/".$objItem['FILES'];
-        }else if (file_exists($oldfile2)){
-                $file=PHOTO_URL."/files/archieve2/".$objItem['FILES'];
-        }else{
-		$file='#';
+		//$image['VIEW']=ROOT_URL."/images/noimage.png";
+		//$image['THUMB']=ROOT_URL."/images/noimage.png";	
 	}
-return $file;
+
+
+return $image;
 }
+
 
 function getImageFile($objItem){
 	$obj=null;
@@ -1120,40 +516,13 @@ function doLog($text)
   fclose($fh);
 }
 
-
 function cleanParam($var){   
     $result=null;
-	$search = array("select","insert","update","union","delete",'concat','outfile');  
-    $replace = array("","","","","","",""); 
+	$search = array("select","insert","update","union","delete","'","\"",";");  
+    $replace = array("","","","","","`","`",""); 
 					 
-	$result=str_ireplace("\\","",(str_ireplace($search, $replace, $var)));			
-	$result=strip_tags($result);	
+	$result=str_ireplace("\\","",(str_replace($search, $replace, $var)));
+	$result=strip_tags($result);
 	return $result;
-}
-
-function genString($length = 10) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
-function setStar($hit){
-    $img='star1.png';
-    if($hit>160){
-        $img='star5.png';
-    }else if($hit>80){
-        $img='star4.png';
-    }else if($hit>40){
-        $img='star3.png';
-    }else if($hit>20){
-        $img='star2.png';
-    }else if($hit>10){
-        $img='star1.png';
-    }
-    echo ROOT_URL.'/images/'.$img;
 }
 ?>

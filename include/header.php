@@ -1,3 +1,4 @@
+<?php require_once ROOT_PATH.'/include/gtag.php'?>
 <header class="header-area">
     <div class="main-header d-none d-lg-block">
         <div class="main-menu-wrapper sticky header-transparent">
@@ -6,7 +7,7 @@
                     <div class="col-lg-3">
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" width="100" alt="brand logo">
                             </a>
                         </div>
@@ -16,9 +17,9 @@
                             <nav class="main-menu">
                                 <ul>
                                     <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/release.php">Release</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/article.php">Article & Journal</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/playlist.php">Playlist</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
                                     <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
                                 </ul>
                             </nav>
@@ -35,7 +36,7 @@
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
                                     class="img-fluid" alt="Brand Logo">
                             </a>
                         </div>
@@ -61,7 +62,7 @@
             <div class="off-canvas-inner">
                 <div class="mobile-logo pt-3 pb-3 pr-3 pl-1">
                     <a href="<?php echo ROOT_URL?>">
-                        <img src="<?php echo ROOT_URL?>/assets/img/logo/main-logo.png?<?php echo rand()?>" width="80"
+                        <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>" width="80"
                             alt="Brand Logo">
                     </a>
                 </div>
@@ -69,9 +70,9 @@
                     <nav>
                         <ul class="mobile-menu">
                             <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/release.php">Release</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/article.php">Article & Journal</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/playlist.php">Playlist</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
                             <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
                         </ul>
                     </nav>
