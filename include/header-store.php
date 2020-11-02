@@ -68,7 +68,7 @@ switch($objItem['act']) {
                         <!-- logo area start -->
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>"
                                     class="img-fluid" width="100" alt="brand logo">
                             </a>
                         </div>
@@ -112,7 +112,7 @@ switch($objItem['act']) {
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL?>/assets/img/logo/logo_100.png?<?php echo rand()?>"
+                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>"
                                     class="img-fluid" alt="Brand Logo">
                             </a>
                         </div>
@@ -169,19 +169,18 @@ switch($objItem['act']) {
                     <div class="off-canvas-contact-widget">
                         <ul>
                             <li><i class="fa fa-mobile"></i>
-                                <a href="#">0123456789</a>
+                                <a href="tel:<?php echo $objConf['DD_PHONE']?>">0123456789</a>
                             </li>
                             <li><i class="fa fa-envelope-o"></i>
-                                <a href="#">info@yourdomain.com</a>
+                                <a href="mailto:<?php echo $objConf['DD_EMAIL']?>">info@studiopop.id</a>
                             </li>
                         </ul>
                     </div>
                     <div class="off-canvas-social-widget">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="<?php echo $objConf['DD_FB']?>"><i class="ion-social-facebook"></i></a>
+                        <a href="<?php echo $objConf['DD_IG']?>"><i class="ion-social-instagram"></i></a>
+                        <a href="<?php echo $objConf['DD_TW']?>"><i class="ion-social-twitter"></i></a>
+                        <a href="<?php echo $objConf['DD_YT']?>"><i class="ion-social-youtube"></i></a>
                     </div>
                 </div>
                 <!-- offcanvas widget area end -->

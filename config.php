@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Bangkok");
 define('DB_HOST', 'localhost');
 define('DB_UID', 'studiopop_user');
 define('DB_PWD', 'p4ssword');
@@ -7,6 +8,7 @@ define('ROOT_PATH', '/home/nginx/domains/demo.sketsahouse.com/public/studio-pop'
 define('ROOT_URL', 'http://demo.sketsahouse.com/studio-pop');
 
 define( "CACHE_URL", ROOT_URL."/cache" );
+define( "CACHE_PATH", ROOT_PATH."/cache" );
 
 define( "CMS_PATH", ROOT_PATH."/cms" );
 define( "CMS_URL", ROOT_URL."/cms" );

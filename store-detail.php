@@ -3,7 +3,8 @@ session_start();
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
-
+require_once ROOT_PATH.'/lib/json_utility.php';
+require_once ROOT_PATH.'/lib/init.php';
 
 $var['CODE']=isset($_REQUEST['code'])?$_REQUEST['code']:'';
 $detail=getRecord('tbl_product',$var);
@@ -20,7 +21,16 @@ $detail=$detail['RESULT'][0];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $detail['PRODUCT']?> | Studio Pop</title>
+    <title><?php echo $detail['PRODUCT']?> | <?php echo $objConf['DD_SITENAME']?></title>
+    <!-- Meta Tag -->
+    <meta name="description" content="<?php echo $detail['CONTENT']?>">
+    <meta name="keywords" content="<?php echo $detail['KEYWORD']?>">
+    <meta name="author" content="https://www.sketsahouse.com">
+    <meta property="og:url" content="<?php echo $url?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo $detail['TITLE']?>" />
+    <meta property="og:description" content="<?php echo $detail['CONTENT']?>" />
+    <meta property="og:image" content="<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?v='.rand()?>" />
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57"
         href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-57x57.png">
@@ -122,28 +132,28 @@ $detail=$detail['RESULT'][0];
                         <h4><?php echo $detail['PRODUCT']?></h4>
                         <span class="line-grey"></span>
                     </div>
-					<form method="POST">
-					<input type='hidden' name='ID' value="<?php echo $detail['ID']?>">
-					<input type='hidden' name='act' value="add">
-                    <h5>SIZE :</h5>
-                    <div class="product-size">					
-                        <input type='radio' name='size' value='S' required>S
-                        <input type='radio' name='size' value='M' required>M
-                        <input type='radio' name='size' value='L' required>L
-                        <input type='radio' name='size' value='XL' required>XL						
-                    </div>
-                    <h5>PRICE :</h5>
-                    <div class="product-price">
-                        <h5 class="title">Rp. <?php echo number_format($detail['PRICE'])?></h5>
-                    </div>
-					 <h5>QTY :</h5>
-                    <div class="product-price">
-                        <input type="number" name='qty' value='1' style='padding:5px;width:70px'>
-                    </div>
-					
-                    <button class="btn btn-black btn-block mb-3">ADD TO
-                        CART</button>
-					</form>
+                    <form method="POST">
+                        <input type='hidden' name='ID' value="<?php echo $detail['ID']?>">
+                        <input type='hidden' name='act' value="add">
+                        <h5>SIZE :</h5>
+                        <div class="product-size">
+                            <input type='radio' name='size' value='S' required>S
+                            <input type='radio' name='size' value='M' required>M
+                            <input type='radio' name='size' value='L' required>L
+                            <input type='radio' name='size' value='XL' required>XL
+                        </div>
+                        <h5>PRICE :</h5>
+                        <div class="product-price">
+                            <h5 class="title">Rp. <?php echo number_format($detail['PRICE'])?></h5>
+                        </div>
+                        <h5>QTY :</h5>
+                        <div class="product-price">
+                            <input type="number" name='qty' value='1' style='padding:5px;width:70px'>
+                        </div>
+
+                        <button class="btn btn-black btn-block mb-3">ADD TO
+                            CART</button>
+                    </form>
                     <span class="line-grey"></span>
                     <div class="info-product">
                         <h6 class="text-muted mt-3">INFO PRODUCT</h6>

@@ -2,6 +2,8 @@
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
+require_once ROOT_PATH.'/lib/json_utility.php';
+require_once ROOT_PATH.'/lib/init.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +12,16 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Pop</title>
+    <title>About | <?php echo $objConf['DD_SITENAME']?></title>
+    <!-- Meta Tag -->
+    <meta name="description" content="<?php echo $objConf['DD_DESCRIPTION']?>">
+    <meta name="keywords" content="<?php echo $objConf['DD_KEYWORD']?>">
+    <meta name="author" content="https://www.sketsahouse.com">
+    <meta property="og:url" content="<?php echo ROOT_URL?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo $objConf['DD_SITENAME']?>" />
+    <meta property="og:description" content="<?php echo $objConf['DD_DESCRIPTION']?>" />
+    <meta property="og:image" content="<?php echo ROOT_URL?>/assets/img/logo/logo_500.png?<?php echo rand()?>" />
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57"
         href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-57x57.png">
@@ -87,7 +98,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                         ekosistem bagi para produser, musisi, seniman dan juga pelaku industri untuk berkolaborasi dalam
                         sebuah karya seni.</p>
                     <div class="embed-responsive embed-responsive-21by9 about-video d-flex justify-content-center mt-5">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                        <iframe class="embed-responsive-item" src="<?php echo $objConf['DD_ABOUTYT']?>"
                             allowfullscreen></iframe>
                     </div>
 

@@ -2,6 +2,8 @@
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
+require_once ROOT_PATH.'/lib/json_utility.php';
+require_once ROOT_PATH.'/lib/init.php';
 $var['ID'] = isset($_REQUEST['id'])?$_REQUEST['id']:'';
 $list = getRecord('tbl_content', $var);
 $list = $list['RESULT'][0];
@@ -14,7 +16,16 @@ $url = getNewsUrl($list);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Pop</title>
+    <title><?php echo $list['TITLE']?> | <?php echo $objConf['DD_SITENAME']?></title>
+    <!-- Meta Tag -->
+    <meta name="description" content="<?php echo $list['CONTENT']?>">
+    <meta name="keywords" content="<?php echo $list['KEYWORD']?>">
+    <meta name="author" content="https://www.sketsahouse.com">
+    <meta property="og:url" content="<?php echo $url?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<?php echo $list['TITLE']?>" />
+    <meta property="og:description" content="<?php echo $list['CONTENT']?>" />
+    <meta property="og:image" content="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>" />
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57"
         href="<?php echo ROOT_URL?>/assets/img/icon/favicon/apple-icon-57x57.png">
