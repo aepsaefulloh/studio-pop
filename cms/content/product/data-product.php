@@ -44,7 +44,7 @@ if($submitcontent=='1'){
 	}
 	
 	$result=saveRecord('tbl_'.$pageseo,$objVar);
-	echo $result['SQL'];
+	// echo $result['SQL'];
 	
 	//----cached-------
 	$res=writeCache('tbl_'.$pageseo,$pageseo);
@@ -98,9 +98,9 @@ $list=getRecord('tbl_product',$params);
                             <tr>
                                 <th>ID</th>
                                 <th>Product</th>
+                                <th>Code</th>
                                 <th>Category</th>
                                 <th>Image</th>
-                                <!-- <th>Add Image</th> -->
                                 <th>Status</th>
                                 <th>...</th>
                             </tr>
@@ -121,28 +121,16 @@ $list=getRecord('tbl_product',$params);
                                 </td>
                                 <td>
                                     <span
+                                        class="text-dark-75 font-weight-bolder d-block font-size-lg"><?php echo $list['CODE']?></span>
+                                </td>
+                                <td>
+                                    <span
                                         class="text-dark-75 font-weight-bolder d-block font-size-lg"><?php echo $arrCategory[$list['CATEGORY']]?></span>
                                 </td>
                                 <td>
                                     <img src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$list['IMAGE']?>"
                                         style="max-width:70px">
                                 </td>
-                                <!-- <td>
-                                    <a
-                                        href='<?php echo CMS_URL.'/index.php?page=form-product-image&pid='.$list['ID'];?>'>Add
-                                        Varians</a><br>
-                                    <?php 
-										$vi['PRODUCT_ID']=$list['ID'];
-										$vi['STATUS']=1;
-										$vi['LIMIT']=20;
-										$listAi=getRecord('tbl_addimage',$vi);
-										foreach($listAi['RESULT'] as $listAi){
-										?>
-                                    <div style='float:left;padding:10px'><img
-                                            src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$listAi['IMAGE']?>"
-                                            style="max-width:70px"></div>
-                                    <?php } ?>
-                                </td> -->
 
                                 <td>
                                     <?php if($list['STATUS']>0){ ?>

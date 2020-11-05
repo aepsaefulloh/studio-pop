@@ -7,6 +7,9 @@ require_once ROOT_PATH.'/lib/json_utility.php';
 require_once ROOT_PATH.'/lib/init.php';
 $page=isset($_REQUEST['page'])?$_REQUEST['page']:'1';
 
+$var['CODE']=isset($_REQUEST['code'])?$_REQUEST['code']:'';
+$detail=getRecord('tbl_product',$var);
+$detail=$detail['RESULT'][0];
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +109,7 @@ $page=isset($_REQUEST['page'])?$_REQUEST['page']:'1';
         <div class="container">
             <div class="row">
                 <?php
-                   $perpage = 3;
+                   $perpage = 8;
                    $start = ($page-1)*$perpage;
                    $var ['LIMIT'] = $start.','.$perpage;
                     //$var['CATEGORY']=1;
@@ -137,17 +140,17 @@ $page=isset($_REQUEST['page'])?$_REQUEST['page']:'1';
                 <div class="col-md-12">
                     <nav aria-label="Page navigation">
                         <?php 
-                                        $param['STATUS'] = 1;
-                                        $param['CATEGORY'] = '1,230';
-                                        $listCount= countRecord('tbl_content',$param );
-                                        // echo $listCount['SQL'];
-                                        $totalrecord = $listCount['RESULT'][0]['TOTAL'];
-                                        
-                                        $totalpage = ceil($totalrecord/$perpage);
-                                        //   echo $totalpage;
-                                        $prev = ROOT_URL.'/store?page='.($page-1);
-                                        $next = ROOT_URL.'/store?page='.($page+1);
-                                    ?>
+                            $param['STATUS'] = 1;
+                            $param['CATEGORY'] = '1,230';
+                            $listCount= countRecord('tbl_content',$param );
+                            // echo $listCount['SQL'];
+                            $totalrecord = $listCount['RESULT'][0]['TOTAL'];
+                            
+                            $totalpage = ceil($totalrecord/$perpage);
+                            //   echo $totalpage;
+                            $prev = ROOT_URL.'/store?page='.($page-1);
+                            $next = ROOT_URL.'/store?page='.($page+1);
+                        ?>
                         <ul class="pagination pagination-store justify-content-center">
                             <?php 
                                     if ($page > 1){

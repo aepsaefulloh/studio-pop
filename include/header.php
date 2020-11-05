@@ -7,8 +7,8 @@
                     <div class="col-lg-3">
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>"
-                                    class="img-fluid" width="100" alt="brand logo">
+                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>" class="img-fluid"
+                                    width="100" alt="brand logo">
                             </a>
                         </div>
                     </div>
@@ -16,11 +16,11 @@
                         <div class="main-menu-inner">
                             <nav class="main-menu">
                                 <ul>
-                                    <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/about">About</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/project">Project</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/journal">Journal</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/pop-n-roll">Pop 'n Roll</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/store"> Store </a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -36,8 +36,8 @@
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>"
-                                    class="img-fluid" alt="Brand Logo">
+                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>" class="img-fluid"
+                                    alt="Brand Logo">
                             </a>
                         </div>
                         <div class="mobile-menu-toggler">
@@ -69,11 +69,11 @@
                 <div class="mobile-navigation">
                     <nav>
                         <ul class="mobile-menu">
-                            <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
+                            <li><a href="<?php echo ROOT_URL?>/about">About</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/project">Project</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/journal">Journal</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/pop-n-roll">Pop 'n Roll</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/store"> Store </a></li>
                         </ul>
                     </nav>
                 </div>

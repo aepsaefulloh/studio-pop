@@ -3,6 +3,50 @@ session_start();
 require_once 'config.php';
 require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
+require_once ROOT_PATH.'/lib/json_utility.php';
+require_once ROOT_PATH.'/lib/init.php';
+require_once ROOT_PATH.'/lib/mail_utility.php';
+
+$text="<h4>Thank You for shopping with STUDIO POP</h4>";
+$text.="<p><small class='text-muted'>Hi,".$_REQUEST['FULLNAME']."</small></p>";
+$text.="<p><small class='text-muted'>Thank you for your order! Your items will be delivered after the payment has been made. Please make your payment within 24 hours to avoid order cancellation and send the payment receipt to shopping@studiopop.id</small></p>";
+$text.="<div class='box-text'>";
+$text.="<p>Order No: ".$_REQUEST['TRID']."</p>";
+//$text.="<p>Date: ".date('Y-m-d H:i:s')."</p>";
+//$text.="<p>Name : ".$_REQUEST['FULLNAME']."</p>";
+//$text.="<p>Address : ".$_REQUEST['ADDRESS']."</p>";
+//$text.="<p>Items :</p>";
+//$text.="<ul>";
+		$total=9000;
+		if(!empty($_SESSION["cart_item"])){
+		foreach ($_SESSION["cart_item"] as $item){
+			$sub=$item['QTY']*$item['PRICE'];
+			$total+=$sub;
+		
+//$text.="<li><p>".$item['PRODUCT']."(".$item['SIZE'].")  x ".$item['QTY']."</p></li>";
+		}}
+//$text.="</ul>";
+$text.="<p>SubTotal : Rp. ".number_format($total)."</p>";
+$text.="<p>Shipping : Rp. 9,000</p>";
+$text.="<p>Total : Rp. ".number_format($total)."</p><br><br>";
+$text.="<p>STUDIO POP Terms</p>";
+$text.="<p>All sales are final. No refunds. No exchanges.</p><br>";
+
+$text.="<p>Shipping</p><br>";
+$text.="<p>Kindly make sure that the shipping address is correct and somebody is home to receive the package from 9 am to 6 pm on the estimated delivery date.</p><br>";
+
+$text.="<p>Please transfer to</p><br>";
+
+$text.="<p><strong>BCA 7310160371 a/n Daiva Prayudi</strong></p><br>";
+
+$text.="<p>Please complete your payment within 24 hours. The order will automatically be canceled if there’s no payment within 24 hours.</p>";
+$text.="<p>Please send (reply this email) a confirmation after you make the payment along with the prove of payment</p>";
+
+$text.="<p>Once again, thank you for shopping with STUDIO POP!</p><br>";
+
+$text.="<p><strong>STUDIO POP</strong><br>";
+$text.="www.studiopop.id<p></div>";
+	
 ?>
 
 
@@ -80,45 +124,28 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
                 <div class="col-md-12">
                     <div class="jumbotron jumbotron-after-shop">
                         <div class="container">
-                            <h4>Thank You for shopping with STUDIO POP</h4>
-                            <p><small class="text-muted">Hi, <?php echo $_REQUEST['FULLNAME']?></small></p>
-                            <p><small class="text-muted">Thank you for your order! Your items will be delivered after
-                                    the payment has been made. Please make your payment within 24 hours to avoid order
-                                    cancellation and send the payment receipt to shopping@studiopop.id</small></p>
-                            <div class="box-text">
-                                <p>Date: <?php tanggal(date('Y-m-d H:i:s'),'tipe1')?></p>
-                                <p>Name : <?php echo $_REQUEST['FULLNAME']?></p>
-                                <p>Shipping :</p>
-                                <ul>
-								<?php
-								$total=0;
-								if(!empty($_SESSION["cart_item"])){
-								foreach ($_SESSION["cart_item"] as $item){ 
-									$sub=$item['QTY']*$item['PRICE'];
-									$total+=$sub;
-								?>
-                                    <li>
-                                        <p><?php echo $item['PRODUCT'].'('.$item['SIZE'].')  x '.$item['QTY']?> </p>
-                                    </li>
-								<?php }} ?>
-                                </ul>
-
-                                <p>Total : Rp. <?php echo number_format($total)?></p>
-                            </div>
-                            <p><small class="text-muted">Please settle the payment by transferring it to the following bank
-                                account with your order number as the reference.</small> </p>
-                            <div class="box-text">
-                                <p>BCA / 721-232-2225 </p>
-                            </div>
+                           <?php echo $text ?>
+                            
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-	<?php 
+	<?php
+	
+
+if($_REQUEST['TRID']!=''){
+	
+	//check if trid exist
+	$p['TRID']=$_REQUEST['TRID'];
+	$pt=getRecord('tbl_transaction',$p);
+	if(empty($pt['RESULT'])){
+
 	$v['ACT']='ADD';
 	$v['FULLNAME']=$_REQUEST['FULLNAME'];
+	$v['TRID']=$_REQUEST['TRID'];
 	$v['ADDRESS']=$_REQUEST['ADDRESS'];
 	$v['PHONE']=$_REQUEST['PHONE'];
 	$v['EMAIL']=$_REQUEST['EMAIL'];
@@ -130,7 +157,7 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
 	$v['STATUS']=0;
 	$v['TRDATE']=date('Y-m-d H:i:s');
 	$rs=saveRecord('tbl_transaction',$v);
-	//echo $rs['SQL'];
+	//echo $rs['SQL'].'<br>';
 	
 	//getInsertedID
 	$vi['TRDATE']=$v['TRDATE'];
@@ -138,21 +165,34 @@ require_once ROOT_PATH.'/lib/mysqlDao.php';
 	$id=$list['RESULT'][0]['ID'];
 	
 	
-	//save detail
-	foreach ($_SESSION["cart_item"] as $item){ 
-		$vitem['ACT']='ADD';
-		$vitem['TRID']=$id;
-		$vitem['CODE']=$item['CODE'];
-		$vitem['QTY']=$item['QTY'];
-		$vitem['SIZE']=$item['SIZE'];
-		$vitem['PRICE']=$item['PRICE'];
-		$vitem['TOTAL']=$item['PRICE']*$item['QTY'];
-		$rs2=saveRecord('tbl_transaction_dtl',$vitem);
-		//echo $rs2['SQL'];
+		//save detail
+		foreach ($_SESSION["cart_item"] as $item){ 
+			$vitem['ACT']='ADD';
+			$vitem['TRID']=$id;
+			$vitem['CODE']=$item['CODE'];
+			$vitem['QTY']=$item['QTY'];
+			$vitem['SIZE']=$item['SIZE'];
+			$vitem['PRICE']=$item['PRICE'];
+			$vitem['TOTAL']=$item['PRICE']*$item['QTY'];
+			$rs2=saveRecord('tbl_transaction_dtl',$vitem);
+			//echo $rs2['SQL'].'<br>';		
+		}
 		
-	}
+		
+	//SEND NOTIFICATION
+
+	
+	$msc['NAME']=$_REQUEST['FULLNAME'];
+	$msc['MAILTO']=$_REQUEST['EMAIL'];
+	$msc['SUBJECT']='Studio Pop Notificaton';
+	$msc['BODY']=$text;
 	
 	
+	$status=sendmail($msc);
+
+	
+	}	
+}
 	?>
 
 

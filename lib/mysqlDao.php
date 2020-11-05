@@ -222,6 +222,42 @@ function getNewsURL($objItem){
 	return $result;
 }
 
+function getJournalURL($objItem){
+	// JOURNAL/ID/TITLE/
+	$objItem['TITLE'] = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($objItem['TITLE']))))));
+	
+	$search = array("”","`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
+    $replace = array("","","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
+					 
+	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['TITLE'])));		
+	$result=ROOT_URL.'/journal/'.$objItem['ID'].'/'.$seo.'/';
+	return $result;
+}
+
+function getPlaylistURL($objItem){
+	// PLAYLIST/ID/TITLE/
+	$objItem['TITLE'] = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($objItem['TITLE']))))));
+	
+	$search = array("”","`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
+    $replace = array("","","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
+					 
+	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['TITLE'])));		
+	$result=ROOT_URL.'/pop-n-roll/'.$objItem['ID'].'/'.$seo.'/';
+	return $result;
+}
+
+function getStoreURL($objItem){
+	// STORE/ID/TITLE/
+	$objItem['TITLE'] = trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($objItem['TITLE']))))));
+	
+	$search = array("”","`","quot",".","(",")","'", "\"","/", ":", ",", "!", ".", "$", "'", "+", "%", "&",'lsquo;',"rsquo;","?","rlm;",";", " ","<i>","</i>");  
+    $replace = array("","","","","","","","-","-","","","","","","","","","","","","","","","-","",""); 
+					 
+	$seo=str_replace("\\","",(str_replace($search, $replace, $objItem['TITLE'])));		
+	$result=ROOT_URL.'/store/'.$objItem['ID'].'/'.$seo.'/';
+	return $result;
+}
+
 function getNewsURLMobile($objItem){
 	// ARTIKEL/ID/TITLE/	
 	

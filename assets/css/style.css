@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 html,
 body {
     font-family: 'Helvetica', 'Arial', sans-serif !important;
@@ -248,9 +249,9 @@ li {
 /* Detail Article */
 
 .image-detail-article .img-detail {
-    width: 100%;
+    /* width: 100%;
     height: 40vh;
-    object-fit: cover;
+    object-fit: cover; */
 }
 
 
@@ -283,7 +284,7 @@ li {
     position: fixed;
     display: block;
     width: 320px;
-    height: 100vh;
+    height: 100%;
     z-index: 2;
     top: 0;
     right: -340px;
@@ -352,7 +353,7 @@ li {
     margin: 0;
     padding: 0 0 15px 0;
     list-style: none;
-    height: calc(100vh - 200px);
+    /* height: 100%; */
     overflow-x: hidden;
     overflow-y: auto;
     display: block;
@@ -360,7 +361,7 @@ li {
     z-index: 0;
 }
 
-#sidebar-cart ul.products:after {
+/* #sidebar-cart ul.products:after {
     background: linear-gradient(180deg, transparent, #FFF);
     height: 30px;
     width: 300px;
@@ -369,7 +370,7 @@ li {
     position: absolute;
     right: 0;
     bottom: 0;
-}
+} */
 
 #sidebar-cart ul.products li.product {
     margin: 0 0 10px 0;
@@ -1253,7 +1254,7 @@ only screen and (max-width: 767.98px) {
 /*----- mobile menu start -----*/
 
 .mobile-header {
-    padding: 15px 0;
+    padding: 0;
 }
 
 .mobile-logo {
@@ -1350,7 +1351,6 @@ only screen and (max-width: 767.98px) {
 .mobile-menu li>a {
     font-size: 16px;
     color: #000;
-    text-transform: capitalize;
     line-height: 18px;
     position: relative;
     display: inline-block;
@@ -1664,4 +1664,8 @@ only screen and (max-width: 767.98px) {
     font-size: 13px;
     color: #151515;
     padding: 6px 15px;
+}
+
+.floating-icon {
+    display: none;
 }

@@ -84,12 +84,17 @@ $page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
                     <div class="owl-carousel owl-theme thumb-img">
                         <?php
                             $var['LIMIT'] = 6;
-                            $var['CATEGORY']=1;
+                            $var['CUSTOM1']='CATEGORY in (1,2)';
                             $var['STATUS']=1;
                             $list = getRecord('tbl_content', $var);
+                            // echo $list['SQL'];
                             foreach($list['RESULT'] as $list){
-								//$url = getNewsUrl($list);
-								$url=ROOT_URL.'/journal-detail.php?id='.$list['ID'];
+                                //$url = getNewsUrl($list);
+                                if(!$url){
+                                    $url = getJournalUrl($list);
+                                }else{
+                                    $url = getPlaylistUrl($list);
+                                }
                         ?>
                         <div class="item">
                             <div class="card border-0">

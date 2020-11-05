@@ -116,17 +116,21 @@ $detail=$detail['RESULT'][0];
                 <div class="col-md-2">
                     <div class="ads-img">
                         <?php
-                    	    if(!$isPhone){
+                            $list=getCache('banner');
+                            foreach($list as $list){
+                                $pos='ADS';
+                                if($isPhone){
+                                    $pos='ADS-MOBILE';
+                                }
+                                //echo $pos;
+                                
+                                if($list['POS']==$pos){
+                                
+                            $img=getImage($list['FILENAME'],'banner');
                         ?>
-                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_desktop2.gif?<?php echo rand()?>"
-                            class="img-fluid" alt="">
+                        <img src="<?php echo $img['VIEW'].'?v='.rand()?>" class="img-fluid" alt="">
                         <?php 
-                            }else{
-                        ?>
-                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_mobile.jpg?<?php echo rand()?>"
-                            class="img-fluid" alt="">
-                        <?php 
-                            }
+                            }}
                         ?>
                     </div>
                 </div>
@@ -149,17 +153,21 @@ $detail=$detail['RESULT'][0];
                 <div class="col-md-2">
                     <div class="ads-img">
                         <?php
-                    	    if(!$isPhone){
+                            $list=getCache('banner');
+                            foreach($list as $list){
+                                $pos='ADS';
+                                if($isPhone){
+                                    $pos='ADS-MOBILE';
+                                }
+                                //echo $pos;
+                                
+                                if($list['POS']==$pos){
+                                
+                            $img=getImage($list['FILENAME'],'banner');
                         ?>
-                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_desktop2.gif?<?php echo rand()?>"
-                            class="img-fluid" alt="">
+                        <img src="<?php echo $img['VIEW'].'?v='.rand()?>" class="img-fluid" alt="">
                         <?php 
-                            }else{
-                        ?>
-                        <img src="<?php echo ROOT_URL?>/assets/img/release/ads_mobile.jpg?<?php echo rand()?>"
-                            class="img-fluid" alt="">
-                        <?php 
-                            }
+                            }}
                         ?>
                     </div>
                 </div>
@@ -177,8 +185,8 @@ $detail=$detail['RESULT'][0];
                 $varRU['STATUS']=1;
                 $listRU = getRecord('tbl_content', $varRU);
                 foreach($listRU['RESULT'] as $listRU){
-                    //$url = getNewsUrl($listRU);
-					$url=ROOT_URL.'/project.php?id='.$listRU['ID'];
+                    $url = getJournalUrl($listRU);
+					// $url=ROOT_URL.'/project.php?id='.$listRU['ID'];
                 ?>
                 <div class="col-md-4">
                     <div class="card card-release mb-3 border-0">

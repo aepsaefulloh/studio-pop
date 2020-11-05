@@ -47,6 +47,8 @@ foreach($jCategory as $item){
         type="text/css" />
     <link href="<?php echo CMS_URL?>/assets/css/style.bundle.css?<?php echo rand()?>" rel="stylesheet"
         type="text/css" />
+		
+	<script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>	
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
     <link href="<?php echo CMS_URL?>/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
@@ -1694,13 +1696,24 @@ foreach($jCategory as $item){
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
-    <script src="<?php echo CMS_URL?>/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js?<?php echo rand()?>">
+    <!--script src="<?php echo CMS_URL?>/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js?<?php echo rand()?>">
     </script>
     <script src="<?php echo CMS_URL?>/assets/js/pages/crud/forms/editors/ckeditor-classic.js?<?php echo rand()?>">
-    </script>
+    </script-->
     <!-- <script src="<?php echo CMS_URL?>/assets/js/pages/crud/forms/editors/summernote.js?<?php echo rand()?>"></script> -->
 
     <!--end::Page Scripts-->
 </body>
 
 </html>
+<script>
+
+ CKEDITOR.replace( 'CONTENT', {
+
+  height: 300,
+
+  filebrowserUploadUrl: "upload.php"
+
+ });
+
+</script>

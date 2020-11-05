@@ -113,8 +113,8 @@ $page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
                         $list = getRecord('tbl_content', $var);
                         foreach($list['RESULT'] as $list){
                             //$url = getNewsUrl($list);
-							$url=ROOT_URL.'/pop-n-roll-detail.php?id='.$list['ID'];
-                    ?>
+                            $url = getPlaylistUrl($list);
+                            ?>
                     <div class="card card-playlist mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-3 align-self-center">

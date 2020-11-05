@@ -85,7 +85,7 @@ $url = getNewsUrl($list);
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-white p-0">
                         <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a>
+                        <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/pop-n-roll">Pop 'n Roll</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page"><?php echo $list['TITLE']?></li>
                     </ol>
@@ -102,8 +102,8 @@ $url = getNewsUrl($list);
                 <h1 class="title h1">Pop 'n Roll
                 </h1>
                 <div class="image-detail-article ptb-3">
-                    <img src="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>" class="img-detail"
-                        alt="">
+                    <img src="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>"
+                        class="img-fluid img-detail" alt="">
                 </div>
                 <h3 class="title"> <?php echo $list['TITLE']?>
                 </h3>
@@ -118,8 +118,8 @@ $url = getNewsUrl($list);
             </div>
             <div class="col-md-4 offset-md-1">
                 <div class="sportify-embed detail">
-                    <iframe src="<?php echo $list['SPORTIFY']?>"
-                        style="border: 0; width: 100%; height: 500px;" allowfullscreen></iframe>
+                    <iframe src="<?php echo $list['SPORTIFY']?>" style="border: 0; width: 100%; height: 500px;"
+                        allowfullscreen></iframe>
                 </div>
             </div>
         </div>

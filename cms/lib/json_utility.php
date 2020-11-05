@@ -17,7 +17,7 @@ if($tbl=='tbl_product'){
 
         foreach($list['RESULT'] as $list){
 				$url=getCarUrl($list);
-                $posts[] = array('ID'=> $list['ID'],'PRODUCT'=> $list['PRODUCT'],'CATEGORY'=> $list['CATEGORY'],'SUMMARY'=> $list['SUMMARY'],'PRICE'=> $list['PRICE'],'SPECS'=> $list['SPECS'],'BROCHURE'=> $list['BROCHURE'],'IMAGE'=> $list['IMAGE'],'STATUS'=> $list['STATUS'],'URL'=> $url);
+                $posts[] = array('ID'=> $list['ID'],'CODE'=> $list['CODE'],'PRODUCT'=> $list['PRODUCT'],'CATEGORY'=> $list['CATEGORY'],'SUMMARY'=> $list['SUMMARY'],'PRICE'=> $list['PRICE'],'SPECS'=> $list['SPECS'],'BROCHURE'=> $list['BROCHURE'],'IMAGE'=> $list['IMAGE'],'STATUS'=> $list['STATUS'],'URL'=> $url);
         }
 
 }else if($tbl=='tbl_content'){
@@ -29,6 +29,17 @@ if($tbl=='tbl_product'){
         foreach($list['RESULT'] as $list){
 				$url=getNewsUrl($list);
                 $posts[] = array('ID'=> $list['ID'],'TITLE'=> $list['TITLE'],'ARTIST'=> $list['ARTIST'],'SPORTIFY'=> $list['SPORTIFY'],'SUMMARY'=> $list['SUMMARY'],'CONTENT'=> $list['CONTENT'],'IMAGE'=> $list['IMAGE'],'KEYWORD'=> $list['KEYWORD'],'CATEGORY'=> $list['CATEGORY'],'CONTENT'=> $list['CONTENT'],'HIT'=> $list['HIT'],'STATUS'=> $list['STATUS'],'URL'=> $url);
+		}
+
+}else if($tbl=='tbl_transaction'){
+        $params['LIMIT']='1000';
+        $params['STATUS']='1';
+        $list=getRecord($tbl,$params);
+        $result['SQL']=$list['SQL'];
+
+        foreach($list['RESULT'] as $list){
+				$url=getNewsUrl($list);
+                $posts[] = array('ID'=> $list['ID'],'TRADE'=> $list['TRADE'],'FULLNAME'=> $list['FULLNAME'],'ADDRESS'=> $list['ADDRESS'],'PHONE'=> $list['PHONE'],'EMAIL'=> $list['EMAIL'],'PROV'=> $list['PROV'],'KAB'=> $list['KAB'],'KODEPOS'=> $list['KODEPOS'],'SHIPMENT'=> $list['SHIPMENT'],'PAYMENT'=> $list['PAYMENT'],'TOTAL'=> $list['TOTAL'],'STATUS'=> $list['STATUS']);
 		}
 
 }else if($tbl=='tbl_kabupaten'){

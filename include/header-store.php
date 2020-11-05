@@ -68,8 +68,8 @@ switch($objItem['act']) {
                         <!-- logo area start -->
                         <div class="brand-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>"
-                                    class="img-fluid" width="100" alt="brand logo">
+                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>" class="img-fluid"
+                                    width="100" alt="brand logo">
                             </a>
                         </div>
                         <!-- logo area end -->
@@ -79,14 +79,14 @@ switch($objItem['act']) {
                             <!-- main menu navbar start -->
                             <nav class="main-menu">
                                 <ul>
-                                    <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
-                                    <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/about">About</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/project">Project</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/journal">Journal</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/pop-n-roll">Pop 'n Roll</a></li>
+                                    <li><a href="<?php echo ROOT_URL?>/store"> Store </a></li>
                                     <li><a href="#" class="cart-button"><img
                                                 src="<?php echo ROOT_URL?>/assets/img/icon/cart.png?<?php echo rand()?>"
-                                                alt=""><span><?php count($_SESSION["cart_item"])?></span>
+                                                alt=""><span><?php echo count($_SESSION["cart_item"])?></span>
                                         </a>
 
                                     </li>
@@ -112,8 +112,8 @@ switch($objItem['act']) {
                     <div class="mobile-main-header">
                         <div class="mobile-logo">
                             <a href="<?php echo ROOT_URL?>">
-                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>"
-                                    class="img-fluid" alt="Brand Logo">
+                                <img src="<?php echo ROOT_URL.'/images/conf/'.$objConf['DD_LOGO']?>" class="img-fluid"
+                                    alt="Brand Logo">
                             </a>
                         </div>
                         <div class="mobile-menu-toggler">
@@ -153,11 +153,11 @@ switch($objItem['act']) {
                     <!-- mobile menu navigation start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li><a href="<?php echo ROOT_URL?>/about.php">About</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/project.php">Project</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/journal.php">Journal</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/pop-n-roll.php">Pop 'n Roll</a></li>
-                            <li><a href="<?php echo ROOT_URL?>/store.php"> Store </a></li>
+                            <li><a href="<?php echo ROOT_URL?>/about">About</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/project">Project</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/journal">Journal</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/pop-n-roll">Pop 'n Roll</a></li>
+                            <li><a href="<?php echo ROOT_URL?>/store"> Store </a></li>
                         </ul>
                     </nav>
                     <!-- mobile menu navigation end -->
@@ -190,6 +190,17 @@ switch($objItem['act']) {
     <!-- off-canvas menu end -->
     <!-- offcanvas mobile menu end -->
 </header>
+
+<div class="floating-icon">
+    <ul>
+        <li>
+            <a href="#" class="cart-button">
+                <img src="<?php echo ROOT_URL?>/assets/img/icon/cart.png?<?php echo rand()?>"
+                    alt=""><span><?php echo count($_SESSION["cart_item"])?></span>
+            </a>
+        </li>
+    </ul>
+</div>
 
 <?php
         require_once 'include/bag.php';

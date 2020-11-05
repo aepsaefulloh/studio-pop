@@ -6,7 +6,7 @@
         </div>
         <div class="footer-left">
             <div class="footer-links">
-                Copyrights © 2020 All Rights Reserved by Studiopop.
+                Copyrights © 2020 All Rights Reserved by Studio Pop.
                 <!--a href="javascript:void(0)">Privacy</a>
                 <a href="javascript:void(0)">Term of use</a-->
             </div>

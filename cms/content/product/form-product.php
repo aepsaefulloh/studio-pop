@@ -17,7 +17,7 @@ if($params['ID']>0){
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tambah Konten</h3>
+                <h3 class="card-title">Add Product</h3>
             </div>
             <form method="post" action="<?php echo CMS_URL?>/index.php?page=data-<?php echo $pageseo?>"
                 enctype="multipart/form-data">
@@ -78,7 +78,7 @@ if($params['ID']>0){
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Varian</i></label>
                                 <br>
                                 <span class="label label-info label-inline mr-2"> <a
@@ -87,24 +87,31 @@ if($params['ID']>0){
                                         Varian</a></span>
                                 <br>
                                 <?php 
-										$vi['PRODUCT_ID']=$list['ID'];
-										$vi['STATUS']=1;
-										$vi['LIMIT']=20;
-										$listAi=getRecord('tbl_addimage',$vi);
-										foreach($listAi['RESULT'] as $listAi){
+										// $vi['PRODUCT_ID']=$list['ID'];
+										// $vi['STATUS']=1;
+										// $vi['LIMIT']=20;
+										// $listAi=getRecord('tbl_addimage',$vi);
+										// foreach($listAi['RESULT'] as $listAi){
 										?>
                                 <div class="varians-img">
                                     <img src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$listAi['IMAGE']?>"
                                         width='100px'>
                                 </div>
-                                <?php } ?>
+                                <?php
+                                // } 
+                                ?>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Code</label>
+                                <input type="text" class="form-control" name="CODE"
+                                    value="<?php echo $objDetail['CODE']?>">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Content</label>
-                                <textarea class="form-control" name="CONTENT"
-                                    id="kt-ckeditor-5"><?php echo $objDetail['CONTENT']?></textarea>
+                                <label>Specs</label>
+                                <textarea class="form-control ckeditor" placeholder="" id='CONTENT'
+                                    name="SPECS"><?php echo $objDetail['SPECS']?></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal</label>

@@ -93,7 +93,7 @@ require_once ROOT_PATH.'/lib/init.php';
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="title h1">We creat music, we creat you</h1>
+                    <h1 class="title h1">About</h1>
                     <p class="subtitle mt-md-4 text-md-center">STUDIO POP adalah proyek eksperimen dalam membuat sebuah
                         ekosistem bagi para produser, musisi, seniman dan juga pelaku industri untuk berkolaborasi dalam
                         sebuah karya seni.</p>
@@ -102,13 +102,13 @@ require_once ROOT_PATH.'/lib/init.php';
                             allowfullscreen></iframe>
                     </div>
 
-                    <div class="client mt-5">
+                    <!-- <div class="client mt-5">
                         <img src="<?php echo ROOT_URL?>/assets/img/client/1.png" class="img-fluid" alt="">
                         <img src="<?php echo ROOT_URL?>/assets/img/client/2.png" class="img-fluid" alt="">
                         <img src="<?php echo ROOT_URL?>/assets/img/client/3.png" class="img-fluid" alt="">
                         <img src="<?php echo ROOT_URL?>/assets/img/client/4.png" class="img-fluid" alt="">
                         <img src="<?php echo ROOT_URL?>/assets/img/client/5.png" class="img-fluid" alt="">
-                    </div>
+                    </div> -->
                     <p class="subtitle text-md-center mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Eget ullamcorper porttitor id sagittis, tellus pharetra nisl odio neque. Lectus lobortis
                         nascetur amet non aliquam. In sit blandit vivamus vitae condimentum a. Ut nunc, fermentum

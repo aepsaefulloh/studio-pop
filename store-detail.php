@@ -117,7 +117,7 @@ $detail=$detail['RESULT'][0];
                         <img id="img" src="<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?var='.rand()?>"
                             class="img-fluid">
                     </div>
-                    <div class="image-select" id="thumb_img" class="cf">
+                    <!-- <div class="image-select" id="thumb_img" class="cf">
                         <img class="active"
                             src="<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?var='.rand()?>"
                             onclick="changeimg('<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?var='.rand()?>',this);">
@@ -125,7 +125,7 @@ $detail=$detail['RESULT'][0];
                             onclick="changeimg('<?php echo ROOT_URL?>/assets/img/store/2.png?<?php echo rand()?>',this);">
                         <img src="<?php echo ROOT_URL?>/assets/img/store/3.png?<?php echo rand()?>"
                             onclick="changeimg('<?php echo ROOT_URL?>/assets/img/store/3.png?<?php echo rand()?>',this);">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-5 offset-md-2">
                     <div class="product-name">
@@ -189,7 +189,7 @@ $detail=$detail['RESULT'][0];
             $listRP = getRecord('tbl_content', $varRP);
             foreach($listRP['RESULT'] as $listRP){
                 $listRP['SQL'];
-                $url = getNewsUrl($listRP);  
+                $url = getJournalUrl($listRP);  
         ?>
                 <div class="col-md-6">
                     <div class="card card-playlist mb-3 border-0">

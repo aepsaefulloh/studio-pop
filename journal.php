@@ -112,7 +112,7 @@ $page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
                     $list = getRecord('tbl_content', $var);
                     foreach($list['RESULT'] as $list){
                     // $url = getNewsUrl($list); 
-                    $url=ROOT_URL.'/journal-detail.php?id='.$list['ID'];
+                    $url = getJournalUrl($list);
 
                 ?>
                 <div class="col-md-4">

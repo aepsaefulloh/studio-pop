@@ -53,6 +53,24 @@
         height: auto;
     }
 
+    .floating-icon {
+        display: block;
+        position: fixed;
+        bottom: 50%;
+        right: .5rem;
+        z-index: 1;
+    }
+
+    .floating-icon ul li {
+        color: #fff;
+        background: #f5f5f5;
+        padding: 0.8rem;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+    }
+
 
 }
 
@@ -62,7 +80,6 @@
     .owl-carousel.owl-thumb-video .owl-nav {
         top: 35%;
     }
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -85,4 +102,5 @@
     footer .footer-left p.footer-links {
         line-height: 1.8;
     }
+
 }

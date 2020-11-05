@@ -16,7 +16,7 @@ if($params['ID']>0){
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tambah Banner</h3>
+                <h3 class="card-title">Add Content</h3>
             </div>
             <form class="stdform stdform2" method="post"
                 action="<?php echo CMS_URL?>/index.php?page=data-<?php echo $pageseo?>" enctype="multipart/form-data">
@@ -85,13 +85,13 @@ if($params['ID']>0){
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea class="form-control" placeholder="" name="CONTENT"
-                                    id="kt-ckeditor-5"><?php echo $objDetail['CONTENT']?></textarea>
+                                <textarea class="form-control ckeditor" placeholder="" id='CONTENT'
+                                    name="CONTENT"><?php echo $objDetail['CONTENT']?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Image <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="right"
-                                        title="ukuran gambar:1240x720 & kurang dari 300kb"></i></label>
+                                        title="ukuran gambar:1240x656 & kurang dari 300kb"></i></label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="IMAGE">
@@ -101,7 +101,7 @@ if($params['ID']>0){
                                 </div>
                                 <br>
                                 <img src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$objDetail['IMAGE']?>"
-                                    width='300px'>
+                                    width=' 300px'>
                             </div>
                             <!-- <div class="form-group">
                                 <label>Tanggal</label>

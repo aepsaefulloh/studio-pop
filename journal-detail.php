@@ -18,13 +18,13 @@ $url = getNewsUrl($list);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $list['TITLE']?> | <?php echo $objConf['DD_SITENAME']?></title>
     <!-- Meta Tag -->
-    <meta name="description" content="<?php echo $list['CONTENT']?>">
+    <meta name="description" content="<?php echo strip_tags($list['SUMMARY'])?>">
     <meta name="keywords" content="<?php echo $list['KEYWORD']?>">
     <meta name="author" content="https://www.sketsahouse.com">
     <meta property="og:url" content="<?php echo $url?>" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<?php echo $list['TITLE']?>" />
-    <meta property="og:description" content="<?php echo $list['CONTENT']?>" />
+    <meta property="og:description" content="<?php echo strip_tags($list['SUMMARY'])?>" />
     <meta property="og:image" content="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>" />
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57"
@@ -85,7 +85,7 @@ $url = getNewsUrl($list);
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-white p-0">
                         <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/journal.php">Journal</a>
+                        <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/journal">Journal</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page"><?php echo $list['TITLE']?></li>
                     </ol>
@@ -101,8 +101,8 @@ $url = getNewsUrl($list);
             <div class="col-md-12">
                 <h1 class="title h1"><?php echo $list['TITLE']?></h1>
                 <div class="image-detail-article ptb-3">
-                    <img src="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>" class="img-detail"
-                        alt="">
+                    <img src="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>"
+                        class="img-fluid img-detail" alt="">
                 </div>
                 <h3 class="title"><?php echo $list['TITLE']?></h3>
                 <p class="body-text">
@@ -130,7 +130,7 @@ $url = getNewsUrl($list);
             foreach($listRP['RESULT'] as $listRP){
                 $listRP['SQL'];
                 // $url = getNewsUrl($listRP);  
-                $url=ROOT_URL.'/journal-detail.php?id='.$listRP['ID'];
+                $url = getJournalUrl($listRP);
 
         ?>
             <div class="col-md-6">
