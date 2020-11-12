@@ -37,12 +37,13 @@ $entity['propinsi']=array('ACT','PK-ID','PROPINSI','IBUKOTA','KODEBPS','KODEISO'
 $entity['article']=array('ACT','PK-ID','TITLE','SUMMARY','CONTENT','IMAGE','KEYWORD','HIT','STATUS');  
 $entity['banner']=array('ACT','PK-ID','TITLE','POS','FILENAME','URL','ORDERNUM','STATUS');  
 $entity['product']=array('ACT','PK-ID','CODE','PRODUCT','CATEGORY','SUMMARY','PRICE','SPECS','BROCHURE','IMAGE','STATUS','ORDNUM','AVAIL'); 
-$entity['content']=array('ACT','PK-ID','TITLE','SUMMARY','CONTENT','IMAGE','VIDEO','KEYWORD','CATEGORY','ARTIST','SPORTIFY','HIT','CREATE_TIMESTAMP','CREATE_BY','STATUS');
+$entity['content']=array('ACT','PK-ID','TITLE','SUBTITLE','SUMMARY','CONTENT','IMAGE','VIDEO','KEYWORD','CATEGORY','ARTIST','SPORTIFY','HIT','CREATE_TIMESTAMP','CREATE_BY','STATUS');
 $entity['contact']=array('ACT','PK-ID','FULLNAME','EMAIL','TELP','QABOUT','MESSAGE','STATUS');
 $entity['addimage']=array('ACT','PK-ID','PRODUCT_ID','IMAGE','CAPTION','TIPE','STATUS');
 $entity['address']=array('ACT','PK-ID','TITLE','CATEGORY','ADDRESS','PHONE','FAX','ORDNUM','STATUS');
 $entity['testimoni']=array('ACT','PK-ID','FULLNAME','TESTI','LOKASI','IMAGE','STATUS');
 $entity['transaction']=array('ACT','PK-ID','TRADE','FULLNAME','ADDRESS','PHONE','EMAIL','PROV','KAB','KODEPOS','SHIPMENT','PAYMENT','TOTAL','STATUS');
+$entity['stock']=array('ACT','PK-ID','STOCK_DATE','CODE','SIZE','TOTAL','STATUS');
 
 
 

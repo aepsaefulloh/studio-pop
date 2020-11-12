@@ -16,7 +16,7 @@ if($params['ID']>0){
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tambah Banner</h3>
+                <h3 class="card-title">Detail Transaction</h3>
             </div>
             <form class="stdform stdform2" method="post"
                 action="<?php echo CMS_URL?>/index.php?page=data-<?php echo $pageseo?>" enctype="multipart/form-data">
@@ -26,97 +26,76 @@ if($params['ID']>0){
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Judul</label>
-                                <input type="text" class="form-control" placeholder="<?php echo $objDetail['TITLE']?>"
-                                    name="TITLE" id="firstname2" value="<?php echo $objDetail['TITLE']?>">
+                                <label>Full Name</label>
+                                <input type="text" class="form-control" placeholder="<?php echo $objDetail['FULLNAME']?>"
+                                    name="FULLNAME" id="firstname2" value="<?php echo $objDetail['FULLNAME']?>">
                             </div>
                             <div class="form-group">
-                                <label>Artist</label>
-                                <input type="text" class="form-control" name="ARTIST"
-                                    value="<?php echo $objDetail['ARTIST']?>">
+                                <label>Address</label>
+                                <textarea class="form-control" name="ADDRESS" ><?php echo $objDetail['ADDRESS']?></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Keyword <i class="fas fa-info-circle" data-toggle="tooltip"
-                                        data-placement="right" title="untuk membantu pada SEO"></i></label>
-                                <input type="text" class="form-control" placeholder="" name="KEYWORD"
-                                    value="<?php echo $objDetail['KEYWORD']?>">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" name="PHONE"
+                                    value="<?php echo $objDetail['PHONE']?>">
                             </div>
                             <div class="form-group">
-                                <label>Link Sportify</label>
+                                <label>Email</label>
                                 <input type="text" class="form-control"
-                                    placeholder="<?php echo $objDetail['SPORTIFY']?>" name="SPORTIFY" id="firstname2"
-                                    value="<?php echo $objDetail['SPORTIFY']?>">
+                                    placeholder="<?php echo $objDetail['EMAIL']?>" name="EMAIL" id="firstname2"
+                                    value="<?php echo $objDetail['EMAIL']?>">
                             </div>
                         </div>
                         <div class="col-md-6">
+                            
                             <div class="form-group">
-                                <label>Category</label>
-                                <select class="form-control" name="CATEGORY">
-                                    <?php
-								$pv['LIMIT']=20;
-								$pv['STATUS']=1;
-								$pv['TIPE']='content';
-								$listCat=getRecord('tbl_category',$pv);
-								foreach($listCat['RESULT'] as $list){
-								?>
-                                    <option value="<?php echo $list['ID']?>"
-                                        <?php if($list['ID']==$objDetail['CATEGORY']){echo 'selected';}?>>
-                                        <?php echo $list['CATEGORY']?>
-                                    </option>
-                                    <?php } ?>
-                                </select>
+                                <label>Province</label>
+                                <input type="text" class="form-control" placeholder="" name="PROV" id="location2"
+                                    value="<?php echo $objDetail['PROV']?>">
                             </div>
                             <div class="form-group">
-                                <label>Summary</label>
-                                <input type="text" class="form-control" placeholder="" name="SUMMARY" id="location2"
-                                    value="<?php echo $objDetail['SUMMARY']?>">
+                                <label>City</label>
+                                <input type="text" class="form-control" placeholder="" name="KAB"
+                                    value="<?php echo $objDetail['KAB']?>">
                             </div>
                             <div class="form-group">
-                                <label>Creator</label>
-                                <input type="text" class="form-control" placeholder="" name="CREATE_BY"
-                                    value="<?php echo $objDetail['CREATE_BY']?>">
+                                <label>Courier</label>
+                                <input type="text" class="form-control" name="SHIPMENT"
+                                    value="<?php echo $objDetail['SHIPMENT']?>">
                             </div>
-                            <div class="form-group">
-                                <label>Video</label>
-                                <input type="text" class="form-control" name="VIDEO"
-                                    value="<?php echo $objDetail['VIDEO']?>">
+							<div class="form-group">
+                                <label>Shipping Cost</label>
+                                <input type="text" class="form-control" name="SHIPMENT"
+                                    value="<?php echo $objDetail['SHIPPING']?>">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Content</label>
-                                <textarea class="form-control ckeditor" placeholder="" id='CONTENT'' name="CONTENT"><?php echo $objDetail['CONTENT']?></textarea>
+                                <label>Items</label>
+								<br>
+                                <?php
+								$vi['TRID']=$objDetail['ID'];
+								$lp=getRecord('tbl_transaction_dtl',$vi);
+								foreach($lp['RESULT'] as $lp){
+									echo 'Code : '.$lp['CODE'].' - Size : '.$lp['SIZE'].' - QTY : '.$lp['QTY'].'<br>';
+								}
+								?>
+								<hr>
+								TOTAL : <?php echo $objDetail['TOTAL']?>
                             </div>
 
-                            <div class="form-group">
-                                <label>Image <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="right"
-                                        title="ukuran gambar:1240x720 & kurang dari 300kb"></i></label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="IMAGE">
-                                        <label class="custom-file-label">Choose
-                                            file</label>
-                                    </div>
-                                </div>
-                                <br>
-                                <img src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$objDetail['IMAGE']?>"
-                                    width=' 300px'>
-                            </div>
-                            <!-- <div class="form-group">
-                                <label>Tanggal</label>
-                                <input type="text" class="form-control" id="kt_datepicker_1" name="CREATE_TIMESTAMP"
-                                    value="<?php echo substr($objDetail['CREATE_TIMESTAMP'],0,10)?>"> 
-                            </div> -->
-                            <div class="form-group">
-                                <label>Status</label>
-                                <span class="field" style="display:block;">
-                                    <input type="radio" name="STATUS" value='1'
-                                        <?php if($objDetail['STATUS']=='1') echo 'checked'?>> Publish
-                                    <input type="radio" name="STATUS" value='0'
-                                        <?php if($objDetail['STATUS']=='0') echo 'checked'?>> Unpublish
-                                </span>
-                            </div>
+                            
                         </div>
+						
+						<div class="form-group">
+                        <label>Status</label>
+                        <span class="field" style="display:block;">
+							<?php foreach($trStatus as $k=>$v){?>
+                            <input type="radio" name="STATUS" value='<?php echo $k?>' <?php if($objDetail['STATUS']==$k) echo 'checked'?>> <?php echo $v?><br>
+							<?php } ?>
+                        </span>
+						</div>
+						
                     </div>
                 </div>
                 <div class="card-footer">

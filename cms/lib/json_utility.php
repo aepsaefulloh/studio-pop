@@ -28,7 +28,7 @@ if($tbl=='tbl_product'){
 
         foreach($list['RESULT'] as $list){
 				$url=getNewsUrl($list);
-                $posts[] = array('ID'=> $list['ID'],'TITLE'=> $list['TITLE'],'ARTIST'=> $list['ARTIST'],'SPORTIFY'=> $list['SPORTIFY'],'SUMMARY'=> $list['SUMMARY'],'CONTENT'=> $list['CONTENT'],'IMAGE'=> $list['IMAGE'],'KEYWORD'=> $list['KEYWORD'],'CATEGORY'=> $list['CATEGORY'],'CONTENT'=> $list['CONTENT'],'HIT'=> $list['HIT'],'STATUS'=> $list['STATUS'],'URL'=> $url);
+                $posts[] = array('ID'=> $list['ID'],'TITLE'=> $list['TITLE'],'SUBTITLE'=> $list['SUBTITLE'],'ARTIST'=> $list['ARTIST'],'SPORTIFY'=> $list['SPORTIFY'],'SUMMARY'=> $list['SUMMARY'],'CONTENT'=> $list['CONTENT'],'IMAGE'=> $list['IMAGE'],'KEYWORD'=> $list['KEYWORD'],'CATEGORY'=> $list['CATEGORY'],'CONTENT'=> $list['CONTENT'],'HIT'=> $list['HIT'],'STATUS'=> $list['STATUS'],'URL'=> $url);
 		}
 
 }else if($tbl=='tbl_transaction'){

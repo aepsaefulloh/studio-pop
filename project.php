@@ -143,9 +143,15 @@ $detail=$detail['RESULT'][0];
                         $listVid = getRecord('tbl_content', $varVid);
                         // echo $listVid['SQL'];
                         foreach($listVid['RESULT'] as $listVid){
-                    ?>
-                        <div class="body-video p-0" data-merge="<?php echo $list['ID']?>">
+                        ?>
+                        <div class="body-video p-0">
                             <a class="owl-video" href="<?php echo $listVid['VIDEO']?>"></a>
+                        </div>
+                        <div class="item">
+                            <div class="card-body p-0">
+                                <img src="<?php echo ROOT_URL.'/images/content/'.$listVid['IMAGE'].'?var='.rand()?>"
+                                    class="img-fluid" alt="">
+                            </div>
                         </div>
                         <?php } ?>
                     </div>
@@ -188,7 +194,7 @@ $detail=$detail['RESULT'][0];
                     $url = getJournalUrl($listRU);
 					// $url=ROOT_URL.'/project.php?id='.$listRU['ID'];
                 ?>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="card card-release mb-3 border-0">
                         <div class="row no-gutters">
                             <div class="col-md-12 col-4">
@@ -209,7 +215,7 @@ $detail=$detail['RESULT'][0];
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <?php 
                 } 
                 ?>

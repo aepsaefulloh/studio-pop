@@ -99,7 +99,7 @@ $page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
                         <div class="item">
                             <div class="card border-0">
                                 <div class="card-header bg-white border-0 p-0">
-                                    <h4 class="title"><?php echo $list['ARTIST']?></h4>
+                                    <h4 class="title"><?php echo $list['SUBTITLE']?></h4>
                                     <p><?php echo $list['SUMMARY']?></p>
                                 </div>
                                 <div class="card-body p-0">

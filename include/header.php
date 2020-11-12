@@ -77,7 +77,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="offcanvas-widget-area">
+                <!-- <div class="offcanvas-widget-area">
                     <div class="off-canvas-contact-widget">
                         <ul>
                             <li><i class="fa fa-mobile"></i>
@@ -94,7 +94,7 @@
                         <a href="<?php echo $objConf['DD_TW']?>"><i class="ion-social-twitter"></i></a>
                         <a href="<?php echo $objConf['DD_YT']?>"><i class="ion-social-youtube"></i></a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </aside>

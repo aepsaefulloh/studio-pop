@@ -176,6 +176,26 @@ function upcountPro($objItem){
 	return $obj;    	
 }
 
+
+function countStock($objItem){
+	$obj=null;
+    	
+	$obj['SQL']="select SIZE, sum(TOTAL) as TOTAL from tbl_stock where CODE='".$objItem['CODE']."' GROUP BY SIZE ORDER BY SIZE ASC";
+		
+    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
+	return $obj;    	
+}
+
+
+function countSale($objItem){
+	$obj=null;
+    	
+	$obj['SQL']="select sum(QTY) as TOTAL from tbl_transaction_dtl where CODE='".$objItem['CODE']."' and SIZE='".$objItem['SIZE']."' and STATUS>0 ";
+		
+    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
+	return $obj;    	
+}
+
 function getNewsPopular($objItem){
 	$obj=null;
     

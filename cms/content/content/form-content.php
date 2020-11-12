@@ -31,24 +31,12 @@ if($params['ID']>0){
                                     name="TITLE" id="firstname2" value="<?php echo $objDetail['TITLE']?>">
                             </div>
                             <div class="form-group">
-                                <label>Artist</label>
-                                <input type="text" class="form-control" name="ARTIST"
-                                    value="<?php echo $objDetail['ARTIST']?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Keyword <i class="fas fa-info-circle" data-toggle="tooltip"
-                                        data-placement="right" title="untuk membantu pada SEO"></i></label>
-                                <input type="text" class="form-control" placeholder="" name="KEYWORD"
-                                    value="<?php echo $objDetail['KEYWORD']?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Link Sportify</label>
+                                <label>Subtitle</label>
                                 <input type="text" class="form-control"
-                                    placeholder="<?php echo $objDetail['SPORTIFY']?>" name="SPORTIFY" id="firstname2"
-                                    value="<?php echo $objDetail['SPORTIFY']?>">
+                                    placeholder="<?php echo $objDetail['SUBTITLE']?>" name="SUBTITLE" id="firstname2"
+                                    value="<?php echo $objDetail['SUBTITLE']?>">
                             </div>
-                        </div>
-                        <div class="col-md-6">
+
                             <div class="form-group">
                                 <label>Category</label>
                                 <select class="form-control" name="CATEGORY">
@@ -67,17 +55,48 @@ if($params['ID']>0){
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Summary</label>
-                                <input type="text" class="form-control" placeholder="" name="SUMMARY" id="location2"
-                                    value="<?php echo $objDetail['SUMMARY']?>">
+                                <label>Artist</label>
+                                <input type="text" class="form-control" name="ARTIST"
+                                    value="<?php echo $objDetail['ARTIST']?>">
                             </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Summary <i class="fas fa-info-circle" data-toggle="tooltip"
+                                                data-placement="right" title="Meta Description SEO"></i></label>
+                                        <input type="text" class="form-control" placeholder="" name="SUMMARY"
+                                            id="location2" value="<?php echo $objDetail['SUMMARY']?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Keyword <i class="fas fa-info-circle" data-toggle="tooltip"
+                                                data-placement="right" title="untuk membantu pada SEO"></i></label>
+                                        <input type="text" class="form-control" placeholder="" name="KEYWORD"
+                                            value="<?php echo $objDetail['KEYWORD']?>">
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div class="form-group">
                                 <label>Creator</label>
                                 <input type="text" class="form-control" placeholder="" name="CREATE_BY"
                                     value="<?php echo $objDetail['CREATE_BY']?>">
                             </div>
                             <div class="form-group">
-                                <label>Video</label>
+                                <label>Link Sportify <i class="fas fa-info-circle" data-toggle="tooltip"
+                                        data-placement="right" title="Just for Pop n Roll"></i></label>
+                                <input type="text" class="form-control"
+                                    placeholder="<?php echo $objDetail['SPORTIFY']?>" name="SPORTIFY" id="firstname2"
+                                    value="<?php echo $objDetail['SPORTIFY']?>">
+                            </div>
+                            <div class="form-group">
+                                <label>Video Project <i class="fas fa-info-circle" data-toggle="tooltip"
+                                        data-placement="right" title="Just for Project Video Slider"></i></label>
                                 <input type="text" class="form-control" name="VIDEO"
                                     value="<?php echo $objDetail['VIDEO']?>">
                             </div>

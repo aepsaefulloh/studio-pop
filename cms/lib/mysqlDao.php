@@ -140,6 +140,51 @@ function saveRecord($TABLE,$objItem){
 }
 
 
+function countPBalance($objItem){
+	$obj=null;
+    	
+	$stock=0;	
+	//stock	
+	$obj['SQL']="select sum(TOTAL) as TOTAL from tbl_stock where CODE='".$objItem['CODE']."' and SIZE='".$objItem['SIZE']."'";
+		
+    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
+	if(!empty($obj['RESULT'])){
+		$stock=$obj['RESULT'][0]['TOTAL'];
+	}
+	
+	
+	//sale
+	$sale=0;
+	$obj['SQL2']="select sum(QTY) as TOTAL from tbl_transaction_dtl where CODE='".$objItem['CODE']."' and SIZE='".$objItem['SIZE']."' and STATUS>0 ";
+	$obj['RESULT2']=DAOQuerySQL($obj['SQL2']);
+	
+	if(!empty($obj['RESULT2'])){
+		$sale=$obj['RESULT2'][0]['TOTAL'];
+	}
+	
+	$obj['BALANCE']=$stock-$sale;
+	
+	return $obj;    	
+}
+
+function countStock($objItem){
+	$obj=null;
+    	
+	$obj['SQL']="select SIZE, sum(TOTAL) as TOTAL from tbl_stock where CODE='".$objItem['CODE']."' GROUP BY SIZE";
+		
+    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
+	return $obj;    	
+}
+
+
+function countSale($objItem){
+	$obj=null;
+    	
+	$obj['SQL']="select sum(QTY) as TOTAL from tbl_transaction_dtl where CODE='".$objItem['CODE']."' and SIZE='".$objItem['SIZE']."' and STATUS>0 ";
+		
+    $obj['RESULT']=DAOQuerySQL($obj['SQL']);
+	return $obj;    	
+}
 
 
 function getRelated($objItem){

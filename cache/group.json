@@ -1,1 +1,1 @@
-{"RESULT":[{"ID":"1","GROUP_NAME":"super admin","ACCESS":"administrasiuser|product|banner|rembugadmin|setting|menu|content|category|transaction|dashboard"},{"ID":"4","GROUP_NAME":"Content Writer","ACCESS":"product|contact|content|dashboard"}]}
+{"RESULT":[{"ID":"1","GROUP_NAME":"super admin","ACCESS":"administrasiuser|product|banner|rembugadmin|setting|content|category|stock|transaction|dashboard"},{"ID":"4","GROUP_NAME":"Content Writer","ACCESS":"product|contact|content|dashboard"}]}

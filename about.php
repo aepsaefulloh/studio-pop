@@ -109,13 +109,13 @@ require_once ROOT_PATH.'/lib/init.php';
                         <img src="<?php echo ROOT_URL?>/assets/img/client/4.png" class="img-fluid" alt="">
                         <img src="<?php echo ROOT_URL?>/assets/img/client/5.png" class="img-fluid" alt="">
                     </div> -->
-                    <p class="subtitle text-md-center mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <!-- <p class="subtitle text-md-center mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Eget ullamcorper porttitor id sagittis, tellus pharetra nisl odio neque. Lectus lobortis
                         nascetur amet non aliquam. In sit blandit vivamus vitae condimentum a. Ut nunc, fermentum
                         mi ipsum urna enim, id ultrices eros. Consequat nulla duis elit in nunc, pellentesque diam. Nisi
                         eget nibh egestas tincidunt eu enim, nec aliquet urna. Ac diam gravida elit vehicula pulvinar
                         aliquam quam. Purus urna tristique cursus
-                        id vel nulla.</p>
+                        id vel nulla.</p> -->
                 </div>
             </div>
         </div>

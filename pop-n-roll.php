@@ -110,6 +110,7 @@ $page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
                         $var['LIMIT'] = 6;
                         $var['CATEGORY']=2;
                         $var['STATUS']=1;
+                        $var['ORDER'] = 'CREATE_TIMESTAMP desc';
                         $list = getRecord('tbl_content', $var);
                         foreach($list['RESULT'] as $list){
                             //$url = getNewsUrl($list);
@@ -142,11 +143,21 @@ $page = isset($_REQUEST['page'])?$_REQUEST['page']:"1";
                     ?>
                 </div>
                 <div class="col-md-4 offset-md-1">
+                <?php
+                        $vSP['LIMIT'] = 1;
+                        $vSP['CATEGORY']=2;
+                        $vSP['STATUS']=1;
+                        $vSP['ORDER'] = 'CREATE_TIMESTAMP desc';
+                        $listSP = getRecord('tbl_content', $vSP);
+                        foreach($listSP['RESULT'] as $listSP){
+                            //$url = getNewsUrl($list);
+                            $url = getPlaylistUrl($listSP);
+                            ?>
                     <div class="sportify-embed">
-                        <iframe src="https://open.spotify.com/embed/playlist/6LFArVI5alyxNCgjKWRhGW"
-                            style="border: 0; width: 100%; height: 500px;" allowfullscreen
-                            allow="encrypted-media"></iframe>
+                        <iframe src="<?php echo $listSP['SPORTIFY']?>" style="border: 0; width: 100%; height: 500px;"
+                            allowfullscreen allow="encrypted-media"></iframe>
                     </div>
+                        <?php } ?>
                 </div>
             </div>
         </div>

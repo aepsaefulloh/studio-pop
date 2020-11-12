@@ -15,13 +15,14 @@ define( "CMS_URL", ROOT_URL."/cms" );
 
 
 
-$trStatus = array('0'=>'Waiting Payment', '1'=>'Payment Complete', '2'=>'Process', '3'=>'Shipping', '4'=>'Complte');
+$trStatus = array('0'=>'Waiting Payment', '1'=>'Payment Complete', '2'=>'Process', '3'=>'Shipping', '4'=>'Complete');
+$confSize = array('1'=>'S', '2'=>'M', '3'=>'L', '4'=>'XL');
 
 //=====SMTP CONFIG=====
  define("SMTP_HOST",'friday.mxlogin.com');
- define("SMTP_USER",'noreply@studiopop.id');
- define("SENDER_NAME",'noreply');
- define("SMTP_PASS",'_J@?dP7!Kvs1');
+ define("SMTP_USER",'shopping@studiopop.id');
+ define("SENDER_NAME",'shopping');
+ define("SMTP_PASS",'P+N6XLX[9BnE');
  define("SMTP_PORT", 587);
 
 ?>

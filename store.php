@@ -10,6 +10,9 @@ $page=isset($_REQUEST['page'])?$_REQUEST['page']:'1';
 $var['CODE']=isset($_REQUEST['code'])?$_REQUEST['code']:'';
 $detail=getRecord('tbl_product',$var);
 $detail=$detail['RESULT'][0];
+
+
+$cpage='store';
 ?>
 
 <!DOCTYPE html>

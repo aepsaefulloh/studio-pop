@@ -101,6 +101,7 @@ $list=getRecord('tbl_product',$params);
                                 <th>Code</th>
                                 <th>Category</th>
                                 <th>Image</th>
+                                <th>Varian</th>
                                 <th>Status</th>
                                 <th>...</th>
                             </tr>
@@ -130,6 +131,23 @@ $list=getRecord('tbl_product',$params);
                                 <td>
                                     <img src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$list['IMAGE']?>"
                                         style="max-width:70px">
+                                </td>
+                                <td>
+
+                                    <a href='<?php echo CMS_URL.'/index.php?page=form-product-image&pid='.$list['ID'];?>'
+                                        class="label label-dark label-inline mr-2">Add Image</a><br>
+                                    <?php 
+                                        $vi['PRODUCT_ID']=$list['ID'];
+                                        $vi['STATUS']=1;
+                                        $vi['LIMIT']=20;
+                                        $listAi=getRecord('tbl_addimage',$vi);
+                                        foreach($listAi['RESULT'] as $listAi){
+							        ?>
+                                    <div style='float:left;padding:10px'><img
+                                            src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$listAi['IMAGE']?>"
+                                            style="max-width:70px"></div>
+                                    <?php } ?>
+
                                 </td>
 
                                 <td>

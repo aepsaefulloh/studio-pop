@@ -11,7 +11,7 @@ $detail=getRecord('tbl_product',$var);
 $detail=$detail['RESULT'][0];
 
 
-
+$cpage='store-detail';
 ?>
 
 
@@ -91,8 +91,8 @@ $detail=$detail['RESULT'][0];
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-white p-0">
                             <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>">Home</a></li>
-                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/store.php">Store</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Homebreaks</li>
+                            <li class="breadcrumb-item"><a href="<?php echo ROOT_URL?>/store">Store</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo $detail['PRODUCT']?></li>
                         </ol>
                     </nav>
                 </div>
@@ -117,15 +117,22 @@ $detail=$detail['RESULT'][0];
                         <img id="img" src="<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?var='.rand()?>"
                             class="img-fluid">
                     </div>
-                    <!-- <div class="image-select" id="thumb_img" class="cf">
+                    <div class="image-select" id="thumb_img" class="cf">
                         <img class="active"
                             src="<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?var='.rand()?>"
                             onclick="changeimg('<?php echo ROOT_URL.'/images/product/'.$detail['IMAGE'].'?var='.rand()?>',this);">
-                        <img src="<?php echo ROOT_URL?>/assets/img/store/2.png?<?php echo rand()?>"
-                            onclick="changeimg('<?php echo ROOT_URL?>/assets/img/store/2.png?<?php echo rand()?>',this);">
-                        <img src="<?php echo ROOT_URL?>/assets/img/store/3.png?<?php echo rand()?>"
-                            onclick="changeimg('<?php echo ROOT_URL?>/assets/img/store/3.png?<?php echo rand()?>',this);">
-                    </div> -->
+                        <?php
+                            $varAI['PRODUCT_ID']=$detail['ID'];
+                            $varAI['LIMIT']=3;
+                            $varAI['STATUS']=1;
+                            $varAI['TIPE']='color';
+                            $listAI = getRecord('tbl_addimage', $varAI);
+                            foreach ($listAI['RESULT'] as $listAI) { 
+                        ?>
+                        <img src="<?php echo ROOT_URL.'/images/product/'.$listAI['IMAGE'].'?v='.rand()?>"
+                            onclick="changeimg('<?php echo ROOT_URL.'/images/product/'.$listAI['IMAGE'].'?v='.rand()?>',this);">
+                        <?php } ?>
+                    </div>
                 </div>
                 <div class="col-md-5 offset-md-2">
                     <div class="product-name">
@@ -137,22 +144,52 @@ $detail=$detail['RESULT'][0];
                         <input type='hidden' name='act' value="add">
                         <h5>SIZE :</h5>
                         <div class="product-size">
-                            <input type='radio' name='size' value='S' required>S
-                            <input type='radio' name='size' value='M' required>M
-                            <input type='radio' name='size' value='L' required>L
-                            <input type='radio' name='size' value='XL' required>XL
+                            <?php
+						$st['CODE']=$detail['CODE'];
+						$rst=countStock($st);
+						//echo $rst['SQL'];
+						$cst=0;
+						foreach($rst['RESULT'] as $rst){
+							 $vs['CODE']=$detail['CODE'];
+                             $vs['SIZE']=$rst['SIZE'];
+							 $sale=countSale($vs);
+							 //echo $sale['SQL'];
+							 $out=0;
+							 if(!empty($sale['RESULT'])){
+								$out=$sale['RESULT'][0]['TOTAL'];
+							 }
+							 $av=$rst['TOTAL']-$out;
+							 $cst+=$av;
+							 if($av>0){
+							?>
+                            <input type='radio' name='size' value='<?php echo $rst['SIZE']?>'
+                                required>&nbsp;<?php echo $confSize[$rst['SIZE']]?>
+                            <?php 
+						}}
+						
+						?>
+
+                            <!--div class="product-size">
+                            <input type='radio' name='size' value='S' required>&nbsp;S
+                            <input type='radio' name='size' value='M' required>&nbsp;M
+                            <input type='radio' name='size' value='L' required>&nbsp;L
+                            <input type='radio' name='size' value='XL' required>&nbsp;XL-->
                         </div>
                         <h5>PRICE :</h5>
                         <div class="product-price">
                             <h5 class="title">Rp. <?php echo number_format($detail['PRICE'])?></h5>
                         </div>
+
+                        <?php if($cst>0){?>
                         <h5>QTY :</h5>
                         <div class="product-price">
                             <input type="number" name='qty' value='1' style='padding:5px;width:70px'>
                         </div>
-
                         <button class="btn btn-black btn-block mb-3">ADD TO
                             CART</button>
+                        <?php }else{ ?>
+                        <strong>OUT OF STOCK !</strong>
+                        <?php } ?>
                     </form>
                     <span class="line-grey"></span>
                     <div class="info-product">
@@ -188,8 +225,11 @@ $detail=$detail['RESULT'][0];
             $varRP['CATEGORY'] = 2;
             $listRP = getRecord('tbl_content', $varRP);
             foreach($listRP['RESULT'] as $listRP){
-                $listRP['SQL'];
-                $url = getJournalUrl($listRP);  
+                if(!$url){
+                    $url = getJournalUrl($listRP);
+                }else{
+                    $url = getPlaylistUrl($listRP);
+                }  
         ?>
                 <div class="col-md-6">
                     <div class="card card-playlist mb-3 border-0">
@@ -205,8 +245,8 @@ $detail=$detail['RESULT'][0];
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $listRP['TITLE']?></p>
                                         <p class="card-text">
-                                            <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                    Oct 6, 2014</li></small>
+                                            <li class="ion-ios-clock-outline"><small class="text-muted ">
+                                                    <?php echo $listRP['CREATE_TIMESTAMP']?></li></small>
                                         </p>
                                     </div>
                                 </a>

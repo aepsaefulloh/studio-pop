@@ -44,7 +44,15 @@ if($submitcontent=='1'){
 		$objVar['CREATE_TIMESTAMP']=date('Y-m-d H:i:s');
 	}
 	$result=saveRecord('tbl_'.$pageseo,$objVar);
-	// echo $result['SQL'];
+	
+	
+	//save status tbl_transaction_dtl
+	$vd['ACT']='EDIT';
+	$vd['PK-TRID']=$objVar['PK-ID'];
+	$vd['STATUS']=$objVar['STATUS'];
+	$result2=saveRecord('tbl_transaction_dtl',$vd);
+	//echo $result2['SQL'];
+	
 	
 	//----cached-------
 	$res=writeCache('tbl_'.$pageseo,$pageseo);
@@ -137,8 +145,8 @@ $list=getRecord('tbl_transaction',$params);
                                 <th>Order No</th>
                                 <th>Fullname</th>
                                 <th>Date</th>
-                                <th>Items</th>								
-                                <th>Total</th>								
+                                <th>Items</th>
+                                <th>Total</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -164,27 +172,27 @@ $list=getRecord('tbl_transaction',$params);
                                     <span
                                         class="text-dark-75 font-weight-bolder d-block font-size-lg"><?php echo $list['TRDATE']?></span>
                                 </td>
-								<td>
-                                    <span
-                                        class="text-dark-75 font-weight-bolder d-block font-size-lg">
-										<?php 
+                                <td>
+                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                        <?php 
 										$vd['TRID']=$list['ID'];
 										$rd=getRecord('tbl_transaction_dtl',$vd);
 										foreach($rd['RESULT'] as $rd){
-												echo $rd['CODE'].' - Size : '.$rd['SIZE'].'- Qty :'.$rd['QTY'].'<br>';
+												echo $rd['CODE'].' - Size : '.$confSize[$rd['SIZE']].'- Qty :'.$rd['QTY'].'<br>';
 										}
 										
 										?>
-										</span>
-                                </td>
- <td>
-                                   <?php echo 'Rp '.number_format($list['TOTAL']) ?>
+                                    </span>
                                 </td>
                                 <td>
-                                    <a href="" class="label label-lg label-light-success label-inline"><?php echo $trStatus[$list['STATUS']] ?>
+                                    <?php echo 'Rp '.number_format($list['TOTAL']) ?>
+                                </td>
+                                <td>
+                                    <a href="<?php echo CMS_URL.'/index.php?page=form-transaction&id='.$list['ID']?>"
+                                        class="label label-lg label-light-success label-inline"><?php echo $trStatus[$list['STATUS']] ?>
                                     </a>
                                 </td>
-                                <td class="pr-0">
+                                <!-- <td class="pr-0">
                                     <a href="<?php echo CMS_URL.'/index.php?page=form-'.$pageseo.'&act=edit&id='.$list['ID']?>"
                                         class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                         <span class="svg-icon svg-icon-md svg-icon-primary">
@@ -205,8 +213,7 @@ $list=getRecord('tbl_transaction',$params);
                                             </svg>
                                         </span>
                                     </a>
-
-                                </td>
+                                </td> -->
                             </tr>
                             <?php } ?>
                         </tbody>

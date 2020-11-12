@@ -99,7 +99,7 @@ $url = getNewsUrl($list);
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="title h1"><?php echo $list['TITLE']?></h1>
+                <h1 class="title h1"><?php echo $list['SUBTITLE']?></h1>
                 <div class="image-detail-article ptb-3">
                     <img src="<?php echo ROOT_URL.'/images/content/'.$list['IMAGE'].'?v='.rand()?>"
                         class="img-fluid img-detail" alt="">
@@ -148,7 +148,7 @@ $url = getNewsUrl($list);
                                     <p class="card-text"><?php echo $listRP['TITLE']?></p>
                                     <p class="card-text">
                                         <li class="ion-ios-clock-outline"><small class="text-muted">
-                                                Oct 6, 2014</li></small>
+                                                <?php echo $listRP['CREATE_TIMESTAMP']?></li></small>
                                     </p>
                                 </div>
                             </a>

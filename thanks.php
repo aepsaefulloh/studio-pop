@@ -7,45 +7,50 @@ require_once ROOT_PATH.'/lib/json_utility.php';
 require_once ROOT_PATH.'/lib/init.php';
 require_once ROOT_PATH.'/lib/mail_utility.php';
 
-$text="<h4>Thank You for shopping with STUDIO POP</h4>";
-$text.="<p><small class='text-muted'>Hi,".$_REQUEST['FULLNAME']."</small></p>";
-$text.="<p><small class='text-muted'>Thank you for your order! Your items will be delivered after the payment has been made. Please make your payment within 24 hours to avoid order cancellation and send the payment receipt to shopping@studiopop.id</small></p>";
+
+
+
+$text='<h3 class="mb-3">Thank you for shopping with STUDIO POP</h3>';
+$text.="<p><strong>Hi,&nbsp;".$_REQUEST['FULLNAME']."</strong></p>";
+$text.="<p class='mb-3'><strong>Thank you for your order! Your items will be delivered after the payment has been made. Please make your payment within 24 hours to avoid order cancellation and send the payment receipt to shopping@studiopop.id</strong></p>";
 $text.="<div class='box-text'>";
-$text.="<p>Order No: ".$_REQUEST['TRID']."</p>";
-//$text.="<p>Date: ".date('Y-m-d H:i:s')."</p>";
-//$text.="<p>Name : ".$_REQUEST['FULLNAME']."</p>";
-//$text.="<p>Address : ".$_REQUEST['ADDRESS']."</p>";
-//$text.="<p>Items :</p>";
-//$text.="<ul>";
-		$total=9000;
+$text.="<p><strong>Order No : ".$_REQUEST['TRID']."</strong></p>";
+		$shipping=$_REQUEST['SHIPPING'];
+		$subtotal=0;
 		if(!empty($_SESSION["cart_item"])){
 		foreach ($_SESSION["cart_item"] as $item){
 			$sub=$item['QTY']*$item['PRICE'];
-			$total+=$sub;
+			$subtotal+=$sub;
 		
 //$text.="<li><p>".$item['PRODUCT']."(".$item['SIZE'].")  x ".$item['QTY']."</p></li>";
 		}}
+		$total=$shipping+$subtotal;
 //$text.="</ul>";
-$text.="<p>SubTotal : Rp. ".number_format($total)."</p>";
-$text.="<p>Shipping : Rp. 9,000</p>";
-$text.="<p>Total : Rp. ".number_format($total)."</p><br><br>";
-$text.="<p>STUDIO POP Terms</p>";
-$text.="<p>All sales are final. No refunds. No exchanges.</p><br>";
+$text.="<p><strong>SubTotal : Rp. ".number_format($subtotal)."</strong></p>";
+$text.="<p><strong>Shipping : Rp. ".number_format($shipping)."</strong></p>";
+$text.="<p class='mb-3'><strong>Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Rp. ".number_format($total)."</strong></p>";
+$text.="<p><i><strong>Please settle the payment by transferring it to the following bank account with your order number as the reference.<br><br>
 
-$text.="<p>Shipping</p><br>";
-$text.="<p>Kindly make sure that the shipping address is correct and somebody is home to receive the package from 9 am to 6 pm on the estimated delivery date.</p><br>";
+BCA 7310160371 a/n Daiva Prayudi </strong></i></p>";
+$text.='<hr class="dash"></br>';
 
-$text.="<p>Please transfer to</p><br>";
+$text.='<center><p class="text-center">STUDIO POP Terms</p>';
+$text.='<p class="text-center">All sales are final. No refunds. No exchanges.</p><br>';
 
-$text.="<p><strong>BCA 7310160371 a/n Daiva Prayudi</strong></p><br>";
+$text.='<p class="text-center">Shipping</p>';
+$text.='<p class="text-center">Kindly make sure that the shipping address is correct and somebody is home to receive the package from 9 am to 6 pm on the estimated delivery date.</p><br>';
 
-$text.="<p>Please complete your payment within 24 hours. The order will automatically be canceled if there’s no payment within 24 hours.</p>";
-$text.="<p>Please send (reply this email) a confirmation after you make the payment along with the prove of payment</p>";
+$text.='<p class="text-center">Please transfer to</p>';
 
-$text.="<p>Once again, thank you for shopping with STUDIO POP!</p><br>";
+$text.='<p class="text-center">BCA 7310160371 a/n Daiva Prayudi</p><br>';
 
-$text.="<p><strong>STUDIO POP</strong><br>";
-$text.="www.studiopop.id<p></div>";
+$text.='<p class="text-center">Please complete your payment within 24 hours. The order will automatically be canceled if there’s no payment within 24 hours.</p>';
+$text.='<p class="text-center">Please send a confirmation after you make the payment along with the prove of payment.</p><br>';
+
+$text.='<p class="text-center">Once again, thank you for shopping with STUDIO POP!</p><br>';
+
+$text.='<p class="text-center"><strong>STUDIO POP</strong></p>';
+$text.='<p class="text-center">www.studiopop.id</p></div></center>';
 	
 ?>
 
@@ -124,16 +129,16 @@ $text.="www.studiopop.id<p></div>";
                 <div class="col-md-12">
                     <div class="jumbotron jumbotron-after-shop">
                         <div class="container">
-                           <?php echo $text ?>
-                            
-                            
+                            <?php echo $text ?>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-	<?php
+    <?php
 	
 
 if($_REQUEST['TRID']!=''){
@@ -153,6 +158,8 @@ if($_REQUEST['TRID']!=''){
 	$v['PROV']=$_REQUEST['PROV'];
 	$v['KAB']=$_REQUEST['KAB'];
 	$v['PAYMENT']='BCA';
+	$v['SHIPMENT']=$_REQUEST['SHIPMENT'];
+	$v['SHIPPING']=$shipping;
 	$v['TOTAL']=$total;
 	$v['STATUS']=0;
 	$v['TRDATE']=date('Y-m-d H:i:s');
@@ -190,8 +197,11 @@ if($_REQUEST['TRID']!=''){
 	
 	$status=sendmail($msc);
 
+	//clear session
+	unset($_SESSION["cart_item"]);
+	}
 	
-	}	
+	
 }
 	?>
 

@@ -2,6 +2,7 @@
 require_once ROOT_PATH.'/include/gtag.php';
 $param['act']=isset($_REQUEST['act'])?$_REQUEST['act']:'';
 $param['code']=isset($_REQUEST['code'])?$_REQUEST['code']:'';
+$param['rcode']=isset($_REQUEST['rcode'])?$_REQUEST['rcode']:'';
 $param['size']=isset($_REQUEST['size'])?$_REQUEST['size']:'';
 $param['qty']=isset($_REQUEST['qty'])?$_REQUEST['qty']:'';
 
@@ -16,20 +17,22 @@ function cartProcess($objItem){
 
 switch($objItem['act']) {
 	case "add":
-		if(!empty($objItem["qty"])) {
+		if(!empty($objItem["qty"])) {		
+			
 			$vp['CODE']=$objItem['code'];
 			$productByCode = getRecord('tbl_product',$vp);
 			$productByCode=$productByCode['RESULT'];
-			$itemArray = array($productByCode[0]["CODE"]=>array('PRODUCT'=>$productByCode[0]["PRODUCT"], 'CODE'=>$productByCode[0]["CODE"], 'QTY'=>$objItem["qty"], 'SIZE'=>$objItem["size"], 'PRICE'=>$productByCode[0]["PRICE"], 'IMAGE'=>$productByCode[0]["IMAGE"]));
+			$aid=$objItem['code'].'-'.$objItem['size'];
+			$itemArray = array($aid=>array('PRODUCT'=>$productByCode[0]["PRODUCT"], 'CODE'=>$productByCode[0]["CODE"], 'QTY'=>$objItem["qty"], 'SIZE'=>$objItem["size"], 'PRICE'=>$productByCode[0]["PRICE"], 'IMAGE'=>$productByCode[0]["IMAGE"]));
 			
 			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByCode[0]["CODE"],array_keys($_SESSION["cart_item"]))) {
+				if(in_array($aid,array_keys($_SESSION["cart_item"]))) {
 					foreach($_SESSION["cart_item"] as $k => $v) {
-							if($productByCode[0]["CODE"] == $k) {
-								if(empty($_SESSION["cart_item"][$k]["qty"])) {
-									$_SESSION["cart_item"][$k]["qty"] = 0;
+							if($aid == $k) {
+								if(empty($_SESSION["cart_item"][$k]["QTY"])) {
+									$_SESSION["cart_item"][$k]["QTY"] = 0;
 								}
-								$_SESSION["cart_item"][$k]["qty"] += $objItem["qty"];
+								$_SESSION["cart_item"][$k]["QTY"] += $objItem["qty"];
 							}
 					}
 				} else {
@@ -41,9 +44,11 @@ switch($objItem['act']) {
 		}
 	break;
 	case "remove":
-		if(!empty($_SESSION["cart_item"])) {
+		
+		if(!empty($_SESSION["cart_item"])) {			
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($objItem["code"] == $k)
+				
+					if($objItem["rcode"] == $k)
 						unset($_SESSION["cart_item"][$k]);				
 					if(empty($_SESSION["cart_item"]))
 						unset($_SESSION["cart_item"]);
@@ -165,14 +170,14 @@ switch($objItem['act']) {
                 <!-- mobile menu end -->
 
                 <!-- offcanvas widget area start -->
-                <div class="offcanvas-widget-area">
+                <!-- <div class="offcanvas-widget-area">
                     <div class="off-canvas-contact-widget">
                         <ul>
                             <li><i class="fa fa-mobile"></i>
-                                <a href="tel:<?php echo $objConf['DD_PHONE']?>">0123456789</a>
+                                <a href="tel:<?php echo $objConf['DD_PHONE']?>"><?php echo $objConf['DD_PHONE']?></a>
                             </li>
                             <li><i class="fa fa-envelope-o"></i>
-                                <a href="mailto:<?php echo $objConf['DD_EMAIL']?>">info@studiopop.id</a>
+                                <a href="mailto:<?php echo $objConf['DD_EMAIL']?>"><?php echo $objConf['DD_EMAIL']?></a>
                             </li>
                         </ul>
                     </div>
@@ -182,7 +187,7 @@ switch($objItem['act']) {
                         <a href="<?php echo $objConf['DD_TW']?>"><i class="ion-social-twitter"></i></a>
                         <a href="<?php echo $objConf['DD_YT']?>"><i class="ion-social-youtube"></i></a>
                     </div>
-                </div>
+                </div> -->
                 <!-- offcanvas widget area end -->
             </div>
         </div>

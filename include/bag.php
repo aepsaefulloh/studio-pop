@@ -10,34 +10,44 @@
 			foreach ($_SESSION["cart_item"] as $item){ 
 				$sub=$item['QTY']*$item['PRICE'];
                 $total+=$sub;
-                $url='store-detail.php?code='.$list['CODE'];
+                $url='store-detail.php?code='.$item['CODE'];
 
 			?>
 
             <li class="product">
                 <form method='POST'>
-                    <a href="<?php echo $url ?>" class="product-link">
+                    <a href="#!" class="product-link">
                         <span class="product-image">
                             <img src="<?php echo ROOT_URL.'/images/product/'.$item['IMAGE'].'?var='.rand()?>"
-                                alt="Product Photo">
+                                alt="Product Photo" style='width:60px'>
                         </span>
+
                         <span class="product-details">
                             <h3><?php echo $item['PRODUCT']?></h3>
                             <span class="qty-price">
 
 
                                 <span class="price">Qty : <?php echo $item['QTY']?></span>
-                                <span class="price">Size : <?php echo $item['SIZE']?></span>
+                                <span class="price">Size : <?php echo $confSize[$item['SIZE']]?></span>
                                 <span class="price">Rp <?php echo number_format($sub)?></span>
                             </span>
                         </span>
                     </a>
-                    <a href="?act=remove&code=<?php echo $item['CODE']?>" class="remove-button"><span
-                            class="remove-icon">X</span></a>
+					<?php
+					$s='&';
+					if($cpage=='store') { $s='?';}
+					?>
+                    <a href="<?php echo $_SERVER['REQUEST_URI'].$s?>act=remove&rcode=<?php echo $item['CODE'].'-'.$item['SIZE']?>"
+                        class="remove-button">
+                        <span class="remove-icon">X</span></a>
                 </form>
             </li>
 
             <?php }} ?>
+            <li>
+                <a class="btn btn-block" href="<?php echo ROOT_URL?>/store?act=empty"
+                    style='border-top:1px solid #ddd;background:#ea2a2a;color:#fff;font-size:12px'>EMPTY CHART</a>
+            </li>
         </ul>
 
         <div class="totals">
@@ -46,6 +56,7 @@
             </div>
         </div>
         <div class="action-buttons">
+
             <a class="checkout-button" href="<?php echo ROOT_URL?>/profile.php">Checkout</a>
         </div>
     </main>

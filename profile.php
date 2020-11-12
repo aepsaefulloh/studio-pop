@@ -4,6 +4,7 @@ require_once ROOT_PATH.'/lib/dao_utility.php';
 require_once ROOT_PATH.'/lib/mysqlDao.php';
 require_once ROOT_PATH.'/lib/json_utility.php';
 require_once ROOT_PATH.'/lib/init.php';
+require_once ROOT_PATH.'/lib/util.php';
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +57,7 @@ require_once ROOT_PATH.'/lib/init.php';
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo ROOT_URL?>/assets/css/style.css?<?php echo rand()?>">
     <link rel="stylesheet" href="<?php echo ROOT_URL?>/assets/css/responsive.css?<?php echo rand()?>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -85,7 +87,7 @@ require_once ROOT_PATH.'/lib/init.php';
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="title h1">Profile</h1>
+                    <h1 class="title h1">Shipping Address</h1>
                 </div>
             </div>
         </div>
@@ -93,83 +95,88 @@ require_once ROOT_PATH.'/lib/init.php';
     <section class="section-primary mt-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Contact</h5>
-                    <form class="form-profile">
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label>No. Hp</label>
-                            <input type="number" class="form-control" placeholder="">
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-black">Submit</button>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <h5>Address</h5>
+                <div class="col-md-12 mb-3">
                     <form class="form-profile" method='POST' action="<?php echo ROOT_URL?>/shipment.php">
                         <div class="form-group">
-                            <label>FULLNAME</label>
+                            <label>FULL NAME</label>
                             <input type="text" name='FULLNAME' class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label>ADDRESS</label>
-                            <input type="text" name='ADDRESS' class="form-control" placeholder="" required>
+                            <textarea name='ADDRESS' class="form-control" placeholder="" required></textarea>
+                            
                         </div>
-						<div class="form-group">
+                        <div class="form-group">
                             <label>PHONE</label>
                             <input type="text" name='PHONE' class="form-control" placeholder="" required>
                         </div>
-						<div class="form-group">
+                        <div class="form-group">
                             <label>EMAIL</label>
                             <input type="text" name='EMAIL' class="form-control" placeholder="" required>
                         </div>
+
+
                         <div class="form-group">
                             <label>PROVINCE</label>
-                            <select class="form-control" name='PROV' required>
-                                <option>---</option>
+                            <select class="form-control" id='propinsi-list' name='PROV' required>
+                                <option value=''>- select -</option>
                                 <?php
-                                     $varProv['LIMIT']=99;
-                                     $listProv = getRecord('tbl_prov', $varProv);									
-                                     foreach($listProv['RESULT'] as $listProv){
-                                ?>
-                                <option><?php echo $listProv['PROV'] ?></option>
-                                <?php } ?>
+								$prov=getProvince();
+								foreach ($prov['rajaongkir']['results'] as $list) {
+									$vpro['ACT']='ADD';
+									$vpro['ID']=$list['province_id'];
+									$vpro['PROV']=$list['province'];
+									$vpro['STATUS']=1;
+									$rpro=saveRecord('tbl_prov',$vpro);
+								?>
+                                <option value='<?php echo $list['province_id']?>'><?php echo $list['province']?>
+                                </option>
+                                    <?php 
+								      }
+								    ?>
 
                             </select>
                         </div>
                         <div class="form-group">
                             <label>CITY</label>
-                            <select class="form-control" name='KAB' required>
-                                <option>---</option>
-                                <?php
-                                     $varKab['LIMIT']=99;
-                                     $listKab = getRecord('tbl_kab', $varKab);									
-                                     foreach($listKab['RESULT'] as $listKab){
-                                ?>
-                                <option value='<?php echo $listKab['ID']?>'><?php echo $listKab['KAB']?></option>
-                                <?php } ?>
+                            
+							<select id='kabupaten-list' class="form-control" name='KAB' required>
+                                
                             </select>
                         </div>
-						
-						
-                        
+						<div class="form-group">
+                            <label>COURIER</label>
+                            
+							<select id='courier-list' class="form-control" name='COURIER' required>
+                                
+                            </select>
+                        </div>
+
+                        <script type="text/javascript"> 
+						$('#propinsi-list').on('change', function(){
+						var id_propinsi = this.value;
+						$.ajax({
+						type: "POST",
+						url: "<?php echo ROOT_URL?>/getKab.php",
+						data:'id_propinsi='+id_propinsi,
+						success: function(result){
+						$("#kabupaten-list").html(result);
+						}
+						});
+						});
+						$('#kabupaten-list').on('change', function(){
+						var id_kab = this.value;
+						$.ajax({
+						type: "POST",
+						url: "<?php echo ROOT_URL?>/getJne.php",
+						data:'id_kab='+id_kab,
+						success: function(result){
+						$("#courier-list").html(result);
+						}
+						});
+						});
+						 </script>
+
                         <div class="form-group">
                             <label>POSTAL CODE</label>
                             <input type="number" class="form-control" name='KODEPOS' placeholder="" required>
@@ -178,6 +185,7 @@ require_once ROOT_PATH.'/lib/init.php';
                         <button class="btn btn-black btn-block">CONTINUE</button>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>

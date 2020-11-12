@@ -26,10 +26,21 @@ if($params['ID']>0){
                     <input type='hidden' name='ACT' value='<?php echo $act?>'>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Product</label>
-                                <input type="text" class="form-control" name="PRODUCT"
-                                    value="<?php echo $objDetail['PRODUCT']?>">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Product</label>
+                                        <input type="text" class="form-control" name="PRODUCT"
+                                            value="<?php echo $objDetail['PRODUCT']?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Code</label>
+                                        <input type="text" class="form-control" name="CODE"
+                                            value="<?php echo $objDetail['CODE']?>">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
@@ -61,10 +72,10 @@ if($params['ID']>0){
                                     value="<?php echo $objDetail['SUMMARY']?>">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Image <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="right"
-                                        title="ukuran: 1024x1024 & kurang dari 300kb"></i></label>
+                                        title="ukuran: 800x1000 & kurang dari 50kb"></i></label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="IMAGE">
@@ -77,36 +88,7 @@ if($params['ID']>0){
                                     width='300px'>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <!-- <div class="form-group">
-                                <label>Varian</i></label>
-                                <br>
-                                <span class="label label-info label-inline mr-2"> <a
-                                        href='<?php echo CMS_URL.'/index.php?page=form-product-image&pid='.$list['ID'];?>'
-                                        style="color:#fff;">Add
-                                        Varian</a></span>
-                                <br>
-                                <?php 
-										// $vi['PRODUCT_ID']=$list['ID'];
-										// $vi['STATUS']=1;
-										// $vi['LIMIT']=20;
-										// $listAi=getRecord('tbl_addimage',$vi);
-										// foreach($listAi['RESULT'] as $listAi){
-										?>
-                                <div class="varians-img">
-                                    <img src="<?php echo ROOT_URL.'/images/'.$pageseo.'/'.$listAi['IMAGE']?>"
-                                        width='100px'>
-                                </div>
-                                <?php
-                                // } 
-                                ?>
-                            </div> -->
-                            <div class="form-group">
-                                <label>Code</label>
-                                <input type="text" class="form-control" name="CODE"
-                                    value="<?php echo $objDetail['CODE']?>">
-                            </div>
-                        </div>
+
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Specs</label>

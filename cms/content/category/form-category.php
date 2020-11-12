@@ -39,11 +39,22 @@ if($params['ID']>0){
                             value="<?php echo $objDetail['SEO']?>">
                     </div>
 
-                    <div class="form-group">
+					<div class="form-group">
+						<label>Tipe</label>
+						<select class="form-control" name="TIPE">
+							
+							<option value="">-tipe-</option>
+							<option value="content" <?php if($objDetail['TIPE']=='content'){echo 'selected';}?>>content</option>
+							<option value="product" <?php if($objDetail['TIPE']=='product'){echo 'selected';}?>>product</option>
+							
+						</select>
+					</div>	
+					
+                    <!--div class="form-group">
                         <label>Tipe</label>
                         <input type="text" class="form-control" placeholder="<?php echo $objDetail['TIPE']?>"
                             name="TIPE" value="<?php echo $objDetail['TIPE']?>">
-                    </div>
+                    </div-->
 
                     <div class="form-group">
                         <label>Status</label>
